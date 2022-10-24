@@ -18,10 +18,12 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 // services
 import * as authService from './services/authService'
 import * as listingService from "./services/listingService"
+import * as tenantsService from "./services/tenantsService"
 
 // styles
 import './App.css'
 import AddWorkRequest from './pages/AddWorkRequest/AddWorkRequest'
+import AddTenant from './pages/AddTenant/AddTenant'
 
 const App = () => {
   const [listing, setListing] = useState([])
@@ -44,83 +46,95 @@ const App = () => {
     const newWorkRequest = await listingService.createWorkRequest(id, workRequestData)
     setWorkRequest([newWorkRequest, ...workRequests])
     navigate('/workRequests')
+    const handleAddTenant = async (tenantData) => {
+      const newTenant = await tenantsService.create(tenantData)
+      setTenant([newTenant, ...tenants])
+      navigate('/tenants')
+    }
+
+    useEffect(() => {
+      const fetchAllListing = async () => {
+        const data = await listingService.index()
+        console.log(data);
+      }
+      fetchAllListing()
+    })
+
+    return (
+      <>
+        <NavBar user={user} handleLogout={handleLogout} />
+        <Routes>
+          <Route
+            path="/listings"
+            element={
+              <ProtectedRoute user={user}>
+                <Listings />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/workRequests'
+            element={
+              <ProtectedRoute user={user}>
+                <WorkRequestList />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/workRequests/new'
+            element={
+              <ProtectedRoute user={user}>
+                <AddWorkRequest
+                  listing={listing}
+                  handleAddWorkRequest={handleAddWorkRequest}
+                />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/tenants"
+            element={
+              <ProtectedRoute user={user}>
+                <TenantList tenants={tenants} />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/" element={<Landing user={user} />} />
+          <Route
+            path="/signup"
+            element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
+          />
+          <Route
+            path="/login"
+            element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
+          />
+          <Route
+            path="/profiles"
+            element={
+              <ProtectedRoute user={user}>
+                <Profiles />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/change-password"
+            element={
+              <ProtectedRoute user={user}>
+                <ChangePassword handleSignupOrLogin={handleSignupOrLogin} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/add-tenant"
+            element={
+              <ProtectedRoute user={user}>
+                <AddTenant handleAddTenant={handleAddTenant} />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </>
+    )
   }
 
-  useEffect(() => {
-    const fetchAllListing = async () => {
-      const data = await listingService.index()
-      console.log(data);
-    }
-    fetchAllListing()
-  })
-
-  return (
-    <>
-      <NavBar user={user} handleLogout={handleLogout} />
-      <Routes>
-        <Route
-          path="/listings"
-          element={
-            <ProtectedRoute user={user}>
-              <Listings />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path='/workRequests'
-          element={
-            <ProtectedRoute user={user}>
-              <WorkRequestList />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path='/workRequests/new'
-          element={
-            <ProtectedRoute user={user}>
-              <AddWorkRequest
-                listing={listing}
-                handleAddWorkRequest={handleAddWorkRequest}
-              />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/tenants"
-          element={
-            <ProtectedRoute user={user}>
-              <TenantList tenants={tenants} />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="/" element={<Landing user={user} />} />
-        <Route
-          path="/signup"
-          element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
-        />
-        <Route
-          path="/login"
-          element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
-        />
-        <Route
-          path="/profiles"
-          element={
-            <ProtectedRoute user={user}>
-              <Profiles />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/change-password"
-          element={
-            <ProtectedRoute user={user}>
-              <ChangePassword handleSignupOrLogin={handleSignupOrLogin} />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
-    </>
-  )
-}
-
-export default App
+  export default App
