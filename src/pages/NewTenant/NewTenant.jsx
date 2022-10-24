@@ -3,7 +3,6 @@ import styles from './NewTenant.module.css'
 
 const NewTenant = (props) => {
   const [form, setForm] = useState({
-    listing: '',
     lease: '',
     name: '',
     job: '',
@@ -24,7 +23,7 @@ const NewTenant = (props) => {
   return (
     <main className={styles.container}>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="listing-input">Listing</label>
+        {/* <label htmlFor="listing-input">Listing</label>
         <select
           required
           name="listing"
@@ -36,7 +35,7 @@ const NewTenant = (props) => {
           <option value=""></option>
           <option value=""></option>
           <option value=""></option>
-        </select>
+        </select> */}
         <label htmlFor="lease-input">Lease</label>
         <input
           required

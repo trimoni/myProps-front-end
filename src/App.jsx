@@ -103,7 +103,7 @@ const App = () => {
           path="/add-tenant"
           element={
             <ProtectedRoute user={user}>
-              <AddTenant />
+              <AddTenant handleAddTenant={handleAddTenant}/>
             </ProtectedRoute>
           }
         />
