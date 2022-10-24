@@ -5,8 +5,8 @@ const AddListing = (props) => {
   const [formData, setFormData] = useState({
     address: '',
     rent: '',
-    bedroom: '',
-    bathroom: '',
+    bedroom: '1',
+    bathroom: '1',
     pets: '',
     details: '',
   })
