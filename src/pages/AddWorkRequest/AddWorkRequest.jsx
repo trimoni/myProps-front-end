@@ -1,8 +1,8 @@
 
 const AddWorkRequest = () => {
-  return (  
+  return (
     <>
-    
+      <h2>Add a work request</h2>
     </>
   );
 }

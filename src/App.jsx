@@ -10,7 +10,7 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Listings from './pages/Listings/Listings'
 import TenantList from './pages/TenantList/TenantList'
-
+import WorkRequestList from './pages/WorkRequestList/WorkRequestList'
 // components
 import NavBar from './components/NavBar/NavBar'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
@@ -21,6 +21,7 @@ import * as listingService from "./services/listingService"
 
 // styles
 import './App.css'
+import AddWorkRequest from './pages/AddWorkRequest/AddWorkRequest'
 
 const App = () => {
   const [listing, setListing] = useState([])
@@ -55,6 +56,22 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <Listings />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/workRequests'
+          element={
+            <ProtectedRoute user={user}>
+              <WorkRequestList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/add-workRequest'
+          element={
+            <ProtectedRoute user={user}>
+              <AddWorkRequest />
             </ProtectedRoute>
           }
         />
