@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from './AddListing.module.css'
+import './AddListing.css'
 
 const AddListing = (props) => {
   const [formData, setFormData] = useState({
@@ -88,7 +88,7 @@ const AddListing = (props) => {
           onChange={handleChange}
         />
         <label htmlFor="details">Details:</label>
-        <input
+        <textarea
           required
           type="text"
           name="details"

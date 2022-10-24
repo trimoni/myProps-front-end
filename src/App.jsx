@@ -10,6 +10,7 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Listings from './pages/Listings/Listings'
 import TenantList from './pages/TenantList/TenantList'
+import AddListing from './pages/AddListing/AddListing'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -88,6 +89,14 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <ChangePassword handleSignupOrLogin={handleSignupOrLogin} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/add-listing"
+          element={
+            <ProtectedRoute user={user}>
+              <AddListing />
             </ProtectedRoute>
           }
         />
