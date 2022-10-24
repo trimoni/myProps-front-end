@@ -1,5 +1,5 @@
 // npm modules
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 
 // page components
@@ -22,6 +22,8 @@ import * as authService from './services/authService'
 import './App.css'
 
 const App = () => {
+  const [listing, setListing] = useState([])
+  const [tenants, setTenant] = useState([])
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
 
