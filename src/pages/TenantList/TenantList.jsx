@@ -1,8 +1,18 @@
 
-const TenantList = () => {
-  return ( 
+const TenantList = (props) => {
+  return (
     <>
-    List of tenants depending on the address
+      <h2>List of all Tenants</h2>
+      {props.tenants.map(tenant =>
+        <>
+          <p key={tenant._id}>
+            Address: {tenant.listing}
+          </p>
+          <p>
+            Name: {tenant.name}
+          </p>
+        </>
+      )}
     </>
   );
 }
