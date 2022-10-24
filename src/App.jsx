@@ -18,6 +18,7 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 // services
 import * as authService from './services/authService'
 import * as listingService from "./services/listingService"
+import * as tenantsService from "./services/tenantsService"
 
 // styles
 import './App.css'
@@ -37,6 +38,12 @@ const App = () => {
 
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
+  }
+
+  const handleAddTenant = async (tenantData) => {
+    const newBlog = await tenantsService.create(tenantData)
+    setTenant([newBlog, ...tenants])
+    navigate('/tenants')
   }
 
   useEffect(() => {
