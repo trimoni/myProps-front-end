@@ -1,8 +1,60 @@
+import { useState } from "react";
+const AddWorkRequest = (props) => {
+  const [form, setForm] = useState({
+    category: '',
+    details: '',
+    urgency: false,
+    resolution: ''
+  })
 
-const AddWorkRequest = () => {
+  const handleChange = ({ target }) => {
+    setForm({ ...form, [target.name]: target.value })
+  }
+  console.log(props.listing)
+
+  const handleSubmit = evt => {
+    evt.preventDefault();
+    props.handleAddWorkRequest(props.listing._id, form)
+  }
+
   return (
     <>
       <h2>Add a work request</h2>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor='category-input'>Category</label>
+        <input type="text"
+          name="category"
+          value={form.category}
+          onChange={handleChange}
+        />
+        <label htmlFor="details-input">Details</label>
+        <textarea
+          type='text'
+          name="details"
+          value={form.details}
+          onChange={handleChange}
+        >
+        </textarea>
+        <label htmlFor="resolution-input">Resolution</label>
+        <select
+          name='resolution'
+          value={form.resolution}
+          multiple={false}
+          onChange={handleChange}
+        >
+          <option value="Currently Working">Currently Working</option>
+          <option value="Completed">Completed</option>
+          <option value="Now Started">Now Started</option>
+        </select>
+        <label htmlFor="urgency-input">Urgent
+          <input
+            type="checkbox"
+            name="urgency"
+            value={form.urgency}
+          />
+        </label>
+        <button type='submit'>Submit</button>
+      </form>
     </>
   );
 }

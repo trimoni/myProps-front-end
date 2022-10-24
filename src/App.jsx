@@ -26,6 +26,7 @@ import AddWorkRequest from './pages/AddWorkRequest/AddWorkRequest'
 const App = () => {
   const [listing, setListing] = useState([])
   const [tenants, setTenant] = useState([])
+  const [workRequests, setWorkRequest] = useState([])
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
 
@@ -37,6 +38,12 @@ const App = () => {
 
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
+  }
+
+  const handleAddWorkRequest = async (id, workRequestData) => {
+    const newWorkRequest = await listingService.createWorkRequest(id, workRequestData)
+    setWorkRequest([newWorkRequest, ...workRequests])
+    navigate('/workRequests')
   }
 
   useEffect(() => {
@@ -68,10 +75,13 @@ const App = () => {
           }
         />
         <Route
-          path='/add-workRequest'
+          path='/workRequests/new'
           element={
             <ProtectedRoute user={user}>
-              <AddWorkRequest />
+              <AddWorkRequest
+                listing={listing}
+                handleAddWorkRequest={handleAddWorkRequest}
+              />
             </ProtectedRoute>
           }
         />
