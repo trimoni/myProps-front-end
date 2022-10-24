@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import './NavBar.css'
-import { slide as Menu} from 'react-burger-menu';
+import { slide as Menu } from 'react-burger-menu';
 
 const NavBar = ({ user, handleLogout }) => {
   return (
@@ -13,14 +13,22 @@ const NavBar = ({ user, handleLogout }) => {
       <Menu>
         {user ?
           <ul className='ham-bar'>
+<<<<<<< HEAD
+            <li><Link to="/listings">My Listings</Link></li><br />
+            <li><Link to='/workRequests'>Work Requests</Link></li>
+            <li><Link to='/workRequests/new'>Add a work request</Link></li>
+            <li><Link to="/profiles">Profiles</Link></li><br />
+            <li><Link to="/change-password">Change Password</Link></li><br />
+=======
             <li><Link to="/listings">My Listings</Link></li><br/>
             <li><Link to="/profiles">Profiles</Link></li><br/>
             <li><Link to="/add-tenant">ADD TENANT</Link></li><br />
             <li><Link to="/change-password">Change Password</Link></li><br/>
+>>>>>>> main
           </ul>
-        :
-        <>
-            
+          :
+          <>
+
           </>
         }
       </Menu>

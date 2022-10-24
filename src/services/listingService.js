@@ -87,7 +87,7 @@ const addPhoto = async (photoData, listingId) => {
 
 const createWorkRequest = async (id, workRequestData) => {
   try {
-    const res = await fetch(`${BASE_URL}/${id}/work-request`, {
+    const res = await fetch(`${BASE_URL}/${id}/workRequests`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
@@ -101,11 +101,12 @@ const createWorkRequest = async (id, workRequestData) => {
   }
 }
 
-export { 
-  index, 
-  show, 
-  create, 
-  update, 
-  deleteListing as delete, 
-  addPhoto, 
-  createWorkRequest};
+export {
+  index,
+  show,
+  create,
+  update,
+  deleteListing as delete,
+  addPhoto,
+  createWorkRequest
+};
