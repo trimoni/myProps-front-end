@@ -53,21 +53,50 @@ const AddListing = (props) => {
         <label htmlFor="bathroom">Bedroom</label>
 				<select
           required
-          name="bedroom"
-          id="bedroom"
-          value={formData.bedroom}
+          name="bathroom"
+          id="bathroom"
+          value={formData.bathroom}
           placeholder="Num"
           onChange={handleChange}
         >
           <option value="1">1</option>
+          <option value="1.5">1.5</option>
           <option value="2">2</option>
+          <option value="2.5">2.5</option>
           <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="6+">6+</option>
+          <option value="3+">3+</option>
         </select>
-        <button type="submit">SUBMIT</button>
+        <label htmlFor="rent">Monthly Rent:</label>
+        <input
+          required
+          type="text"
+          name="rent"
+          id="rent"
+          value={formData.rent}
+          placeholder="Rent"
+          onChange={handleChange}
+        />
+        <label htmlFor="pets">Pets:</label>
+        <input
+          required
+          type="text"
+          name="pets"
+          id="pets"
+          value={formData.pets}
+          placeholder="Pets"
+          onChange={handleChange}
+        />
+        <label htmlFor="details">Details:</label>
+        <input
+          required
+          type="text"
+          name="details"
+          id="details"
+          value={formData.details}
+          placeholder="Details"
+          onChange={handleChange}
+        />
+        <button type="submit">Add Listing</button>
       </form>
     </main>
   );
