@@ -17,6 +17,7 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import * as listingService from "./services/listingService"
 
 // styles
 import './App.css'
@@ -36,6 +37,14 @@ const App = () => {
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
   }
+
+  useEffect(() => {
+    const fetchAllListing = async () => {
+      const data = await listingService.index()
+      console.log(data);
+    }
+    fetchAllListing()
+  })
 
   return (
     <>
