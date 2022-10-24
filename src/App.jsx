@@ -26,7 +26,7 @@ import AddTenant from './pages/AddTenant/AddTenant'
 
 const App = () => {
   const [listing, setListing] = useState([])
-  const [tenants, setTenant] = useState([])
+  const [tenants, setTenants] = useState([])
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
 
@@ -42,7 +42,7 @@ const App = () => {
 
   const handleAddTenant = async (tenantData) => {
     const newTenant = await tenantsService.create(tenantData)
-    setTenant([newTenant, ...tenants])
+    setTenants([newTenant, ...tenants])
     navigate('/tenants')
   }
 

@@ -1,9 +1,9 @@
 import NewTenant from "../NewTenant/NewTenant";
 
-const AddTenant = () => {
+const AddTenant = (props) => {
   return (
     <>
-    <NewTenant />
+    <NewTenant handleAddTenant={props.handleAddTenant}/>
     </>
   );
 }
