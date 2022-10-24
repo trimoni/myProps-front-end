@@ -56,10 +56,27 @@ const createComment = async (id, commentData) => {
   }
 }
 
+const update = async (tenantData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${tenantData._id}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(tenantData)
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export {
   index,
   show,
   create,
   createComment,
+  update,
   
 }
