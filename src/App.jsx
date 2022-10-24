@@ -1,5 +1,5 @@
 // npm modules
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 
 // page components
@@ -17,11 +17,14 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import * as listingService from "./services/listingService"
 
 // styles
 import './App.css'
 
 const App = () => {
+  const [listing, setListing] = useState([])
+  const [tenants, setTenant] = useState([])
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
 
@@ -34,6 +37,14 @@ const App = () => {
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
   }
+
+  useEffect(() => {
+    const fetchAllListing = async () => {
+      const data = await listingService.index()
+      console.log(data);
+    }
+    fetchAllListing()
+  })
 
   return (
     <>
