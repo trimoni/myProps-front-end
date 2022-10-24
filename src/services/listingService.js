@@ -64,8 +64,9 @@ const deleteListing = async (id) => {
         'Authorization': `Bearer ${tokenService.getToken}`
       }
     })
+    return res.json()
   } catch (error) {
-    
+    console.log(error)
   }
 }
 
@@ -76,5 +77,6 @@ export {
   show,
   create,
   update,
-
+  deleteListing as delete,
+  
 }
