@@ -18,9 +18,11 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 // services
 import * as authService from './services/authService'
 import * as listingService from "./services/listingService"
+import * as tenantsService from "./services/tenantsService"
 
 // styles
 import './App.css'
+import AddTenant from './pages/AddTenant/AddTenant'
 
 const App = () => {
   const [listing, setListing] = useState([])
@@ -36,6 +38,12 @@ const App = () => {
 
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
+  }
+
+  const handleAddTenant = async (tenantData) => {
+    const newTenant = await tenantsService.create(tenantData)
+    setTenant([newTenant, ...tenants])
+    navigate('/tenants')
   }
 
   useEffect(() => {
@@ -88,6 +96,14 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <ChangePassword handleSignupOrLogin={handleSignupOrLogin} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/add-tenant"
+          element={
+            <ProtectedRoute user={user}>
+              <AddTenant handleAddTenant={handleAddTenant}/>
             </ProtectedRoute>
           }
         />
