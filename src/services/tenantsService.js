@@ -40,9 +40,26 @@ const create = async (tenantData) => {
   }
 }
 
+const createComment = async (id, commentData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}/comments`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(commentData)
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export {
   index,
   show,
   create,
+  createComment,
   
 }
