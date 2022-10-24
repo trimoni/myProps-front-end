@@ -70,7 +70,20 @@ const deleteListing = async (id) => {
   }
 }
 
-
+const addPhoto = async (photoData, listingId) => {
+  try{
+  const res = await fetch(`${BASE_URL}/${listingId}/add-photo`, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken}`
+    },
+    body: photoData
+  })
+  return res.json()
+} catch (error) {
+  console.log(error)
+}
+}
 
 export {
   index,
@@ -78,5 +91,5 @@ export {
   create,
   update,
   deleteListing as delete,
-  
+  addPhoto
 }
