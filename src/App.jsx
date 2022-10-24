@@ -21,6 +21,7 @@ import * as listingService from "./services/listingService"
 
 // styles
 import './App.css'
+import AddTenant from './pages/AddTenant/AddTenant'
 
 const App = () => {
   const [listing, setListing] = useState([])
@@ -88,6 +89,14 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <ChangePassword handleSignupOrLogin={handleSignupOrLogin} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/add-tenant"
+          element={
+            <ProtectedRoute user={user}>
+              <AddTenant />
             </ProtectedRoute>
           }
         />
