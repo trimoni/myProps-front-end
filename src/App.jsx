@@ -41,8 +41,8 @@ const App = () => {
   }
 
   const handleAddTenant = async (tenantData) => {
-    const newBlog = await tenantsService.create(tenantData)
-    setTenant([newBlog, ...tenants])
+    const newTenant = await tenantsService.create(tenantData)
+    setTenant([newTenant, ...tenants])
     navigate('/tenants')
   }
 

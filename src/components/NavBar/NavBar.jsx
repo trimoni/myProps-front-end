@@ -15,6 +15,7 @@ const NavBar = ({ user, handleLogout }) => {
           <ul className='ham-bar'>
             <li><Link to="/listings">My Listings</Link></li><br/>
             <li><Link to="/profiles">Profiles</Link></li><br/>
+            <li><Link to="/add-tenant">ADD TENANT</Link></li><br />
             <li><Link to="/change-password">Change Password</Link></li><br/>
           </ul>
         :

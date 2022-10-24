@@ -1,8 +1,9 @@
+import NewTenant from "../NewTenant/NewTenant";
 
 const AddTenant = () => {
   return (
     <>
-    <h1>Hi</h1>
+    <NewTenant />
     </>
   );
 }
