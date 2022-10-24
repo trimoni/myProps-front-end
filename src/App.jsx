@@ -9,6 +9,7 @@ import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Listings from './pages/Listings/Listings'
+import TenantList from './pages/TenantList/TenantList'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -39,10 +40,18 @@ const App = () => {
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
       <Route
-          path="/Listings"
+          path="/listings"
           element={
             <ProtectedRoute user={user}>
               <Listings />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/tenants"
+          element={
+            <ProtectedRoute user={user}>
+              <TenantList />
             </ProtectedRoute>
           }
         />

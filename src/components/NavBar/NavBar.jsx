@@ -1,23 +1,29 @@
 import { Link } from 'react-router-dom'
-import styles from './NavBar.module.css'
+import './NavBar.css'
 import { slide as Menu} from 'react-burger-menu';
 
 const NavBar = ({ user, handleLogout }) => {
   return (
-    <Menu>
-      {user ?
-        <ul styles={styles.container}>
-          <li><Link to="/Listings">View Listings</Link></li>
-          <li><Link to="/profiles">Profiles</Link></li>
-          <li><Link to="" onClick={handleLogout}>LOG OUT</Link></li>
-          <li><Link to="/changePassword">Change Password</Link></li>
-        </ul>
-      :
+    <>
+      <ul className='nav-bar'>
+        <li><Link to="/listings">My Listings</Link></li>
+        <li><Link to="/tenants">Tenants</Link></li>
+        <li id="logout"><Link to="" onClick={handleLogout}>LOG OUT</Link></li>
+      </ul>
+      <Menu>
+        {user ?
+          <ul className='ham-bar'>
+            <li><Link to="/listings">My Listings</Link></li><br/>
+            <li><Link to="/profiles">Profiles</Link></li><br/>
+            <li><Link to="/change-password">Change Password</Link></li><br/>
+          </ul>
+        :
         <>
-          
-        </>
-      }
-    </Menu>
+            
+          </>
+        }
+      </Menu>
+    </>
   )
 }
 
