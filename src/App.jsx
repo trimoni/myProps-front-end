@@ -50,7 +50,7 @@ const App = () => {
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-      <Route
+        <Route
           path="/listings"
           element={
             <ProtectedRoute user={user}>
@@ -62,7 +62,7 @@ const App = () => {
           path="/tenants"
           element={
             <ProtectedRoute user={user}>
-              <TenantList />
+              <TenantList tenants={tenants} />
             </ProtectedRoute>
           }
         />
