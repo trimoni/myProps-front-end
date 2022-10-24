@@ -2,7 +2,7 @@ import { useState } from "react";
 import './AddListing.css'
 
 const AddListing = (props) => {
-  const [formData, setFormData] = useState({
+  const [form, setForm] = useState({
     address: '',
     rent: '',
     bedroom: '',
@@ -12,12 +12,12 @@ const AddListing = (props) => {
   })
 
   const handleChange = ({ target }) => {
-    setFormData({...formData, [target.name]: target.value})
+    setForm({...form, [target.name]: target.value})
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    props.handleAddListing(formData)
+    props.handleAddListing(form)
   }
 
 
@@ -30,7 +30,7 @@ const AddListing = (props) => {
           type="text"
           name="address"
           id="address"
-          value={formData.address}
+          value={form.address}
           placeholder="Address"
           onChange={handleChange}
         />
@@ -40,7 +40,7 @@ const AddListing = (props) => {
           type="text"
           name="rent"
           id="rent"
-          value={formData.rent}
+          value={form.rent}
           placeholder="Rent"
           onChange={handleChange}
         />
@@ -49,7 +49,7 @@ const AddListing = (props) => {
           required
           name="bedroom"
           id="bedroom"
-          value={formData.bedroom}
+          value={form.bedroom}
           placeholder="Num"
           onChange={handleChange}
         >
@@ -66,7 +66,7 @@ const AddListing = (props) => {
           required
           name="bathroom"
           id="bathroom"
-          value={formData.bathroom}
+          value={form.bathroom}
           placeholder="Num"
           onChange={handleChange}
         >
@@ -83,7 +83,7 @@ const AddListing = (props) => {
           type="text"
           name="pets"
           id="pets"
-          value={formData.pets}
+          value={form.pets}
           placeholder="Cat, Dog, etc..."
           onChange={handleChange}
         />
@@ -93,7 +93,7 @@ const AddListing = (props) => {
           type="text"
           name="details"
           id="details"
-          value={formData.details}
+          value={form.details}
           placeholder="Details"
           onChange={handleChange}
         />
