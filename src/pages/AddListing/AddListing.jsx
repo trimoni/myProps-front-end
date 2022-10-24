@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 const AddListing = (props) => {
   const [formData, setFormData] = useState({
     address: '',
+    rent: '',
     bedroom: '',
     bathroom: '',
-    rent: '',
     pets: '',
     details: '',
   })
@@ -31,6 +31,16 @@ const AddListing = (props) => {
           id="address"
           value={formData.address}
           placeholder="Address"
+          onChange={handleChange}
+        />
+        <label htmlFor="rent">Monthly Rent:</label>
+        <input
+          required
+          type="text"
+          name="rent"
+          id="rent"
+          value={formData.rent}
+          placeholder="Rent"
           onChange={handleChange}
         />
         <label htmlFor="bedroom">Bedroom</label>
@@ -66,16 +76,6 @@ const AddListing = (props) => {
           <option value="3">3</option>
           <option value="3+">3+</option>
         </select>
-        <label htmlFor="rent">Monthly Rent:</label>
-        <input
-          required
-          type="text"
-          name="rent"
-          id="rent"
-          value={formData.rent}
-          placeholder="Rent"
-          onChange={handleChange}
-        />
         <label htmlFor="pets">Pets:</label>
         <input
           required
@@ -83,7 +83,7 @@ const AddListing = (props) => {
           name="pets"
           id="pets"
           value={formData.pets}
-          placeholder="Pets"
+          placeholder="Cat, Dog, etc..."
           onChange={handleChange}
         />
         <label htmlFor="details">Details:</label>
