@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import styles from './AddListing.module.css'
 
 const AddListing = (props) => {
   const [formData, setFormData] = useState({
