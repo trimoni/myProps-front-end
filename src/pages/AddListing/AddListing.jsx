@@ -34,28 +34,38 @@ const AddListing = (props) => {
           onChange={handleChange}
         />
         <label htmlFor="bedroom">Bedroom</label>
-				<textarea
+				<select
           required
           name="bedroom"
-          id="text-input"
-          value={formData.text}
-          placeholder="Text"
-          onChange={handleChange}
-        />
-        <label htmlFor="category-input">Category</label>
-        <select
-          required
-          name="category"
-          id="category-input"
-          value={form.category}
+          id="bedroom"
+          value={formData.bedroom}
+          placeholder="Num"
           onChange={handleChange}
         >
-          <option value="News">News</option>
-          <option value="Games">Games</option>
-          <option value="Music">Music</option>
-          <option value="Movies">Movies</option>
-          <option value="Sports">Sports</option>
-          <option value="Television">Television</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="6+">6+</option>
+        </select>
+        <label htmlFor="bathroom">Bedroom</label>
+				<select
+          required
+          name="bedroom"
+          id="bedroom"
+          value={formData.bedroom}
+          placeholder="Num"
+          onChange={handleChange}
+        >
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="6+">6+</option>
         </select>
         <button type="submit">SUBMIT</button>
       </form>
