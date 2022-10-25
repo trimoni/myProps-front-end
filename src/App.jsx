@@ -10,7 +10,7 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Listings from './pages/Listings/Listings'
 import TenantList from './pages/TenantList/TenantList'
-
+import WorkRequestList from './pages/WorkRequestList/WorkRequestList'
 // components
 import NavBar from './components/NavBar/NavBar'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
@@ -22,11 +22,13 @@ import * as tenantsService from "./services/tenantsService"
 
 // styles
 import './App.css'
+import AddWorkRequest from './pages/AddWorkRequest/AddWorkRequest'
 import AddTenant from './pages/AddTenant/AddTenant'
 
 const App = () => {
   const [listing, setListing] = useState([])
-  const [tenants, setTenants] = useState([])
+  const [tenants, setTenant] = useState([])
+  const [workRequests, setWorkRequest] = useState([])
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
 
@@ -40,9 +42,15 @@ const App = () => {
     setUser(authService.getUser())
   }
 
+  const handleAddWorkRequest = async (id, workRequestData) => {
+    const newWorkRequest = await listingService.createWorkRequest(id, workRequestData)
+    setWorkRequest([newWorkRequest, ...workRequests])
+    navigate('/workRequests')
+  }
+  
   const handleAddTenant = async (tenantData) => {
     const newTenant = await tenantsService.create(tenantData)
-    setTenants([newTenant, ...tenants])
+    setTenant([newTenant, ...tenants])
     navigate('/tenants')
   }
 
@@ -50,15 +58,10 @@ const App = () => {
   useEffect(() => {
     const fetchAllListing = async () => {
       const data = await listingService.index()
-      console.log(data);
+      setListing(data)
     }
-    fetchAllListing()
-    const fetchAllTenants = async () => {
-      const data = await tenantsService.index()
-      setTenants(data)
-    }
-    fetchAllTenants()
-  }, [])
+    if(user) fetchAllListing()
+  },[user])
 
   return (
     <>
@@ -68,7 +71,29 @@ const App = () => {
           path="/listings"
           element={
             <ProtectedRoute user={user}>
-              <Listings />
+              <Listings 
+                listing={listing}
+                user={user}
+              />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/workRequests'
+          element={
+            <ProtectedRoute user={user}>
+              <WorkRequestList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/workRequests/new'
+          element={
+            <ProtectedRoute user={user}>
+              <AddWorkRequest
+                listing={listing}
+                handleAddWorkRequest={handleAddWorkRequest}
+              />
             </ProtectedRoute>
           }
         />
@@ -109,7 +134,7 @@ const App = () => {
           path="/add-tenant"
           element={
             <ProtectedRoute user={user}>
-              <AddTenant handleAddTenant={handleAddTenant}/>
+              <AddTenant handleAddTenant={handleAddTenant} />
             </ProtectedRoute>
           }
         />
@@ -117,5 +142,4 @@ const App = () => {
     </>
   )
 }
-
 export default App
