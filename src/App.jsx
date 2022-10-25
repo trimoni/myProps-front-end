@@ -54,6 +54,12 @@ const App = () => {
     navigate('/tenants')
   }
 
+  const handleUpdateTenant = async (tenantData) => {
+    const updatedTenant = await tenantsService.update(tenantData)
+    setTenant(tenants.map((b) => tenantData._id === b._id ? updatedTenant : b))
+    navigate('/tenants')
+  }
+
 
   useEffect(() => {
     const fetchAllListing = async () => {
