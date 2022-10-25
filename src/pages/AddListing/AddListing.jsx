@@ -4,6 +4,7 @@ import "./AddListing.css";
 const AddListing = (props) => {
   const [form, setForm] = useState({
     address: "",
+    photo: "",
     rent: "",
     bedroom: "1",
     bathroom: "1",
