@@ -4,14 +4,8 @@
   align-items: center;
 }
 
-.icon-container {
-  display: grid;
-  grid-template-columns: 250px 250px 250px;
-}
-
 .class-div {
   text-align: center;
-  border: 1px solid black;
   width: 145px;
   height: 75px;
   display: flex;
@@ -20,4 +14,8 @@
   padding: 200px;
   margin: 1rem;
   color: white;
+}
+
+h1 {
+  text-align: center;
 }
