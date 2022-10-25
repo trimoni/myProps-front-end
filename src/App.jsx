@@ -56,10 +56,10 @@ const App = () => {
   useEffect(() => {
     const fetchAllListing = async () => {
       const data = await listingService.index()
-      console.log(data);
+      setListing(data)
     }
-    fetchAllListing()
-  })
+    if(user) fetchAllListing()
+  },[user])
 
   return (
     <>
@@ -69,7 +69,10 @@ const App = () => {
           path="/listings"
           element={
             <ProtectedRoute user={user}>
-              <Listings />
+              <Listings 
+                listing={listing}
+                user={user}
+              />
             </ProtectedRoute>
           }
         />
