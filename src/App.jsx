@@ -22,9 +22,10 @@ import * as listingService from "./services/listingService"
 
 // styles
 import './App.css'
+import EditListing from './pages/EditListing/EditListing'
 
 const App = () => {
-  const [listing, setListing] = useState([])
+  const [listings, setListings] = useState([])
   const [tenants, setTenant] = useState([])
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
@@ -46,6 +47,26 @@ const App = () => {
     }
     fetchAllListing()
   })
+
+  const handleAddListing = async (listingData) => {
+    const newListing = await listingService.create(listingData)
+    setListings([newListing, ...listings])
+    navigate('/listings')
+  }
+
+  const handleUpdateListing = async (listingData) => {
+    const updatedListing = await listingService.update (listingData)
+    setListings(
+      listings.map((listing) => (listingData._id === listing._id ? updatedListing : listing))
+    )
+    navigate('/listings')
+  }
+
+  const handleDeleteListings = async (id) => {
+    const deletedListing = await listingService.deleteListing(id)
+    setListings(listings.filter(listing => listing._id !== deletedListing._id))
+    navigate('/listings')
+  }
 
   return (
     <>
@@ -97,6 +118,14 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <AddListing />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/listing/:id/edit"
+          element={
+            <ProtectedRoute user={user}>
+              <EditListing />
             </ProtectedRoute>
           }
         />

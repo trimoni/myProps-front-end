@@ -106,6 +106,6 @@ export {
   show, 
   create, 
   update, 
-  deleteListing as delete, 
+  deleteListing, 
   addPhoto, 
   createWorkRequest};
