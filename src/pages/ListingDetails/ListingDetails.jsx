@@ -33,10 +33,3 @@ const ListingDetails = (props) => {
 }
 
 export default ListingDetails;
-
-address: '',
-    rent: '',
-    bedroom: '1',
-    bathroom: '1',
-    pets: '',
-    details: '',
