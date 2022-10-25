@@ -6,9 +6,15 @@ const ListingCard = ({ listing }) => {
       <article>
         <header>
           <span>
+            <div>
             <img src={listing.photo} alt="property" />
+            </div>
+            <div>
             <h1>{listing.address}</h1>
+            </div>
+            <div>
             <h1>{listing.price}</h1>
+            </div>
           </span>
         </header>
       </article>
