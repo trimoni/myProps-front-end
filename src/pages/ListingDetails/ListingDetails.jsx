@@ -16,8 +16,24 @@ const ListingDetails = (props) => {
   }, [id])
 
   return (
-    <h1>hello</h1>
+    <main>
+      <article>
+        <header>
+          <h3>{listing.address.toUpperCase()}</h3>
+          <img src={listing.photo} alt="property"/>
+          <h4>Bedroom:{listing.bedroom}</h4>
+          <h4>Bathroom:{listing.bathroom}</h4>
+        </header>
+      </article>
+    </main>
   );
 }
 
 export default ListingDetails;
+
+address: '',
+    rent: '',
+    bedroom: '1',
+    bathroom: '1',
+    pets: '',
+    details: '',
