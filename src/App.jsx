@@ -170,7 +170,7 @@ const App = () => {
           path="/add-listing"
           element={
             <ProtectedRoute user={user}>
-              <AddListing />
+              <AddListing handleAddListing={handleAddListing}/>
             </ProtectedRoute>
           }
         />
