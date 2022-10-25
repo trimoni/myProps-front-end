@@ -1,15 +1,13 @@
-import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link} from "react-router-dom";
 
-const TenantCard = (props) => {
-  console.log(tenant._id)
+const TenantCard = ({tenant}) => {
   return ( 
-    <Link to={`/tenants/${tenant._id}`}>
+    <Link to={`/tenants/${tenant._id}/edit`} state={tenant}>
       <p>
-        Address: {props.tenant.address}
+        Address: {tenant.address}
       </p>
       <p>
-        Name: {props.tenant.name}
+        Name: {tenant.name}
       </p>
     </Link>
   );
