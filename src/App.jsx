@@ -68,11 +68,12 @@ const App = () => {
   useEffect(() => {
     const fetchAllListing = async () => {
       const data = await profileService.showMyListing(user.profile)
-      setListing(data)
+      setListings(data)
     }
     if(user) fetchAllListing()
     
   },[user])
+
 
 
   useEffect(() => {
@@ -112,7 +113,7 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <Listings 
-                listing={listing}
+                listings={listings}
                 user={user}
               />
             </ProtectedRoute>
@@ -131,7 +132,7 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <AddWorkRequest
-                listing={listing}
+                listings={listings}
                 handleAddWorkRequest={handleAddWorkRequest}
               />
             </ProtectedRoute>
@@ -171,7 +172,6 @@ const App = () => {
           }
         />
         <Route
-
           path="/add-listing"
           element={
             <ProtectedRoute user={user}>
@@ -184,12 +184,14 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <EditListing />
-
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/add-tenant"
           element={
             <ProtectedRoute user={user}>
               <AddTenant handleAddTenant={handleAddTenant} />
-
             </ProtectedRoute>
           }
         />

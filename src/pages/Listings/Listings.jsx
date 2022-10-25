@@ -1,11 +1,11 @@
 import "./Listings.css"
 
 
-const Listings = ({user , listing}) => {
+const Listings = ({user , listings}) => {
   return ( 
     <div className="listing-container">
       <h1>Listings</h1>
-      {listing.map(l => (
+      {listings.map(l => (
         <li>{l.address}</li>
       ))}
       {/* map through the listings to get the user's listings */}
