@@ -19,6 +19,7 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 import * as authService from './services/authService'
 import * as listingService from "./services/listingService"
 import * as tenantsService from "./services/tenantsService"
+import * as profileService from "./services/profileService"
 
 // styles
 import './App.css'
@@ -55,7 +56,7 @@ const App = () => {
 
   useEffect(() => {
     const fetchAllListing = async () => {
-      const data = await listingService.index()
+      const data = await profileService.showMyListing(user.profile)
       setListing(data)
     }
     if(user) fetchAllListing()
