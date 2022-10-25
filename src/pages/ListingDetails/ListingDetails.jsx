@@ -21,8 +21,11 @@ const ListingDetails = (props) => {
         <header>
           <h3>{listing.address.toUpperCase()}</h3>
           <img src={listing.photo} alt="property"/>
+          <h2>{listing.rent} per month</h2>
           <h4>Bedroom:{listing.bedroom}</h4>
           <h4>Bathroom:{listing.bathroom}</h4>
+          <h4>Pets:{listing.pets}</h4>
+          <h4>{listing.details}</h4>
         </header>
       </article>
     </main>
