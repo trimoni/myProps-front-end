@@ -10,13 +10,12 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Listings from './pages/Listings/Listings'
 import TenantList from './pages/TenantList/TenantList'
-
-
-
-
+import EditListing from './pages/EditListing/EditListing'
 import WorkRequestList from './pages/WorkRequestList/WorkRequestList'
-
 import AddListing from './pages/AddListing/AddListing'
+import AddWorkRequest from './pages/AddWorkRequest/AddWorkRequest'
+import AddTenant from './pages/AddTenant/AddTenant'
+
 // components
 import NavBar from './components/NavBar/NavBar'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
@@ -27,12 +26,6 @@ import * as listingService from "./services/listingService"
 import * as tenantsService from "./services/tenantsService"
 import * as profileService from "./services/profileService"
 
-// styles
-
-import EditListing from './pages/EditListing/EditListing'
-
-import AddWorkRequest from './pages/AddWorkRequest/AddWorkRequest'
-import AddTenant from './pages/AddTenant/AddTenant'
 
 
 const App = () => {
@@ -42,29 +35,32 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
 
+  //Logout
   const handleLogout = () => {
     authService.logout()
     setUser(null)
     navigate('/')
   }
 
+  //Signup
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
   }
-
+  //Add a Work Request
   const handleAddWorkRequest = async (id, workRequestData) => {
     const newWorkRequest = await listingService.createWorkRequest(id, workRequestData)
     setWorkRequest([newWorkRequest, ...workRequests])
     navigate('/workRequests')
   }
   
+  //Add a Tenant
   const handleAddTenant = async (tenantData) => {
     const newTenant = await tenantsService.create(tenantData)
     setTenant([newTenant, ...tenants])
     navigate('/tenants')
   }
 
-
+  //Get all of my listings
   useEffect(() => {
     const fetchAllListing = async () => {
       const data = await profileService.showMyListing(user.profile)
@@ -75,7 +71,7 @@ const App = () => {
   },[user])
 
 
-
+  //Get all of my Tenants
   useEffect(() => {
     const fetchAllTenants = async () => {
       const data = await tenantsService.index()
@@ -84,12 +80,14 @@ const App = () => {
     fetchAllTenants()
   }, [])
 
+  //Add a Listing
   const handleAddListing = async (listingData) => {
     const newListing = await listingService.create(listingData)
     setListings([newListing, ...listings])
     navigate('/listings')
   }
 
+  //Update a Listing
   const handleUpdateListing = async (listingData) => {
     const updatedListing = await listingService.update (listingData)
     setListings(
@@ -98,6 +96,7 @@ const App = () => {
     navigate('/listings')
   }
 
+  //Delete a Listing
   const handleDeleteListings = async (id) => {
     const deletedListing = await listingService.deleteListing(id)
     setListings(listings.filter(listing => listing._id !== deletedListing._id))
