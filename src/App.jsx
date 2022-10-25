@@ -61,7 +61,17 @@ const App = () => {
       setListing(data)
     }
     if(user) fetchAllListing()
+    
   },[user])
+
+
+  useEffect(() => {
+    const fetchAllTenants = async () => {
+      const data = await tenantsService.index()
+      setTenant(data)
+    }
+    fetchAllTenants()
+  }, [])
 
   return (
     <>
