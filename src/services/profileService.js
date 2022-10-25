@@ -10,7 +10,14 @@ async function getAllProfiles() {
 }
 
 async function showMyListing(profileId) {
-  const res = await fetch(`${BASE_URL}/${profileId}`, {
+  const res = await fetch(`${BASE_URL}/${profileId}/listings`, {
+    headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+  })
+  return await res.json()
+}
+
+async function showMyTenants(profileId) {
+  const res = await fetch(`${BASE_URL}/${profileId}/tenants`, {
     headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
   })
   return await res.json()
@@ -27,4 +34,4 @@ async function addPhoto(photoData, profileId) {
   return await res.json()
 }
 
-export { getAllProfiles, addPhoto, showMyListing }
+export { getAllProfiles, addPhoto, showMyListing, showMyTenants }
