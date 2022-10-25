@@ -25,6 +25,7 @@ import * as authService from './services/authService'
 import * as listingService from "./services/listingService"
 import * as tenantsService from "./services/tenantsService"
 import * as profileService from "./services/profileService"
+import ListingDetails from './pages/ListingDetails/ListingDetails'
 
 
 
@@ -170,7 +171,9 @@ const App = () => {
           path="/add-listing"
           element={
             <ProtectedRoute user={user}>
-              <AddListing handleAddListing={handleAddListing}/>
+
+              <AddListing handleAddListing={handleAddListing} />
+
             </ProtectedRoute>
           }
         />
@@ -178,7 +181,8 @@ const App = () => {
           path="/listing/:id/edit"
           element={
             <ProtectedRoute user={user}>
-              <EditListing />
+              <EditListing handleDeleteListings={handleDeleteListings} handleUpdateListing={handleUpdateListing}
+              />
             </ProtectedRoute>
           }
         />
