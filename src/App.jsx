@@ -85,15 +85,21 @@ const App = () => {
   },[user])
 
   //Add a Listing
-  const handleAddListing = async (listingData) => {
+  const handleAddListing = async (listingData, photo) => {
     const newListing = await listingService.create(listingData)
-    setListings([newListing, ...listings])
+    if (photo) {
+      newListing.photo = await listingPhotoHelper(photo, newListing._id)
+    }
+    setListings([...listings, newListing])
     navigate('/listings')
   }
 
   //Update a Listing
-  const handleUpdateListing = async (listingData) => {
+  const handleUpdateListing = async (listingData, photo) => {
     const updatedListing = await listingService.update (listingData)
+    if (photo) {
+      updatedListing.photo = await listingPhotoHelper(photo, updatedListing._id)
+    }
     setListings(
       listings.map((listing) => (listingData._id === listing._id ? updatedListing : listing))
     )
@@ -105,6 +111,13 @@ const App = () => {
     const deletedListing = await listingService.deleteListing(id)
     setListings(listings.filter(listing => listing._id !== deletedListing._id))
     navigate('/listings')
+  }
+
+  //Add a Photo
+  const listingPhotoHelper = async (photo, id) => {
+    const photoData = new FormData()
+    photoData.append('photo', photo)
+    return await listingService.addPhoto(photoData, id)
   }
 
   return (
@@ -178,9 +191,7 @@ const App = () => {
           path="/add-listing"
           element={
             <ProtectedRoute user={user}>
-
               <AddListing handleAddListing={handleAddListing} />
-
             </ProtectedRoute>
           }
         />
