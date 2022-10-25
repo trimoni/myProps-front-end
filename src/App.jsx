@@ -24,6 +24,7 @@ import * as tenantsService from "./services/tenantsService"
 import './App.css'
 import AddWorkRequest from './pages/AddWorkRequest/AddWorkRequest'
 import AddTenant from './pages/AddTenant/AddTenant'
+import EditTenant from './pages/EditTenant/EditTenant'
 
 const App = () => {
   const [listing, setListing] = useState([])
@@ -151,6 +152,14 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <AddTenant handleAddTenant={handleAddTenant} />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path="/tenants/:id/edit"
+          element={
+            <ProtectedRoute user={user}>
+              <EditTenant handleUpdateTenant={handleUpdateTenant} />
             </ProtectedRoute>
           }
         />
