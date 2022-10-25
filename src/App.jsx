@@ -10,7 +10,12 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Listings from './pages/Listings/Listings'
 import TenantList from './pages/TenantList/TenantList'
+import EditListing from './pages/EditListing/EditListing'
 import WorkRequestList from './pages/WorkRequestList/WorkRequestList'
+import AddListing from './pages/AddListing/AddListing'
+import AddWorkRequest from './pages/AddWorkRequest/AddWorkRequest'
+import AddTenant from './pages/AddTenant/AddTenant'
+import EditTenant from './pages/EditTenant/EditTenant'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -20,66 +25,87 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 import * as authService from './services/authService'
 import * as listingService from "./services/listingService"
 import * as tenantsService from "./services/tenantsService"
+import * as profileService from "./services/profileService"
+import ListingDetails from './pages/ListingDetails/ListingDetails'
 
-// styles
-import './App.css'
-import AddWorkRequest from './pages/AddWorkRequest/AddWorkRequest'
-import AddTenant from './pages/AddTenant/AddTenant'
-import EditTenant from './pages/EditTenant/EditTenant'
+
 
 const App = () => {
-  const [listing, setListing] = useState([])
-  const [tenants, setTenant] = useState([])
+  const [listings, setListings] = useState([])
+  const [tenants, setTenants] = useState([])
   const [workRequests, setWorkRequest] = useState([])
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
 
+  //Logout
   const handleLogout = () => {
     authService.logout()
     setUser(null)
     navigate('/')
   }
 
+  //Signup
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
   }
-
+  //Add a Work Request
   const handleAddWorkRequest = async (id, workRequestData) => {
     const newWorkRequest = await listingService.createWorkRequest(id, workRequestData)
     setWorkRequest([newWorkRequest, ...workRequests])
     navigate('/workRequests')
   }
   
+  //Add a Tenant
   const handleAddTenant = async (tenantData) => {
     const newTenant = await tenantsService.create(tenantData)
-    setTenant([newTenant, ...tenants])
+    setTenants([newTenant, ...tenants])
     navigate('/tenants')
   }
 
   const handleUpdateTenant = async (tenantData) => {
     const updatedTenant = await tenantsService.update(tenantData)
-    setTenant(tenants.map((b) => tenantData._id === b._id ? updatedTenant : b))
+    setTenants(tenants.map((b) => tenantData._id === b._id ? updatedTenant : b))
     navigate('/tenants')
   }
 
-
+  //Get all of my listings and tenants
   useEffect(() => {
     const fetchAllListing = async () => {
-      const data = await listingService.index()
-      setListing(data)
+      const listingData = await profileService.showMyListing(user.profile)
+      setListings(listingData)
     }
-    if(user) fetchAllListing()
+    const fetchAllTenants = async () => {
+      const tenantData = await profileService.showMyTenants(user.profile)
+      setTenants(tenantData)
+    }
+    if(user) 
+    fetchAllListing()
+    fetchAllTenants()
     
   },[user])
 
+  //Add a Listing
+  const handleAddListing = async (listingData) => {
+    const newListing = await listingService.create(listingData)
+    setListings([newListing, ...listings])
+    navigate('/listings')
+  }
 
-  useEffect(() => {
-    const fetchAllTenants = async () => {
-      const data = await tenantsService.index()
-      setTenant(data)
-    }
-    fetchAllTenants()
-  }, [])
+  //Update a Listing
+  const handleUpdateListing = async (listingData) => {
+    const updatedListing = await listingService.update (listingData)
+    setListings(
+      listings.map((listing) => (listingData._id === listing._id ? updatedListing : listing))
+    )
+    navigate('/listings')
+  }
+
+  //Delete a Listing
+  const handleDeleteListings = async (id) => {
+    const deletedListing = await listingService.deleteListing(id)
+    setListings(listings.filter(listing => listing._id !== deletedListing._id))
+    navigate('/listings')
+  }
 
   return (
     <>
@@ -90,7 +116,7 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <Listings 
-                listing={listing}
+                listings={listings}
                 user={user}
               />
             </ProtectedRoute>
@@ -109,7 +135,7 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <AddWorkRequest
-                listing={listing}
+                listings={listings}
                 handleAddWorkRequest={handleAddWorkRequest}
               />
             </ProtectedRoute>
@@ -145,6 +171,25 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <ChangePassword handleSignupOrLogin={handleSignupOrLogin} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/add-listing"
+          element={
+            <ProtectedRoute user={user}>
+
+              <AddListing handleAddListing={handleAddListing} />
+
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/listing/:id/edit"
+          element={
+            <ProtectedRoute user={user}>
+              <EditListing handleDeleteListings={handleDeleteListings} handleUpdateListing={handleUpdateListing}
+              />
             </ProtectedRoute>
           }
         />

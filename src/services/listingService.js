@@ -101,12 +101,12 @@ const createWorkRequest = async (id, workRequestData) => {
   }
 }
 
-export {
-  index,
-  show,
-  create,
-  update,
-  deleteListing as delete,
-  addPhoto,
-  createWorkRequest
-};
+export { 
+  index, 
+  show, 
+  create, 
+  update, 
+  deleteListing, 
+  addPhoto, 
+  createWorkRequest};
+
