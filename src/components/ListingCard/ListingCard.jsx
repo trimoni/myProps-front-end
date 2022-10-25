@@ -6,9 +6,15 @@ const ListingCard = ({ listing }) => {
       <article>
         <header>
           <span>
-            <img src={listing.photo} alt="property" />
+            <div>
+            <img src={listing.photo} alt="property" className="icon-container"/>
+            </div>
+            <div>
             <h1>{listing.address}</h1>
+            </div>
+            <div>
             <h1>{listing.price}</h1>
+            </div>
           </span>
         </header>
       </article>

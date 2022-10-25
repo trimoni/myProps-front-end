@@ -1,6 +1,21 @@
-
 .listing-container {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.class-div {
+  text-align: center;
+  width: 145px;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 200px;
+  margin: 1rem;
+  color: white;
+}
+
+h1 {
+  text-align: center;
 }
