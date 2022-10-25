@@ -171,7 +171,9 @@ const App = () => {
           path="/add-listing"
           element={
             <ProtectedRoute user={user}>
+
               <AddListing handleAddListing={handleAddListing} />
+
             </ProtectedRoute>
           }
         />
