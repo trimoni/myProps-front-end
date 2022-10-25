@@ -47,11 +47,13 @@ const App = () => {
     setWorkRequest([newWorkRequest, ...workRequests])
     navigate('/workRequests')
   }
+  
   const handleAddTenant = async (tenantData) => {
     const newTenant = await tenantsService.create(tenantData)
     setTenant([newTenant, ...tenants])
     navigate('/tenants')
   }
+
 
   useEffect(() => {
     const fetchAllListing = async () => {
@@ -59,7 +61,17 @@ const App = () => {
       setListing(data)
     }
     if(user) fetchAllListing()
+    
   },[user])
+
+
+  useEffect(() => {
+    const fetchAllTenants = async () => {
+      const data = await tenantsService.index()
+      setTenant(data)
+    }
+    fetchAllTenants()
+  }, [])
 
   return (
     <>

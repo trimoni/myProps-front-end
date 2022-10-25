@@ -14,8 +14,9 @@ const NavBar = ({ user, handleLogout }) => {
         {user ?
           <ul className='ham-bar'>
             <li><Link to="/listings">My Listings</Link></li><br />
-            <li><Link to='/workRequests'>Work Requests</Link></li>
-            <li><Link to='/workRequests/new'>Add a work request</Link></li>
+            <li><Link to="/add-tenant">Add Tenant</Link></li><br />
+            <li><Link to='/workRequests'>Work Requests</Link></li><br />
+            <li><Link to='/workRequests/new'>Add a work request</Link></li><br />
             <li><Link to="/profiles">Profiles</Link></li><br />
             <li><Link to="/change-password">Change Password</Link></li><br />
           </ul >
