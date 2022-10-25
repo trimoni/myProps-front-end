@@ -7,7 +7,7 @@ const ListingCard = ({ listing }) => {
         <header>
           <span>
             <div>
-            <img src={listing.photo} alt="property" />
+            <img src={listing.photo} alt="property" className="icon-container"/>
             </div>
             <div>
             <h1>{listing.address}</h1>

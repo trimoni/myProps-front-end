@@ -4,12 +4,13 @@ import "./Listings.css"
 
 const Listings = ({ listings }) => {
   return ( 
-    <div className="listing-container">
+    <main className="listing-container">
+    <div>
       <h1>Listings</h1>
 
-      {listings.map((l) => (
+      <div className="class-div">{listings.map((l) => (
         <ListingCard listing={l} key={l._id}/>
-      ))}
+      ))}</div>
 
       {/* map through the listings to get the user's listings */}
       {/* if user have a listing, then display the listings */}
@@ -18,6 +19,7 @@ const Listings = ({ listings }) => {
 
     
     </div>
+    </main>
   );
 }
 

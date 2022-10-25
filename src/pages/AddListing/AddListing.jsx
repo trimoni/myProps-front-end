@@ -27,7 +27,7 @@ const AddListing = (props) => {
   }
 
   return (
-    <main>
+    <main className="container">
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="address">Address</label>
