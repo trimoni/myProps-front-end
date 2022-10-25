@@ -1,7 +1,8 @@
 
 const WorkRequestList = () => {
-  return (  
+  return (
     <>
+      <h2>List of all work requests</h2>
     </>
   );
 }

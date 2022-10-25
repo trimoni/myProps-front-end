@@ -1,8 +1,13 @@
 
-const TenantCard = () => {
+const TenantCard = (props) => {
   return ( 
     <>
-      Tenant Details
+      <p>
+        Address: {props.tenant.address}
+      </p>
+      <p>
+        Name: {props.tenant.name}
+      </p>
     </>
   );
 }
