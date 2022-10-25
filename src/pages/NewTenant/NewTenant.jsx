@@ -12,7 +12,11 @@ const NewTenant = (props) => {
   })
 
   const handleChange = ({ target }) => {
-    setForm({ ...form, [target.name]: target.value })
+    if(target.name === 'current') {
+      setForm({...form, [target.name] : !!target.value})
+    } else {
+      setForm({ ...form, [target.name]: target.value })
+    }
   }
 
   const handleSubmit = (e) => {
@@ -86,15 +90,15 @@ const NewTenant = (props) => {
           placeholder="Add contact..."
           onChange={handleChange}
         />
-        <label htmlFor="current-input">Current</label>
+        <label htmlFor="current-input">Current
         <input
-          required
           type="checkbox"
           name="current"
           id="current-input"
           value={form.current}
           onChange={handleChange}
-        />
+          />
+          </label>
         <button type="submit">SUBMIT</button>
       </form>
     </main>

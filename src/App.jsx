@@ -46,13 +46,19 @@ const App = () => {
     navigate('/tenants')
   }
 
+
   useEffect(() => {
     const fetchAllListing = async () => {
       const data = await listingService.index()
       console.log(data);
     }
     fetchAllListing()
-  })
+    const fetchAllTenants = async () => {
+      const data = await tenantsService.index()
+      setTenants(data)
+    }
+    fetchAllTenants()
+  }, [])
 
   return (
     <>
