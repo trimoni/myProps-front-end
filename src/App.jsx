@@ -50,10 +50,11 @@ const App = () => {
   //Add a Work Request
   const handleAddWorkRequest = async (id, workRequestData) => {
     const newWorkRequest = await listingService.createWorkRequest(id, workRequestData)
+
     setWorkRequest([newWorkRequest, ...workRequests])
-    navigate('/workRequests')
+    navigate('/listings')
   }
-  
+
   //Add a Tenant
   const handleAddTenant = async (tenantData) => {
     const newTenant = await tenantsService.create(tenantData)
@@ -71,11 +72,11 @@ const App = () => {
       const tenantData = await profileService.showMyTenants(user.profile)
       setTenants(tenantData)
     }
-    if(user) 
-    fetchAllListing()
+    if (user)
+      fetchAllListing()
     fetchAllTenants()
-    
-  },[user])
+
+  }, [user])
 
   //Add a Listing
   const handleAddListing = async (listingData) => {
@@ -86,7 +87,7 @@ const App = () => {
 
   //Update a Listing
   const handleUpdateListing = async (listingData) => {
-    const updatedListing = await listingService.update (listingData)
+    const updatedListing = await listingService.update(listingData)
     setListings(
       listings.map((listing) => (listingData._id === listing._id ? updatedListing : listing))
     )
@@ -108,8 +109,9 @@ const App = () => {
           path="/listings"
           element={
             <ProtectedRoute user={user}>
-              <Listings 
+              <Listings
                 listings={listings}
+                setListings={setListings}
                 user={user}
               />
             </ProtectedRoute>
@@ -124,7 +126,7 @@ const App = () => {
           }
         />
         <Route
-          path='/workRequests/new'
+          path='/listings/:id/workRequests'
           element={
             <ProtectedRoute user={user}>
               <AddWorkRequest
@@ -171,7 +173,6 @@ const App = () => {
           path="/add-listing"
           element={
             <ProtectedRoute user={user}>
-
               <AddListing handleAddListing={handleAddListing} />
 
             </ProtectedRoute>

@@ -8,19 +8,19 @@ const EditListing = (props) => {
   const [photoData, setPhotoData] = useState({})
 
   const handleChange = ({ target }) => {
-    setForm({...form, [target.name]: target.value})
+    setForm({ ...form, [target.name]: target.value })
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    props.handleUpdateBlog(form, photoData.photo)
+    props.handleUpdateListing(form, photoData.photo)
   }
 
   const handleChangePhoto = evt => {
     setPhotoData({ photo: evt.target.files[0] })
   }
 
-  return (  
+  return (
     <main>
       <form onSubmit={handleSubmit}>
         <div>
@@ -36,12 +36,12 @@ const EditListing = (props) => {
         </div>
         <div>
           <label htmlFor="photo">Upload Pictures</label>
-          <input 
-          required
-          type="file"
-          id="photo"
-          name="photo"
-          onChange={handleChangePhoto}
+          <input
+            required
+            type="file"
+            id="photo"
+            name="photo"
+            onChange={handleChangePhoto}
           />
         </div>
         <div>

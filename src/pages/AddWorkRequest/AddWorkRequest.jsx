@@ -1,20 +1,21 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 const AddWorkRequest = (props) => {
+  const location = useLocation()
   const [form, setForm] = useState({
     category: '',
     details: '',
     urgency: false,
-    resolution: ''
+    resolution: 'Currently Working'
   })
 
   const handleChange = ({ target }) => {
     setForm({ ...form, [target.name]: target.value })
   }
-  console.log(props.listing)
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    props.handleAddWorkRequest(props.listing._id, form)
+    props.handleAddWorkRequest(location.state._id, form)
   }
 
   return (
