@@ -11,6 +11,8 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Listings from './pages/Listings/Listings'
 import TenantList from './pages/TenantList/TenantList'
 import WorkRequestList from './pages/WorkRequestList/WorkRequestList'
+import TenantDetails from './pages/TenantDetails/TenantDetails'
+
 // components
 import NavBar from './components/NavBar/NavBar'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
@@ -152,6 +154,14 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <AddTenant handleAddTenant={handleAddTenant} />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path="/tenants/:id"
+          element={
+            <ProtectedRoute user={user}>
+              <TenantDetails user={user} />
             </ProtectedRoute>
           }
         />

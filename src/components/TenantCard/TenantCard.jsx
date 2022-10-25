@@ -1,14 +1,15 @@
+import { Link } from "react-router-dom";
 
-const TenantCard = (props) => {
+const TenantCard = ({tenant}) => {
   return ( 
-    <>
+    <Link to={`/tenants/${tenant._id}`}>
       <p>
-        Address: {props.tenant.address}
+        Address: {tenant.address}
       </p>
       <p>
-        Name: {props.tenant.name}
+        Name: {tenant.name}
       </p>
-    </>
+    </Link>
   );
 }
 
