@@ -10,7 +10,13 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Listings from './pages/Listings/Listings'
 import TenantList from './pages/TenantList/TenantList'
+
+
+
+
 import WorkRequestList from './pages/WorkRequestList/WorkRequestList'
+
+import AddListing from './pages/AddListing/AddListing'
 // components
 import NavBar from './components/NavBar/NavBar'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
@@ -22,12 +28,15 @@ import * as tenantsService from "./services/tenantsService"
 import * as profileService from "./services/profileService"
 
 // styles
-import './App.css'
+
+import EditListing from './pages/EditListing/EditListing'
+
 import AddWorkRequest from './pages/AddWorkRequest/AddWorkRequest'
 import AddTenant from './pages/AddTenant/AddTenant'
 
+
 const App = () => {
-  const [listing, setListing] = useState([])
+  const [listings, setListings] = useState([])
   const [tenants, setTenant] = useState([])
   const [workRequests, setWorkRequest] = useState([])
   const [user, setUser] = useState(authService.getUser())
@@ -73,6 +82,26 @@ const App = () => {
     }
     fetchAllTenants()
   }, [])
+
+  const handleAddListing = async (listingData) => {
+    const newListing = await listingService.create(listingData)
+    setListings([newListing, ...listings])
+    navigate('/listings')
+  }
+
+  const handleUpdateListing = async (listingData) => {
+    const updatedListing = await listingService.update (listingData)
+    setListings(
+      listings.map((listing) => (listingData._id === listing._id ? updatedListing : listing))
+    )
+    navigate('/listings')
+  }
+
+  const handleDeleteListings = async (id) => {
+    const deletedListing = await listingService.deleteListing(id)
+    setListings(listings.filter(listing => listing._id !== deletedListing._id))
+    navigate('/listings')
+  }
 
   return (
     <>
@@ -142,10 +171,25 @@ const App = () => {
           }
         />
         <Route
+
+          path="/add-listing"
+          element={
+            <ProtectedRoute user={user}>
+              <AddListing />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/listing/:id/edit"
+          element={
+            <ProtectedRoute user={user}>
+              <EditListing />
+
           path="/add-tenant"
           element={
             <ProtectedRoute user={user}>
               <AddTenant handleAddTenant={handleAddTenant} />
+
             </ProtectedRoute>
           }
         />
