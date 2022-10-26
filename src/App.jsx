@@ -99,6 +99,7 @@ const App = () => {
   const handleUpdateListing = async (listingData, photo) => {
     const updatedListing = await listingService.update(listingData)
     if (photo) {
+      console.log("THIS IS UPDATED LISTING", updatedListing._id);
       updatedListing.photo = await listingPhotoHelper(photo, updatedListing._id)
     }
     setListings(

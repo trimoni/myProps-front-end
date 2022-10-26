@@ -41,7 +41,7 @@ const EditTenant = (props) => {
           name="lease"
           id="lease-input"
           value={form.lease}
-          placeholder="Duration..."
+          placeholder="Lease Duration..."
           onChange={handleChange}
         />
         <label htmlFor="name-input">Name</label>
@@ -58,16 +58,16 @@ const EditTenant = (props) => {
         <input
           required
           type="text"
-          name="job"
+          name="jobs"
           id="job-input"
-          value={form.job}
+          value={form.jobs}
           placeholder="Add job..."
           onChange={handleChange}
         />
         <label htmlFor="salary-input">Salary</label>
         <input
           required
-          type="number"
+          type="text"
           name="salary"
           id="salary-input"
           value={form.salary}
