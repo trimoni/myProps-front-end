@@ -1,6 +1,5 @@
 import TenantCard from "../../components/TenantCard/TenantCard";
 
-
 const TenantList = ({ tenants, handleDeleteTenant }) => {
   return (
     <>
