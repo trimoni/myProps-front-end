@@ -15,6 +15,8 @@ const ListingCard = ({ listing }) => {
                     ? listing.photo
                     : null}
                 alt=''
+                height='300'
+                width='300'
               />
             </div>
             <div>
