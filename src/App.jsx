@@ -26,6 +26,7 @@ import * as authService from './services/authService'
 import * as listingService from "./services/listingService"
 import * as tenantsService from "./services/tenantsService"
 import * as profileService from "./services/profileService"
+import EditWorkRequest from './pages/EditWorkRequest/EditWorkRequest'
 
 
 
@@ -53,7 +54,7 @@ const App = () => {
     const newWorkRequest = await listingService.createWorkRequest(id, workRequestData)
 
     setWorkRequest([newWorkRequest, ...workRequests])
-    navigate('/listings')
+    navigate('/workRequests')
   }
 
   //Add a Tenant
@@ -150,7 +151,9 @@ const App = () => {
           path='/workRequests'
           element={
             <ProtectedRoute user={user}>
-              <WorkRequestList />
+              <WorkRequestList
+                listings={listings}
+              />
             </ProtectedRoute>
           }
         />
@@ -162,6 +165,14 @@ const App = () => {
                 listings={listings}
                 handleAddWorkRequest={handleAddWorkRequest}
               />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/listings/:id/workRequests/workRequestId'
+          element={
+            <ProtectedRoute user={user}>
+              <EditWorkRequest />
             </ProtectedRoute>
           }
         />
@@ -210,8 +221,8 @@ const App = () => {
           path="/listing/:id/edit"
           element={
             <ProtectedRoute user={user}>
-              <EditListing handleDeleteListing={handleDeleteListing} 
-              handleUpdateListing={handleUpdateListing}
+              <EditListing handleDeleteListing={handleDeleteListing}
+                handleUpdateListing={handleUpdateListing}
               />
             </ProtectedRoute>
           }

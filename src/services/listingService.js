@@ -97,12 +97,30 @@ const createWorkRequest = async (id, workRequestData) => {
   }
 }
 
-export { 
-  index, 
-  show, 
-  create, 
-  update, 
-  deleteListing, 
-  addPhoto, 
-  createWorkRequest};
+const updateWorkRequest = async (listingId, workRequestId, workRequestData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${listingId}/workRequestData/${workRequestId}`, {
+      method: 'put',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(workRequestData)
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export {
+  index,
+  show,
+  create,
+  update,
+  deleteListing,
+  addPhoto,
+  createWorkRequest,
+  updateWorkRequest
+};
 
