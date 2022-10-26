@@ -1,12 +1,12 @@
 import TenantCard from "../../components/TenantCard/TenantCard";
 
 
-const TenantList = (props) => {
+const TenantList = ({ tenants, handleDeleteTenant }) => {
   return (
     <>
       <h2>List of all Tenants</h2>
-      {props.tenants.map(tenant =>
-          <TenantCard key={tenant._id} tenant={tenant}/>
+      {tenants.map(tenant =>
+          <TenantCard key={tenant._id} tenant={tenant} handleDeleteTenant={handleDeleteTenant}/>
       )}
     </>
   );
