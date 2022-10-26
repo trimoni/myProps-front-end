@@ -4,6 +4,7 @@ import './ListingCard.css'
 const ListingCard = ({ listing }) => {
   console.log(listing, )
   return (
+  <>
     <Link to={`/listing/${listing._id}/edit`} state={listing}>
       <article>
         <header>
@@ -23,15 +24,20 @@ const ListingCard = ({ listing }) => {
             }
             </div>
             <div>
+
               <h1>{listing.address}</h1>
-            </div>
-            <div>
               <h1>{listing.price}</h1>
+
             </div>
           </span>
         </header>
       </article>
     </Link>
+    <Link
+        to='/listings/:id/workRequests'
+        state={listing}>Add Work request</Link>
+        </>
+
   );
 };
 

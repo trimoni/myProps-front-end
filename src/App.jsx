@@ -51,10 +51,11 @@ const App = () => {
   //Add a Work Request
   const handleAddWorkRequest = async (id, workRequestData) => {
     const newWorkRequest = await listingService.createWorkRequest(id, workRequestData)
+
     setWorkRequest([newWorkRequest, ...workRequests])
-    navigate('/workRequests')
+    navigate('/listings')
   }
-  
+
   //Add a Tenant
   const handleAddTenant = async (tenantData) => {
     const newTenant = await tenantsService.create(tenantData)
@@ -78,11 +79,11 @@ const App = () => {
       const tenantData = await profileService.showMyTenants(user.profile)
       setTenants(tenantData)
     }
-    if(user) 
-    fetchAllListing()
+    if (user)
+      fetchAllListing()
     fetchAllTenants()
-    
-  },[user])
+
+  }, [user])
 
   //Add a Listing
   const handleAddListing = async (listingData, photos) => {
@@ -98,6 +99,7 @@ const App = () => {
   const handleUpdateListing = async (listingData, photos) => {
     const updatedListing = await listingService.update (listingData)
     if (photos) {
+
       console.log("THIS IS UPDATED LISTING", updatedListing._id);
       updatedListing.photos = await listingPhotoHelper(photos, updatedListing._id)
     }
@@ -130,6 +132,15 @@ const App = () => {
     return await listingService.addPhoto(photoData, id)
   }
 
+  //Add Tenant to Listing
+  const addTenantToListing = async (id, tenantData) => {
+    console.log(id, "id");
+    console.log(tenantData, "THIS TENANT DATA");
+    const tenantD = await listingService.addTenantToListing(id, tenantData)
+    console.log(tenantD, "this is the tenant");
+    navigate("/listings")
+  }
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -138,8 +149,9 @@ const App = () => {
           path="/listings"
           element={
             <ProtectedRoute user={user}>
-              <Listings 
+              <Listings
                 listings={listings}
+                setListings={setListings}
                 user={user}
                 handleDeleteListing={handleDeleteListing}
               />
@@ -155,7 +167,7 @@ const App = () => {
           }
         />
         <Route
-          path='/workRequests/new'
+          path='/listings/:id/workRequests'
           element={
             <ProtectedRoute user={user}>
               <AddWorkRequest
@@ -169,7 +181,10 @@ const App = () => {
           path="/tenants"
           element={
             <ProtectedRoute user={user}>
-              <TenantList tenants={tenants} handleDeleteTenant={handleDeleteTenant} />
+              <TenantList 
+                tenants={tenants} 
+                handleDeleteTenant={handleDeleteTenant} 
+              />
             </ProtectedRoute>
           }
         />
@@ -212,6 +227,8 @@ const App = () => {
             <ProtectedRoute user={user}>
               <EditListing handleDeleteListing={handleDeleteListing} 
               handleUpdateListing={handleUpdateListing}
+              addTenantToListing={addTenantToListing}
+              tenants={tenants}
               />
             </ProtectedRoute>
           }
@@ -224,7 +241,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route 
+        <Route
           path="/tenants/:id/edit"
           element={
             <ProtectedRoute user={user}>
