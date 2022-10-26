@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
+import './EditListing.css'
 
 const EditListing = (props) => {
   const { state } = useLocation()
@@ -21,7 +22,7 @@ const EditListing = (props) => {
   }
 
   return (
-    <main>
+    <main className="container">
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="address">Address</label>
@@ -117,7 +118,7 @@ const EditListing = (props) => {
             onChange={handleChange}
           />
         </div>
-        <button type="submit">Add Listing</button>
+        <button type="submit">Publish</button>
       </form>
     </main>
   );

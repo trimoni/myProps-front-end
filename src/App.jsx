@@ -15,6 +15,7 @@ import WorkRequestList from './pages/WorkRequestList/WorkRequestList'
 import AddListing from './pages/AddListing/AddListing'
 import AddWorkRequest from './pages/AddWorkRequest/AddWorkRequest'
 import AddTenant from './pages/AddTenant/AddTenant'
+import EditTenant from './pages/EditTenant/EditTenant'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -62,6 +63,12 @@ const App = () => {
     navigate('/tenants')
   }
 
+  const handleUpdateTenant = async (tenantData) => {
+    const updatedTenant = await tenantsService.update(tenantData)
+    setTenants(tenants.map((b) => tenantData._id === b._id ? updatedTenant : b))
+    navigate('/tenants')
+  }
+
   //Get all of my listings and tenants
   useEffect(() => {
     const fetchAllListing = async () => {
@@ -79,15 +86,21 @@ const App = () => {
   }, [user])
 
   //Add a Listing
-  const handleAddListing = async (listingData) => {
+  const handleAddListing = async (listingData, photo) => {
     const newListing = await listingService.create(listingData)
-    setListings([newListing, ...listings])
+    if (photo) {
+      newListing.photo = await listingPhotoHelper(photo, newListing._id)
+    }
+    setListings([...listings, newListing])
     navigate('/listings')
   }
 
   //Update a Listing
-  const handleUpdateListing = async (listingData) => {
+  const handleUpdateListing = async (listingData, photo) => {
     const updatedListing = await listingService.update(listingData)
+    if (photo) {
+      updatedListing.photo = await listingPhotoHelper(photo, updatedListing._id)
+    }
     setListings(
       listings.map((listing) => (listingData._id === listing._id ? updatedListing : listing))
     )
@@ -99,6 +112,13 @@ const App = () => {
     const deletedListing = await listingService.deleteListing(id)
     setListings(listings.filter(listing => listing._id !== deletedListing._id))
     navigate('/listings')
+  }
+
+  //Add a Photo
+  const listingPhotoHelper = async (photo, id) => {
+    const photoData = new FormData()
+    photoData.append('photo', photo)
+    return await listingService.addPhoto(photoData, id)
   }
 
   return (
@@ -174,7 +194,6 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <AddListing handleAddListing={handleAddListing} />
-
             </ProtectedRoute>
           }
         />
@@ -192,6 +211,14 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <AddTenant handleAddTenant={handleAddTenant} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/tenants/:id/edit"
+          element={
+            <ProtectedRoute user={user}>
+              <EditTenant handleUpdateTenant={handleUpdateTenant} />
             </ProtectedRoute>
           }
         />

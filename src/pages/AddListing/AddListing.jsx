@@ -4,6 +4,7 @@ import "./AddListing.css";
 const AddListing = (props) => {
   const [form, setForm] = useState({
     address: "",
+    photo: "",
     rent: "",
     bedroom: "1",
     bathroom: "1",
@@ -27,7 +28,7 @@ const AddListing = (props) => {
   }
 
   return (
-    <main>
+    <main className="container">
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="address">Address</label>

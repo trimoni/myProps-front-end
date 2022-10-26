@@ -3,16 +3,17 @@ import "./Listings.css"
 
 
 const Listings = ({ listings }) => {
-
   return (
-    <div className="listing-container">
-      <h1>Listings</h1>
+    <main className="listing-container">
+      <div>
+        <h1>Listings</h1>
 
-      {listings.map((l) =>
-        <ListingCard listing={l} key={l._id} />
-      )}
+        <div className="class-div">{listings.map((l) => (
+          <ListingCard listing={l} key={l._id} />
+        ))}</div>
 
-    </div>
+      </div>
+    </main>
   );
 }
 
