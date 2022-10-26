@@ -90,3 +90,7 @@ li {
   text-align: end;
   justify-content: right;
 }
+
+nav.bm-item-list{
+  background-color: rgb(255, 255, 255);
+}
