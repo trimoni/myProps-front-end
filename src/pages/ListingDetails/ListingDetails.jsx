@@ -15,18 +15,19 @@ const ListingDetails = (props) => {
     fetchListing()
   }, [id])
 
+
   return (
     <main>
       <article>
         <header>
           <h3>{listing.address.toUpperCase()}</h3>
-          <img src={listing.picture} alt="property"/>
+          <img src={listing.picture} alt="property" />
         </header>
-          <h2>{listing.rent} per month</h2>
-          <h4>Bedroom:{listing.bedroom}</h4>
-          <h4>Bathroom:{listing.bathroom}</h4>
-          <h4>Pets:{listing.pets}</h4>
-          <p>{listing.details}</p>
+        <h2>{listing.rent} per month</h2>
+        <h4>Bedroom:{listing.bedroom}</h4>
+        <h4>Bathroom:{listing.bathroom}</h4>
+        <h4>Pets:{listing.pets}</h4>
+        <p>{listing.details}</p>
       </article>
     </main>
   );
