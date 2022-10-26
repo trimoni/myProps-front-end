@@ -132,8 +132,8 @@ const App = () => {
   const addTenantToListing = async (id, tenantData, tenantId) => {
     console.log(id, "id");
     const tenantD = await listingService.addTenantToListing(id, tenantData, tenantId)
-    console.log(tenantD);
-    
+    console.log(tenantD, "this is the tenant");
+    // setListings([...listings.tenants, tenantD])
     navigate("/listings")
   }
 
