@@ -85,21 +85,21 @@ const App = () => {
   },[user])
 
   //Add a Listing
-  const handleAddListing = async (listingData, photo) => {
+  const handleAddListing = async (listingData, photos) => {
     const newListing = await listingService.create(listingData)
-    if (photo) {
-      newListing.photo = await listingPhotoHelper(photo, newListing._id)
+    if (photos) {
+      newListing.photos = await listingPhotoHelper(photos, newListing._id)
     }
     setListings([...listings, newListing])
     navigate('/listings')
   }
 
   //Update a Listing
-  const handleUpdateListing = async (listingData, photo) => {
+  const handleUpdateListing = async (listingData, photos) => {
     const updatedListing = await listingService.update (listingData)
-    if (photo) {
+    if (photos) {
       console.log("THIS IS UPDATED LISTING", updatedListing._id);
-      updatedListing.photo = await listingPhotoHelper(photo, updatedListing._id)
+      updatedListing.photos = await listingPhotoHelper(photos, updatedListing._id)
     }
     setListings(
       listings.map((listing) => (listingData._id === listing._id ? updatedListing : listing))
@@ -122,9 +122,11 @@ const App = () => {
   }
 
   //Add a Photo
-  const listingPhotoHelper = async (photo, id) => {
+  const listingPhotoHelper = async (photos, id) => {
     const photoData = new FormData()
-    photoData.append('photo', photo)
+    Array.from(photos).forEach(photo => {
+      photoData.append('photos', photo)
+    })
     return await listingService.addPhoto(photoData, id)
   }
 
