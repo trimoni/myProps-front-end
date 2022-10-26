@@ -5,7 +5,7 @@ const AddTenant = (props) => {
   const [form, setForm] = useState({
     lease: '',
     name: '',
-    job: '',
+    jobs: '',
     salary: '',
     contact: '',
     current: false
@@ -64,7 +64,7 @@ const AddTenant = (props) => {
         <input
           required
           type="text"
-          name="job"
+          name="jobs"
           id="job-input"
           value={form.job}
           placeholder="Add job..."
@@ -73,7 +73,7 @@ const AddTenant = (props) => {
         <label htmlFor="salary-input">Salary</label>
         <input
           required
-          type="number"
+          type="text"
           name="salary"
           id="salary-input"
           value={form.salary}
