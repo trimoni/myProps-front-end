@@ -15,6 +15,7 @@ import WorkRequestList from './pages/WorkRequestList/WorkRequestList'
 import AddListing from './pages/AddListing/AddListing'
 import AddWorkRequest from './pages/AddWorkRequest/AddWorkRequest'
 import AddTenant from './pages/AddTenant/AddTenant'
+import EditTenant from './pages/EditTenant/EditTenant'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -58,6 +59,12 @@ const App = () => {
   const handleAddTenant = async (tenantData) => {
     const newTenant = await tenantsService.create(tenantData)
     setTenants([newTenant, ...tenants])
+    navigate('/tenants')
+  }
+
+  const handleUpdateTenant = async (tenantData) => {
+    const updatedTenant = await tenantsService.update(tenantData)
+    setTenants(tenants.map((b) => tenantData._id === b._id ? updatedTenant : b))
     navigate('/tenants')
   }
 
@@ -202,6 +209,14 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <AddTenant handleAddTenant={handleAddTenant} />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path="/tenants/:id/edit"
+          element={
+            <ProtectedRoute user={user}>
+              <EditTenant handleUpdateTenant={handleUpdateTenant} />
             </ProtectedRoute>
           }
         />
