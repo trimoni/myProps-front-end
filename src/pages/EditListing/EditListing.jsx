@@ -118,8 +118,9 @@ const EditListing = (props) => {
             onChange={handleChange}
           />
         </div>
-        <button type="submit">Publish</button>
+        <button type="submit">UPDATE</button>
       </form>
+        <button onClick={() => props.handleDeleteListing(state._id)}>DELETE</button>
     </main>
   );
 }
