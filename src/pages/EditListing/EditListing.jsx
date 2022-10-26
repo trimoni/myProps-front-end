@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import './EditListing.css'
 
 const EditListing = (props) => {
@@ -118,8 +118,8 @@ const EditListing = (props) => {
           />
         </div>
         <button type="submit">UPDATE</button>
-        <button onClick={() => props.handleDeleteListings(props.listing._id)}>DELETE</button>
       </form>
+        <button onClick={() => props.handleDeleteListing(state._id)}>DELETE</button>
     </main>
   );
 }
