@@ -4,10 +4,9 @@ import './EditListing.css'
 
 const EditListing = (props) => {
   const { state } = useLocation()
-  console.log('STATE', state)
   const [form, setForm] = useState(state);
   const [photoData, setPhotoData] = useState({})
-
+  console.log("THIS IS THE TENANT", props.tenants);
   const handleChange = ({ target }) => {
     setForm({...form, [target.name]: target.value})
   }
@@ -119,6 +118,12 @@ const EditListing = (props) => {
         </div>
         <button type="submit">Publish</button>
       </form>
+        <select name="tenants" id="tenant-list">
+          {props.tenants.map(tenant => (
+            <option>{tenant.name}</option>
+          ))}
+        </select>
+        <button onClick={() => props.addTenantToListing(state._id, props.tenant)}>Add to my Lisitng</button>
     </main>
   );
 }
