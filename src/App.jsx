@@ -51,10 +51,11 @@ const App = () => {
   //Add a Work Request
   const handleAddWorkRequest = async (id, workRequestData) => {
     const newWorkRequest = await listingService.createWorkRequest(id, workRequestData)
+
     setWorkRequest([newWorkRequest, ...workRequests])
-    navigate('/workRequests')
+    navigate('/listings')
   }
-  
+
   //Add a Tenant
   const handleAddTenant = async (tenantData) => {
     const newTenant = await tenantsService.create(tenantData)
@@ -78,11 +79,11 @@ const App = () => {
       const tenantData = await profileService.showMyTenants(user.profile)
       setTenants(tenantData)
     }
-    if(user) 
-    fetchAllListing()
+    if (user)
+      fetchAllListing()
     fetchAllTenants()
-    
-  },[user])
+
+  }, [user])
 
   //Add a Listing
   const handleAddListing = async (listingData, photo) => {
@@ -96,7 +97,7 @@ const App = () => {
 
   //Update a Listing
   const handleUpdateListing = async (listingData, photo) => {
-    const updatedListing = await listingService.update (listingData)
+    const updatedListing = await listingService.update(listingData)
     if (photo) {
       console.log("THIS IS UPDATED LISTING", updatedListing._id);
       updatedListing.photo = await listingPhotoHelper(photo, updatedListing._id)
@@ -136,8 +137,9 @@ const App = () => {
           path="/listings"
           element={
             <ProtectedRoute user={user}>
-              <Listings 
+              <Listings
                 listings={listings}
+                setListings={setListings}
                 user={user}
                 handleDeleteListing={handleDeleteListing}
               />
@@ -153,7 +155,7 @@ const App = () => {
           }
         />
         <Route
-          path='/workRequests/new'
+          path='/listings/:id/workRequests'
           element={
             <ProtectedRoute user={user}>
               <AddWorkRequest
@@ -222,7 +224,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route 
+        <Route
           path="/tenants/:id/edit"
           element={
             <ProtectedRoute user={user}>
