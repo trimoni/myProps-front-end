@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import './ListingCard.css'
 
-const ListingCard = ({ listing, handleDeleteListing }) => {
+const ListingCard = ({ listing }) => {
   console.log(listing, )
   return (
     <Link to={`/listing/${listing._id}/edit`} state={listing}>
@@ -25,7 +25,6 @@ const ListingCard = ({ listing, handleDeleteListing }) => {
             <div>
               <h1>{listing.price}</h1>
             </div>
-            <button onClick={() => handleDeleteListing(listing._id)}>Delete</button>
           </span>
         </header>
       </article>
