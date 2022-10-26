@@ -116,7 +116,7 @@ const EditListing = (props) => {
             onChange={handleChange}
           />
         </div>
-        <button type="submit">Publish</button>
+        <button type="submit">UPDATE</button>
       </form>
         <select name="tenants" id="tenant-list">
           {props.tenants.map(tenant => (
@@ -124,6 +124,7 @@ const EditListing = (props) => {
           ))}
         </select>
         <button onClick={() => props.addTenantToListing(state._id, props.tenant)}>Add to my Lisitng</button>
+        <button onClick={() => props.handleDeleteListing(state._id)}>DELETE</button>
     </main>
   );
 }

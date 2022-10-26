@@ -45,7 +45,7 @@ const update = async (listingData) => {
     const res = await fetch(`${BASE_URL}/${listingData._id}`, {
       method: "PUT",
       headers: {
-        Authorization: `Bearer ${tokenService.getToken()}`,
+        'Authorization': `Bearer ${tokenService.getToken()}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(listingData),
@@ -59,9 +59,9 @@ const update = async (listingData) => {
 const deleteListing = async (id) => {
   try {
     const res = await fetch(`${BASE_URL}/${id}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: {
-        Authorization: `Bearer ${tokenService.getToken}`,
+        'Authorization': `Bearer ${tokenService.getToken()}`,
       },
     });
     return res.json();

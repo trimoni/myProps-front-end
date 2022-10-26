@@ -16,7 +16,7 @@ const Listings = ({ listings }) => {
       {/* if user have a listing, then display the listings */}
       {/* if user doesn't have a listing, then display "No listing" */}
 
-
+  
     
     </div>
     </main>
