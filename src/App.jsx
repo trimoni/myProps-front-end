@@ -169,7 +169,7 @@ const App = () => {
           }
         />
         <Route
-          path='/listings/:id/workRequests/workRequestId'
+          path='/listings/:id/workRequests/:workRequestId'
           element={
             <ProtectedRoute user={user}>
               <EditWorkRequest />

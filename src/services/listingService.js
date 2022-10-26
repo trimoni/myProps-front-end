@@ -99,7 +99,7 @@ const createWorkRequest = async (id, workRequestData) => {
 
 const updateWorkRequest = async (listingId, workRequestId, workRequestData) => {
   try {
-    const res = await fetch(`${BASE_URL}/${listingId}/workRequestData/${workRequestId}`, {
+    const res = await fetch(`${BASE_URL}/${listingId}/workRequests/${workRequestId}`, {
       method: 'put',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const WorkRequestList = (props) => {
   return (
@@ -8,10 +9,18 @@ const WorkRequestList = (props) => {
           <p>listing:{listing.address}</p>
           {listing.workRequests.map(workRequest =>
             <div key={workRequest._id}>
-              <p>Category: {workRequest.category}</p>
-              <p>Details: {workRequest.details}</p>
-              <p>Resolution: {workRequest.resolution}</p>
-              <p>Urgency: {workRequest.urgency === false ? 'Not urgent' : 'Yes'}</p>
+              <Link
+                to={`/listings/${listing._id}/workRequests/${workRequest._id}`}
+                state={{
+                  listing: listing,
+                  workRequest: workRequest
+                }}
+              >
+                <p>Category: {workRequest.category}</p>
+                <p>Details: {workRequest.details}</p>
+                <p>Resolution: {workRequest.resolution}</p>
+                <p>Urgency: {workRequest.urgency === false ? 'Not urgent' : 'Yes'}</p>
+              </Link>
             </div>
           )}
         </div>
