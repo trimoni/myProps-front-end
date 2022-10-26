@@ -26,6 +26,7 @@ import * as authService from './services/authService'
 import * as listingService from "./services/listingService"
 import * as tenantsService from "./services/tenantsService"
 import * as profileService from "./services/profileService"
+import EditWorkRequest from './pages/EditWorkRequest/EditWorkRequest'
 
 
 
@@ -53,8 +54,21 @@ const App = () => {
     const newWorkRequest = await listingService.createWorkRequest(id, workRequestData)
 
     setWorkRequest([newWorkRequest, ...workRequests])
-    navigate('/listings')
+    const allOtherListing = listings.filter(listing => listing._id !== id)
+    const currentListing = listings.filter(listing => listing._id === id)
+    setListings([
+      ...allOtherListing,
+      {
+        ...currentListing[0],
+        workRequests: [
+          ...currentListing[0].workRequests,
+          newWorkRequest
+        ]
+      }
+    ])
+    navigate('/workRequests')
   }
+
 
   //Add a Tenant
   const handleAddTenant = async (tenantData) => {
@@ -162,7 +176,9 @@ const App = () => {
           path='/workRequests'
           element={
             <ProtectedRoute user={user}>
-              <WorkRequestList />
+              <WorkRequestList
+                listings={listings}
+              />
             </ProtectedRoute>
           }
         />
@@ -173,6 +189,16 @@ const App = () => {
               <AddWorkRequest
                 listings={listings}
                 handleAddWorkRequest={handleAddWorkRequest}
+              />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/listings/:id/workRequests/:workRequestId'
+          element={
+            <ProtectedRoute user={user}>
+              <EditWorkRequest
+                setWorkRequest={setWorkRequest}
               />
             </ProtectedRoute>
           }
@@ -229,6 +255,7 @@ const App = () => {
               handleUpdateListing={handleUpdateListing}
               addTenantToListing={addTenantToListing}
               tenants={tenants}
+
               />
             </ProtectedRoute>
           }

@@ -17,7 +17,6 @@ const NavBar = ({ user, handleLogout }) => {
             <li><Link to="/add-listing">Add Listing</Link></li><br />
             <li><Link to="/add-tenant">Add Tenant</Link></li><br />
             <li><Link to='/workRequests'>Work Requests</Link></li><br />
-            <li><Link to='/workRequests/new'>Add a work request</Link></li><br />
             <li><Link to="/profiles">Profiles</Link></li><br />
             <li><Link to="/change-password">Change Password</Link></li><br />
           </ul >

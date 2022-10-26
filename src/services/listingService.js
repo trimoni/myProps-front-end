@@ -101,6 +101,22 @@ const createWorkRequest = async (id, workRequestData) => {
   }
 }
 
+const updateWorkRequest = async (listingId, workRequestId, workRequestData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${listingId}/workRequests/${workRequestId}`, {
+      method: 'put',
+            headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+       body: JSON.stringify(workRequestData),
+       })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+      
 const addTenantToListing = async (id, tenantId) => {
   try {
     const res = await fetch(`${BASE_URL}/${id}/tenants`, {
@@ -117,6 +133,8 @@ const addTenantToListing = async (id, tenantId) => {
   }
 }
 
+
+
 export { 
   index, 
   show, 
@@ -125,6 +143,7 @@ export {
   deleteListing, 
   addPhoto, 
   createWorkRequest,
-  addTenantToListing
+  addTenantToListing,
+   updateWorkRequest
 };
 
