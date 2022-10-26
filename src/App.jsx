@@ -26,7 +26,7 @@ import * as authService from './services/authService'
 import * as listingService from "./services/listingService"
 import * as tenantsService from "./services/tenantsService"
 import * as profileService from "./services/profileService"
-import ListingDetails from './pages/ListingDetails/ListingDetails'
+
 
 
 
@@ -114,6 +114,12 @@ const App = () => {
     navigate('/listings')
   }
 
+  //Delete Tenant
+  const handleDeleteTenant = async (id) => {
+    const deletedTenant = await tenantsService.deleteTenant(id)
+    setTenants(tenants.filter(tenant => tenant._id !== deletedTenant._id))
+  }
+
   //Add a Photo
   const listingPhotoHelper = async (photo, id) => {
     const photoData = new FormData()
@@ -159,7 +165,7 @@ const App = () => {
           path="/tenants"
           element={
             <ProtectedRoute user={user}>
-              <TenantList tenants={tenants} />
+              <TenantList tenants={tenants} handleDeleteTenant={handleDeleteTenant} />
             </ProtectedRoute>
           }
         />
