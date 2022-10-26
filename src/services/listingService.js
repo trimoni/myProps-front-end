@@ -97,7 +97,7 @@ const createWorkRequest = async (id, workRequestData) => {
   }
 }
 
-const addTenantToListing = async (id, tenantData) => {
+const addTenantToListing = async (id, tenantId) => {
   try {
     const res = await fetch(`${BASE_URL}/${id}/tenants`, {
       method: 'POST',
@@ -105,7 +105,7 @@ const addTenantToListing = async (id, tenantData) => {
         'Authorization': `Bearer ${tokenService.getToken()}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(tenantData)
+      body: JSON.stringify({tenantId: tenantId}),
     })
     return res.json()
   } catch (error) {

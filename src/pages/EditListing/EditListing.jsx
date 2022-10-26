@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import './EditListing.css'
 
@@ -6,9 +6,14 @@ const EditListing = (props) => {
   const { state } = useLocation()
   const [form, setForm] = useState(state);
   const [photoData, setPhotoData] = useState({})
+  const [selectedTenant, setSelectedTenant] = useState(null)
   console.log("THIS IS THE TENANT", props.tenants);
   const handleChange = ({ target }) => {
     setForm({ ...form, [target.name]: target.value })
+  }
+
+  const selectTenant = ( {target} ) => {
+    setSelectedTenant(target.value)
   }
 
   const handleSubmit = (e) => {
@@ -119,12 +124,17 @@ const EditListing = (props) => {
         </div>
         <button type="submit">UPDATE</button>
       </form>
-        <select name="tenants" id="tenant-list">
+        <select 
+          name="tenants" 
+          id="tenant-list"
+          onChange={selectTenant}
+        > <option>Select a Tenant</option>
           {props.tenants.map(tenant => (
-            <option>{tenant.name}</option>
-          ))}
+            
+            <option value={tenant._id}>{tenant.name}</option>
+            ))}
         </select>
-        <button onClick={() => props.addTenantToListing(state._id, props.tenant)}>Add to my Lisitng</button>
+        <button onClick={() => props.addTenantToListing(state._id, selectedTenant)}>Add to my Lisitng</button>
         <button onClick={() => props.handleDeleteListing(state._id)}>DELETE</button>
     </main>
   );

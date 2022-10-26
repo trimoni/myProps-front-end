@@ -130,11 +130,11 @@ const App = () => {
   }
 
   //Add Tenant to Listing
-  const addTenantToListing = async (id, tenantData, tenantId) => {
+  const addTenantToListing = async (id, tenantData) => {
     console.log(id, "id");
-    const tenantD = await listingService.addTenantToListing(id, tenantData, tenantId)
+    console.log(tenantData, "THIS TENANT DATA");
+    const tenantD = await listingService.addTenantToListing(id, tenantData)
     console.log(tenantD, "this is the tenant");
-    // setListings([...listings.tenants, tenantD])
     navigate("/listings")
   }
 
@@ -178,7 +178,10 @@ const App = () => {
           path="/tenants"
           element={
             <ProtectedRoute user={user}>
-              <TenantList tenants={tenants} handleDeleteTenant={handleDeleteTenant} />
+              <TenantList 
+                tenants={tenants} 
+                handleDeleteTenant={handleDeleteTenant} 
+              />
             </ProtectedRoute>
           }
         />
