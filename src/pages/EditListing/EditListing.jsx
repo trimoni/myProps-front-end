@@ -38,7 +38,6 @@ const EditListing = (props) => {
         <div>
           <label htmlFor="photo">Upload Pictures</label>
           <input 
-          required
           type="file"
           id="photo"
           name="photo"
