@@ -71,14 +71,18 @@ const deleteListing = async (id) => {
 };
 
 async function addPhoto(photoData, listingId) {
-  const res = await fetch(`${BASE_URL}/${listingId}/add-photo`, {
-    method: 'PUT',
-    headers: {
-      'Authorization': `Bearer ${tokenService.getToken()}`
-    },
-    body: photoData
-  })
-  return await res.json()
+  try {
+    const res = await fetch(`${BASE_URL}/${listingId}/add-photo`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+      body: photoData
+    })
+    return await res.json()
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 const createWorkRequest = async (id, workRequestData) => {

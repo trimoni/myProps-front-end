@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import './ListingCard.css'
 
-const ListingCard = ({ listing, handleDeleteListing }) => {
-  // console.log(listing, )
+
+const ListingCard = ({ listing }) => {
+  console.log(listing, )
   return (
   <>
     <Link to={`/listing/${listing._id}/edit`} state={listing}>
@@ -10,15 +11,18 @@ const ListingCard = ({ listing, handleDeleteListing }) => {
         <header>
           <span>
             <div>
-              <img
-                src={
-                  listing.photo
-                    ? listing.photo
-                    : null}
-                alt=''
-                height='300'
-                width='300'
-              />
+              {listing.photos?.length ? 
+              listing.photos.map((photo, idx) => {
+                return <img
+                  key={idx}
+                  src={photo}
+                  alt=''
+                  height='200'
+                  width='200'
+                />
+              })
+              : <div>No Photos</div>
+            }
             </div>
             <div>
 
@@ -26,7 +30,6 @@ const ListingCard = ({ listing, handleDeleteListing }) => {
               <h1>{listing.price}</h1>
 
             </div>
-            <button onClick={() => handleDeleteListing(listing._id)}>Delete</button>
           </span>
         </header>
       </article>

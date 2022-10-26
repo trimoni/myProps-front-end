@@ -4,7 +4,7 @@ import "./AddListing.css";
 const AddListing = (props) => {
   const [form, setForm] = useState({
     address: "",
-    photo: "",
+    photos: "",
     rent: "",
     bedroom: "1",
     bathroom: "1",
@@ -20,11 +20,17 @@ const AddListing = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.handleAddListing(form, photoData.photo);
+    props.handleAddListing(form, photoData.photos);
   };
 
   const handleChangePhoto = evt => {
-    setPhotoData({ photo: evt.target.files[0] })
+    console.log(evt.target.files)
+    setPhotoData({ photos: evt.target.files })
+  }
+
+  const addToPhoto = (photo, photo2) => {
+    // setPhotoData([{...photo,}])
+    console.log('ADDPHOTO', addToPhoto)
   }
 
   return (
@@ -45,6 +51,7 @@ const AddListing = (props) => {
         <div>
           <label htmlFor="photo">Upload Pictures</label>
           <input 
+          multiple
           type="file"
           id="photo"
           name="photo"
