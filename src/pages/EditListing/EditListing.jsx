@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import './EditListing.css'
 
 const EditListing = (props) => {
@@ -38,7 +38,6 @@ const EditListing = (props) => {
         <div>
           <label htmlFor="photo">Upload Pictures</label>
           <input 
-          required
           type="file"
           id="photo"
           name="photo"
@@ -118,7 +117,8 @@ const EditListing = (props) => {
             onChange={handleChange}
           />
         </div>
-        <button type="submit">Publish</button>
+        <button type="submit">UPDATE</button>
+        <button onClick={() => props.handleDeleteListings(props.listing._id)}>DELETE</button>
       </form>
     </main>
   );
