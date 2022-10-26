@@ -14,7 +14,7 @@ const EditListing = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    props.handleUpdateBlog(form, photoData.photo)
+    props.handleUpdateListing(form, photoData.photo)
   }
 
   const handleChangePhoto = evt => {
