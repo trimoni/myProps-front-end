@@ -109,8 +109,9 @@ const App = () => {
   }
 
   //Delete a Listing
-  const handleDeleteListings = async (id) => {
+  const handleDeleteListing = async (id) => {
     const deletedListing = await listingService.deleteListing(id)
+    console.log('DELETED', deletedListing)
     setListings(listings.filter(listing => listing._id !== deletedListing._id))
     navigate('/listings')
   }
@@ -140,6 +141,7 @@ const App = () => {
                 listings={listings}
                 setListings={setListings}
                 user={user}
+                handleDeleteListing={handleDeleteListing}
               />
             </ProtectedRoute>
           }
@@ -208,7 +210,8 @@ const App = () => {
           path="/listing/:id/edit"
           element={
             <ProtectedRoute user={user}>
-              <EditListing handleDeleteListings={handleDeleteListings} handleUpdateListing={handleUpdateListing}
+              <EditListing handleDeleteListing={handleDeleteListing} 
+              handleUpdateListing={handleUpdateListing}
               />
             </ProtectedRoute>
           }
@@ -225,7 +228,7 @@ const App = () => {
           path="/tenants/:id/edit"
           element={
             <ProtectedRoute user={user}>
-              <EditTenant handleUpdateTenant={handleUpdateTenant} />
+              <EditTenant handleUpdateTenant={handleUpdateTenant} handleDeleteListing={handleDeleteListing} />
             </ProtectedRoute>
           }
         />
