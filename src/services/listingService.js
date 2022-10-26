@@ -102,25 +102,50 @@ const createWorkRequest = async (id, workRequestData) => {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> main
 const updateWorkRequest = async (listingId, workRequestId, workRequestData) => {
   try {
     const res = await fetch(`${BASE_URL}/${listingId}/workRequests/${workRequestId}`, {
       method: 'put',
+<<<<<<< HEAD
 =======
+=======
+            headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+       body: JSON.stringify(workRequestData),
+       })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+      
+>>>>>>> main
 const addTenantToListing = async (id, tenantId) => {
   try {
     const res = await fetch(`${BASE_URL}/${id}/tenants`, {
       method: 'POST',
+<<<<<<< HEAD
 >>>>>>> b8c2f9e222e2af3c1229ae9cc07aa282ee12215a
+=======
+>>>>>>> main
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
         'Content-Type': 'application/json'
       },
 <<<<<<< HEAD
+<<<<<<< HEAD
       body: JSON.stringify(workRequestData)
 =======
       body: JSON.stringify({tenantId: tenantId}),
 >>>>>>> b8c2f9e222e2af3c1229ae9cc07aa282ee12215a
+=======
+      body: JSON.stringify({tenantId: tenantId}),
+>>>>>>> main
     })
     return res.json()
   } catch (error) {
@@ -128,6 +153,7 @@ const addTenantToListing = async (id, tenantId) => {
   }
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 export {
   index,
@@ -139,6 +165,10 @@ export {
   createWorkRequest,
   updateWorkRequest
 =======
+=======
+
+
+>>>>>>> main
 export { 
   index, 
   show, 
@@ -147,7 +177,12 @@ export {
   deleteListing, 
   addPhoto, 
   createWorkRequest,
+<<<<<<< HEAD
   addTenantToListing
 >>>>>>> b8c2f9e222e2af3c1229ae9cc07aa282ee12215a
+=======
+  addTenantToListing,
+   updateWorkRequest
+>>>>>>> main
 };
 

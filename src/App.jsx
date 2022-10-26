@@ -253,6 +253,9 @@ const App = () => {
             <ProtectedRoute user={user}>
               <EditListing handleDeleteListing={handleDeleteListing}
                 handleUpdateListing={handleUpdateListing}
+                addTenantToListing={addTenantToListing}
+                tenants={tenants}
+
               />
             </ProtectedRoute>
           }
