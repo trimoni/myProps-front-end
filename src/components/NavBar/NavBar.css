@@ -11,11 +11,12 @@ li {
 .nav-bar {
   margin: 0;
   height: 60px;
-  background: #373a47;
+  background: #4CC9F0;
   display: flex;
   align-items: center;
   padding-left: 80px;
 }
+
 
 .nav-bar > li {
   padding: 0 20px;
@@ -91,4 +92,6 @@ li {
   justify-content: right;
 }
 
-
+nav.bm-item-list{
+  background-color: rgb(255, 255, 255);
+}

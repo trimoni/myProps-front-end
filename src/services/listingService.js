@@ -71,14 +71,18 @@ const deleteListing = async (id) => {
 };
 
 async function addPhoto(photoData, listingId) {
-  const res = await fetch(`${BASE_URL}/${listingId}/add-photo`, {
-    method: 'PUT',
-    headers: {
-      'Authorization': `Bearer ${tokenService.getToken()}`
-    },
-    body: photoData
-  })
-  return await res.json()
+  try {
+    const res = await fetch(`${BASE_URL}/${listingId}/add-photo`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+      body: photoData
+    })
+    return await res.json()
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 const createWorkRequest = async (id, workRequestData) => {
@@ -97,15 +101,26 @@ const createWorkRequest = async (id, workRequestData) => {
   }
 }
 
+<<<<<<< HEAD
 const updateWorkRequest = async (listingId, workRequestId, workRequestData) => {
   try {
     const res = await fetch(`${BASE_URL}/${listingId}/workRequests/${workRequestId}`, {
       method: 'put',
+=======
+const addTenantToListing = async (id, tenantId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}/tenants`, {
+      method: 'POST',
+>>>>>>> b8c2f9e222e2af3c1229ae9cc07aa282ee12215a
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
         'Content-Type': 'application/json'
       },
+<<<<<<< HEAD
       body: JSON.stringify(workRequestData)
+=======
+      body: JSON.stringify({tenantId: tenantId}),
+>>>>>>> b8c2f9e222e2af3c1229ae9cc07aa282ee12215a
     })
     return res.json()
   } catch (error) {
@@ -113,6 +128,7 @@ const updateWorkRequest = async (listingId, workRequestId, workRequestData) => {
   }
 }
 
+<<<<<<< HEAD
 export {
   index,
   show,
@@ -122,5 +138,16 @@ export {
   addPhoto,
   createWorkRequest,
   updateWorkRequest
+=======
+export { 
+  index, 
+  show, 
+  create, 
+  update, 
+  deleteListing, 
+  addPhoto, 
+  createWorkRequest,
+  addTenantToListing
+>>>>>>> b8c2f9e222e2af3c1229ae9cc07aa282ee12215a
 };
 
