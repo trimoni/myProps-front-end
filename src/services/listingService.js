@@ -71,14 +71,18 @@ const deleteListing = async (id) => {
 };
 
 async function addPhoto(photoData, listingId) {
-  const res = await fetch(`${BASE_URL}/${listingId}/add-photo`, {
-    method: 'PUT',
-    headers: {
-      'Authorization': `Bearer ${tokenService.getToken()}`
-    },
-    body: photoData
-  })
-  return await res.json()
+  try {
+    const res = await fetch(`${BASE_URL}/${listingId}/add-photo`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+      body: photoData
+    })
+    return await res.json()
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 const createWorkRequest = async (id, workRequestData) => {
@@ -101,11 +105,27 @@ const updateWorkRequest = async (listingId, workRequestId, workRequestData) => {
   try {
     const res = await fetch(`${BASE_URL}/${listingId}/workRequests/${workRequestId}`, {
       method: 'put',
+            headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+       body: JSON.stringify(workRequestData),
+       })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+      
+const addTenantToListing = async (id, tenantId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}/tenants`, {
+      method: 'POST',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(workRequestData)
+      body: JSON.stringify({tenantId: tenantId}),
     })
     return res.json()
   } catch (error) {
@@ -113,14 +133,17 @@ const updateWorkRequest = async (listingId, workRequestId, workRequestData) => {
   }
 }
 
-export {
-  index,
-  show,
-  create,
-  update,
-  deleteListing,
-  addPhoto,
+
+
+export { 
+  index, 
+  show, 
+  create, 
+  update, 
+  deleteListing, 
+  addPhoto, 
   createWorkRequest,
-  updateWorkRequest
+  addTenantToListing,
+   updateWorkRequest
 };
 

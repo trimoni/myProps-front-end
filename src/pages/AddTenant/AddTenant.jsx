@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import styles from './AddTenant.module.css'
 
 const AddTenant = (props) => {
   const [form, setForm] = useState({
@@ -26,7 +26,7 @@ const AddTenant = (props) => {
 
   return (
     <main>
-      <form onSubmit={handleSubmit}>
+      <form className={styles.container} onSubmit={handleSubmit}>
         {/* <label htmlFor="listing-input">Listing</label>
         <select
           required

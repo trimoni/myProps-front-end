@@ -100,21 +100,22 @@ const App = () => {
   }, [user])
 
   //Add a Listing
-  const handleAddListing = async (listingData, photo) => {
+  const handleAddListing = async (listingData, photos) => {
     const newListing = await listingService.create(listingData)
-    if (photo) {
-      newListing.photo = await listingPhotoHelper(photo, newListing._id)
+    if (photos) {
+      newListing.photos = await listingPhotoHelper(photos, newListing._id)
     }
     setListings([...listings, newListing])
     navigate('/listings')
   }
 
   //Update a Listing
-  const handleUpdateListing = async (listingData, photo) => {
-    const updatedListing = await listingService.update(listingData)
-    if (photo) {
+  const handleUpdateListing = async (listingData, photos) => {
+    const updatedListing = await listingService.update (listingData)
+    if (photos) {
+
       console.log("THIS IS UPDATED LISTING", updatedListing._id);
-      updatedListing.photo = await listingPhotoHelper(photo, updatedListing._id)
+      updatedListing.photos = await listingPhotoHelper(photos, updatedListing._id)
     }
     setListings(
       listings.map((listing) => (listingData._id === listing._id ? updatedListing : listing))
@@ -137,10 +138,21 @@ const App = () => {
   }
 
   //Add a Photo
-  const listingPhotoHelper = async (photo, id) => {
+  const listingPhotoHelper = async (photos, id) => {
     const photoData = new FormData()
-    photoData.append('photo', photo)
+    Array.from(photos).forEach(photo => {
+      photoData.append('photos', photo)
+    })
     return await listingService.addPhoto(photoData, id)
+  }
+
+  //Add Tenant to Listing
+  const addTenantToListing = async (id, tenantData) => {
+    console.log(id, "id");
+    console.log(tenantData, "THIS TENANT DATA");
+    const tenantD = await listingService.addTenantToListing(id, tenantData)
+    console.log(tenantD, "this is the tenant");
+    navigate("/listings")
   }
 
   return (
@@ -195,7 +207,10 @@ const App = () => {
           path="/tenants"
           element={
             <ProtectedRoute user={user}>
-              <TenantList tenants={tenants} handleDeleteTenant={handleDeleteTenant} />
+              <TenantList 
+                tenants={tenants} 
+                handleDeleteTenant={handleDeleteTenant} 
+              />
             </ProtectedRoute>
           }
         />
@@ -236,8 +251,11 @@ const App = () => {
           path="/listing/:id/edit"
           element={
             <ProtectedRoute user={user}>
-              <EditListing handleDeleteListing={handleDeleteListing}
-                handleUpdateListing={handleUpdateListing}
+              <EditListing handleDeleteListing={handleDeleteListing} 
+              handleUpdateListing={handleUpdateListing}
+              addTenantToListing={addTenantToListing}
+              tenants={tenants}
+
               />
             </ProtectedRoute>
           }
