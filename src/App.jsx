@@ -26,7 +26,7 @@ import * as authService from './services/authService'
 import * as listingService from "./services/listingService"
 import * as tenantsService from "./services/tenantsService"
 import * as profileService from "./services/profileService"
-import ListingDetails from './pages/ListingDetails/ListingDetails'
+
 
 
 
@@ -98,6 +98,7 @@ const App = () => {
   const handleUpdateListing = async (listingData, photo) => {
     const updatedListing = await listingService.update (listingData)
     if (photo) {
+      console.log("THIS IS UPDATED LISTING", updatedListing._id);
       updatedListing.photo = await listingPhotoHelper(photo, updatedListing._id)
     }
     setListings(
@@ -111,6 +112,12 @@ const App = () => {
     const deletedListing = await listingService.deleteListing(id)
     setListings(listings.filter(listing => listing._id !== deletedListing._id))
     navigate('/listings')
+  }
+
+  //Delete Tenant
+  const handleDeleteTenant = async (id) => {
+    const deletedTenant = await tenantsService.deleteTenant(id)
+    setTenants(tenants.filter(tenant => tenant._id !== deletedTenant._id))
   }
 
   //Add a Photo
@@ -158,7 +165,7 @@ const App = () => {
           path="/tenants"
           element={
             <ProtectedRoute user={user}>
-              <TenantList tenants={tenants} />
+              <TenantList tenants={tenants} handleDeleteTenant={handleDeleteTenant} />
             </ProtectedRoute>
           }
         />

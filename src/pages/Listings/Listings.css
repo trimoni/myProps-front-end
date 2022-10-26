@@ -4,6 +4,11 @@
   align-items: center;
 }
 
+img {
+  max-height: 300px;
+  max-width: 300px;
+}
+
 .class-div {
   text-align: center;
   width: 145px;

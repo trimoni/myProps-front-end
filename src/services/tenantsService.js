@@ -78,7 +78,6 @@ const deleteTenant = async (id) => {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
-        'Content-Type': 'application/json'
       },
     })
     return res.json()
@@ -93,5 +92,5 @@ export {
   create,
   createComment,
   update,
-  deleteTenant as delete
+  deleteTenant
 }
