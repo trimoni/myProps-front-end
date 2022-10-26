@@ -54,8 +54,21 @@ const App = () => {
     const newWorkRequest = await listingService.createWorkRequest(id, workRequestData)
 
     setWorkRequest([newWorkRequest, ...workRequests])
+    const allOtherListing = listings.filter(listing => listing._id !== id)
+    const currentListing = listings.filter(listing => listing._id === id)
+    setListings([
+      ...allOtherListing,
+      {
+        ...currentListing[0],
+        workRequests: [
+          ...currentListing[0].workRequests,
+          newWorkRequest
+        ]
+      }
+    ])
     navigate('/workRequests')
   }
+
 
   //Add a Tenant
   const handleAddTenant = async (tenantData) => {
@@ -172,7 +185,9 @@ const App = () => {
           path='/listings/:id/workRequests/:workRequestId'
           element={
             <ProtectedRoute user={user}>
-              <EditWorkRequest />
+              <EditWorkRequest
+                setWorkRequest={setWorkRequest}
+              />
             </ProtectedRoute>
           }
         />
