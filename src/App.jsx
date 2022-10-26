@@ -129,6 +129,15 @@ const App = () => {
     return await listingService.addPhoto(photoData, id)
   }
 
+  //Add Tenant to Listing
+  const addTenantToListing = async (id, tenantData) => {
+    console.log(id, "id");
+    console.log(tenantData, "THIS TENANT DATA");
+    const tenantD = await listingService.addTenantToListing(id, tenantData)
+    console.log(tenantD, "this is the tenant");
+    navigate("/listings")
+  }
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -169,7 +178,10 @@ const App = () => {
           path="/tenants"
           element={
             <ProtectedRoute user={user}>
-              <TenantList tenants={tenants} handleDeleteTenant={handleDeleteTenant} />
+              <TenantList 
+                tenants={tenants} 
+                handleDeleteTenant={handleDeleteTenant} 
+              />
             </ProtectedRoute>
           }
         />
@@ -212,6 +224,8 @@ const App = () => {
             <ProtectedRoute user={user}>
               <EditListing handleDeleteListing={handleDeleteListing} 
               handleUpdateListing={handleUpdateListing}
+              addTenantToListing={addTenantToListing}
+              tenants={tenants}
               />
             </ProtectedRoute>
           }

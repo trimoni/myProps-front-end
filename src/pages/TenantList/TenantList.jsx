@@ -1,7 +1,6 @@
 import TenantCard from "../../components/TenantCard/TenantCard";
 import styles from './TenantList.css'
 
-
 const TenantList = ({ tenants, handleDeleteTenant }) => {
   return (
     <>

@@ -97,6 +97,22 @@ const createWorkRequest = async (id, workRequestData) => {
   }
 }
 
+const addTenantToListing = async (id, tenantId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}/tenants`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({tenantId: tenantId}),
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export { 
   index, 
   show, 
@@ -104,5 +120,7 @@ export {
   update, 
   deleteListing, 
   addPhoto, 
-  createWorkRequest};
+  createWorkRequest,
+  addTenantToListing
+};
 
