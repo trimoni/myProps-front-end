@@ -4,6 +4,7 @@ import './ListingCard.css'
 const ListingCard = ({ listing, handleDeleteListing }) => {
   console.log(listing, )
   return (
+  <>
     <Link to={`/listing/${listing._id}/edit`} state={listing}>
       <article>
         <header>
@@ -20,16 +21,21 @@ const ListingCard = ({ listing, handleDeleteListing }) => {
               />
             </div>
             <div>
+
               <h1>{listing.address}</h1>
-            </div>
-            <div>
               <h1>{listing.price}</h1>
+
             </div>
             <button onClick={() => handleDeleteListing(listing._id)}>Delete</button>
           </span>
         </header>
       </article>
     </Link>
+    <Link
+        to='/listings/:id/workRequests'
+        state={listing}>Add Work request</Link>
+        </>
+
   );
 };
 
