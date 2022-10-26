@@ -10,7 +10,9 @@ const Listings = ({ listings }) => {
 
         <div className="class-div">{listings.map((l) => (
           <ListingCard listing={l} key={l._id} />
-        ))}</div>
+        ))}
+        </div>
+      </div>
     </main>
   );
 }
