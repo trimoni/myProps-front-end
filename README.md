@@ -18,8 +18,8 @@ Lastly, myProps allows managers to keep a log of previous and current tenants th
 ### Julian Boyne - [[GitHub]](https://github.com/julianboyne11)
 ![Julian Boyne](public/Julian-Boyne.jpg)
 
-### Chris Mems - [[GitHub]](https://github.com/cmthecoder)
-![Chris Mems](public/Chris-Mems.jpg)
+### Mike Trinh - [[GitHub]](https://github.com/hieptrinh96)
+![Mike Trinh](public/Mike-Trinh.jpg)
 
 ### Chris Mems - [[GitHub]](https://github.com/cmthecoder)
 ![Chris Mems](public/Chris-Mems.jpg)
