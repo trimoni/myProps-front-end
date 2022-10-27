@@ -5,9 +5,11 @@ import styles from './TenantCard.module.css'
 const TenantCard = ({ tenant, handleDeleteTenant }) => {
   return (
     <div>
-      <button onClick={() => handleDeleteTenant(tenant._id)}>X</button>
-      <Link to={`/tenants/${tenant._id}/edit`} state={tenant}>
-        <article className={styles.container}>
+      <article className={styles.container}>
+        <header>
+          <span onClick={() => handleDeleteTenant(tenant._id)}>X</span>
+        </header>
+        <Link to={`/tenants/${tenant._id}/edit`} state={tenant}>
           <p>
             Name: {tenant.name}
           </p>
@@ -25,8 +27,8 @@ const TenantCard = ({ tenant, handleDeleteTenant }) => {
               {comment.content}
             </p>
           )}
-        </article>
-      </Link>
+        </Link>
+      </article>
     </div>
   );
 }
