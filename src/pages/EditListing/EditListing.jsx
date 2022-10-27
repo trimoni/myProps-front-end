@@ -12,7 +12,7 @@ const EditListing = (props) => {
     setForm({ ...form, [target.name]: target.value })
   }
 
-  const selectTenant = ( {target} ) => {
+  const selectTenant = ({ target }) => {
     setSelectedTenant(target.value)
   }
 
@@ -124,18 +124,17 @@ const EditListing = (props) => {
         </div>
         <button type="submit">UPDATE</button>
       </form>
-        <select 
-          name="tenants" 
-          id="tenant-list"
-          onChange={selectTenant}
-        > <option>Select a Tenant</option>
-          {props.tenants.map(tenant => (
-            
-            <option value={tenant._id}>{tenant.name}</option>
-            ))}
-        </select>
-        <button onClick={() => props.addTenantToListing(state._id, selectedTenant)}>Add to my Lisitng</button>
-        <button onClick={() => props.handleDeleteListing(state._id)}>DELETE</button>
+      <select
+        name="tenants"
+        id="tenant-list"
+        onChange={selectTenant}
+      > <option>Select a Tenant</option>
+        {props.tenants.map(tenant =>
+          <option key={tenant._id} value={tenant._id}>{tenant.name}</option>
+        )}
+      </select>
+      <button onClick={() => props.addTenantToListing(state._id, selectedTenant)}>Add Tenant</button>
+      <button onClick={() => props.handleDeleteListing(state._id)}>DELETE</button>
     </main>
   );
 }
