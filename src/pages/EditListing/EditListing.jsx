@@ -128,7 +128,6 @@ const EditListing = (props) => {
           />
         </div>
         <button type="submit">UPDATE</button>
-      </form>
       {state.tenants.length ?
         state.tenants.map(tenant => (
           <div key={tenant._id}>
@@ -153,6 +152,7 @@ const EditListing = (props) => {
       </select>
       <button onClick={handleAddTenantToListing}>Add Tenant</button>
       <button onClick={() => props.handleDeleteListing(state._id)}>DELETE</button>
+      </form>
     </main>
   );
 }

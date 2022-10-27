@@ -20,6 +20,8 @@ const AddTenant = (props) => {
   };
 
   return (
+    <>
+    <h1>Add Tenant</h1>
     <main>
       <form className={styles.container} onSubmit={handleSubmit}>
         <label htmlFor="lease-input">Lease</label>
@@ -31,7 +33,7 @@ const AddTenant = (props) => {
           value={form.lease}
           placeholder="Duration..."
           onChange={handleChange}
-        />
+          />
         <label htmlFor="name-input">Name</label>
         <input
           required
@@ -41,7 +43,7 @@ const AddTenant = (props) => {
           value={form.name}
           placeholder="add name..."
           onChange={handleChange}
-        />
+          />
         <label htmlFor="job-input">Job</label>
         <input
           required
@@ -51,7 +53,7 @@ const AddTenant = (props) => {
           value={form.jobs}
           placeholder="Add job..."
           onChange={handleChange}
-        />
+          />
         <label htmlFor="salary-input">Salary</label>
         <input
           required
@@ -61,7 +63,7 @@ const AddTenant = (props) => {
           value={form.salary}
           placeholder="Add salary..."
           onChange={handleChange}
-        />
+          />
         <label htmlFor="number-input">Contact</label>
         <input
           required
@@ -71,7 +73,7 @@ const AddTenant = (props) => {
           value={form.contact}
           placeholder="Add contact..."
           onChange={handleChange}
-        />
+          />
         <label htmlFor="current-input">Current
           <input
             type="checkbox"
@@ -79,11 +81,12 @@ const AddTenant = (props) => {
             id="current-input"
             value={form.current}
             onChange={handleChange}
-          />
+            />
         </label>
         <button type="submit">SUBMIT</button>
       </form>
     </main>
+    </>
   );
 };
 
