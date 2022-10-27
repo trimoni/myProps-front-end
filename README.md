@@ -19,7 +19,7 @@ Lastly, myProps allows managers to keep a log of previous and current tenants th
 ![Julian Boyne](public/Julian-Boyne.jpg)
 
 ### Mike Trinh - [[GitHub]](https://github.com/hieptrinh96)
-![Mike Trinh](public/Mike-Trinh.jpg)
+![Mike Trinh](public/Mike-Trinh.png)
 
 ### Tal Rimoni - [[GitHub]](https://github.com/trimoni)
 ![Tal Rimoni](public/Tal.png)
