@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import './EditListing.css'
+import '../EditListing/EditListing.css'
 
 const EditListing = (props) => {
   const { state } = useLocation()
@@ -33,7 +33,7 @@ const EditListing = (props) => {
 
   return (
     <main className="container">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='edit'>
         <div>
           <label htmlFor="address">Address</label>
           <input
