@@ -1,19 +1,29 @@
-import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useState, useEffect,  } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import './EditListing.css'
+import * as listingService from "../../services/listingService"
+
 
 const EditListing = (props) => {
   const { state } = useLocation()
+  const { listingId } = useParams()
   const [form, setForm] = useState(state);
   const [photoData, setPhotoData] = useState({})
   const [selectedTenant, setSelectedTenant] = useState(null)
-  console.log("THIS IS THE TENANT", props.tenants);
   const handleChange = ({ target }) => {
     setForm({ ...form, [target.name]: target.value })
   }
 
-  const selectTenant = ({ target }) => {
+  const selectTenant = ( {target} ) => {
     setSelectedTenant(target.value)
+  }
+
+
+
+  const handleAddTenantToListing = (e) => {
+    e.preventDefault()
+    console.log(listingId);
+    props.addTenantToListing(listingId, selectedTenant)
   }
 
   const handleSubmit = (e) => {
@@ -42,7 +52,6 @@ const EditListing = (props) => {
         <div>
           <label htmlFor="photo">Upload Pictures</label>
           <input
-            required
             type="file"
             id="photo"
             name="photo"
@@ -124,17 +133,31 @@ const EditListing = (props) => {
         </div>
         <button type="submit">UPDATE</button>
       </form>
-      <select
-        name="tenants"
-        id="tenant-list"
-        onChange={selectTenant}
-      > <option>Select a Tenant</option>
-        {props.tenants.map(tenant =>
-          <option key={tenant._id} value={tenant._id}>{tenant.name}</option>
-        )}
-      </select>
-      <button onClick={() => props.addTenantToListing(state._id, selectedTenant)}>Add Tenant</button>
-      <button onClick={() => props.handleDeleteListing(state._id)}>DELETE</button>
+      {state.tenants.length ?
+        state.tenants.map(tenant => (
+          <>
+            <li>{tenant?.name}</li>
+            <button onClick={() => props.removeTenant(listingId, tenant._id)}>X</button>
+          </>
+        ))
+      :
+      <>
+        <h3>No tenants in the property</h3>
+      </>
+      }
+        <select 
+          name="tenants" 
+          id="tenant-list"
+          onChange={selectTenant}
+        > 
+        <option>Select a Tenant</option>
+          {props.tenants.map(tenant => (
+            
+            <option value={tenant._id}>{tenant.name}</option>
+            ))}
+        </select>
+        <button onClick={handleAddTenantToListing}>Add to my Lisitng</button>
+        <button onClick={() => props.handleDeleteListing(state._id)}>DELETE</button>
     </main>
   );
 }
