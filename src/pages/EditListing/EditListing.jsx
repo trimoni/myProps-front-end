@@ -16,8 +16,6 @@ const EditListing = (props) => {
     setSelectedTenant(target.value)
   }
 
-
-
   const handleAddTenantToListing = (e) => {
     e.preventDefault()
     console.log(listingId);
