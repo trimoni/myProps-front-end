@@ -7,8 +7,19 @@
   align-items: center;
 }
 
+.container > h1 {
+  font-size: 50px;
+  font-weight: bold;
+}
 
 
+.container > h5 {
+  display: flex;
+  align-items: center;
+  width: 800px;
+  font-size: 25px;
+  text-align: justify;
+}
 
 
 

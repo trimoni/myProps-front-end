@@ -1,5 +1,5 @@
 import styles from './Landing.module.css'
-import { Link } from 'react-router-dom'
+
 
 const Landing = ({ user }) => {
   return (
@@ -11,8 +11,8 @@ const Landing = ({ user }) => {
         </>
       :
         <>
-          <Link to="/login"><button>Log In</button></Link>
-          <Link to="/signup"><button>Sign Up</button></Link>
+          <h1>myProps</h1>
+          <h5>myProps is a website built for property managers to easily keep track of properties that they manage. Our goal is to keep information private to the user, so nobody else has access to their information. Accessibility is a key component to myProps, so navigation throughout the site should be clean, easy, and precise. Don't forget to log all important information regarding: Listings, Tenants & Work-Requests!</h5>
         </>
       }
     </main>
