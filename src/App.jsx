@@ -96,9 +96,15 @@ const App = () => {
   }
 
   //Update a Listing
+<<<<<<<<< Temporary merge branch 1
   const handleUpdateListing = async (listingData, photo) => {
-    const updatedListing = await listingService.update (listingData)
+    const updatedListing = await listingService.update(listingData)
     if (photo) {
+=========
+  const handleUpdateListing = async (listingData, photos) => {
+    const updatedListing = await listingService.update (listingData)
+    if (photos) {
+>>>>>>>>> Temporary merge branch 2
       console.log("THIS IS UPDATED LISTING", updatedListing._id);
       updatedListing.photos = await listingPhotoHelper(photos, updatedListing._id)
     }

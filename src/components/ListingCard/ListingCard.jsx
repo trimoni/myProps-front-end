@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import './ListingCard.css'
 
+
 const ListingCard = ({ listing }) => {
   console.log(listing, )
   return (
