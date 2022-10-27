@@ -3,21 +3,16 @@ import styles from "./AddTenant.module.css";
 
 const AddTenant = (props) => {
   const [form, setForm] = useState({
-    lease: "",
-    name: "",
-    jobs: "",
-    salary: "",
-    contact: "",
-    current: false,
-  });
+    lease: '',
+    name: '',
+    jobs: '',
+    salary: '',
+    contact: '',
+  })
 
   const handleChange = ({ target }) => {
-    if (target.name === "current") {
-      setForm({ ...form, [target.name]: !!target.value });
-    } else {
-      setForm({ ...form, [target.name]: target.value });
-    }
-  };
+    setForm({ ...form, [target.name]: target.value })
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -77,8 +72,7 @@ const AddTenant = (props) => {
           placeholder="Add contact..."
           onChange={handleChange}
         />
-        <label htmlFor="current-input">
-          Current
+        <label htmlFor="current-input">Current
           <input
             type="checkbox"
             name="current"

@@ -3,15 +3,15 @@ import { useLocation } from "react-router-dom";
 const AddWorkRequest = (props) => {
   const location = useLocation();
   const [form, setForm] = useState({
-    category: "",
-    details: "",
-    urgency: false,
-    resolution: "Currently Working",
-  });
+    category: '',
+    details: '',
+    resolution: 'Currently Working'
+  })
 
   const handleChange = ({ target }) => {
-    setForm({ ...form, [target.name]: target.value });
-  };
+
+    setForm({ ...form, [target.name]: target.value })
+  }
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -47,11 +47,7 @@ const AddWorkRequest = (props) => {
           <option value="Completed">Completed</option>
           <option value="Now Started">Now Started</option>
         </select>
-        <label htmlFor="urgency-input">
-          Urgent
-          <input type="checkbox" name="urgency" value={form.urgency} />
-        </label>
-        <button type="submit">Submit</button>
+        <button type='submit'>Submit</button>
       </form>
     </>
   );
