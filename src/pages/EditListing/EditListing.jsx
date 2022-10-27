@@ -1,8 +1,6 @@
-import { useState, useEffect, } from "react";
+import { useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import './EditListing.css'
-import * as listingService from "../../services/listingService"
-
 
 const EditListing = (props) => {
   const { state } = useLocation()
