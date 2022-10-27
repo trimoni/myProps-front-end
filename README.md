@@ -15,6 +15,15 @@ Lastly, myProps allows managers to keep a log of previous and current tenants th
 ### Chris Mems - [[GitHub]](https://github.com/cmthecoder)
 ![Chris Mems](public/Chris-Mems.jpg)
 
+### Julian Boyne - [[GitHub]](https://github.com/julianboyne11)
+![Julian Boyne](public/Julian-Boyne.jpg)
+
+### Chris Mems - [[GitHub]](https://github.com/cmthecoder)
+![Chris Mems](public/Chris-Mems.jpg)
+
+### Chris Mems - [[GitHub]](https://github.com/cmthecoder)
+![Chris Mems](public/Chris-Mems.jpg)
+
 ## Track Your Property:
 
 ## WireFrame/Trello:
