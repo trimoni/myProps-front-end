@@ -33,11 +33,11 @@ import EditWorkRequest from './pages/EditWorkRequest/EditWorkRequest'
 
 
 const App = () => {
-  const [listings, setListings] = useState([]);
-  const [tenants, setTenants] = useState([]);
-  const [workRequests, setWorkRequest] = useState([]);
-  const [user, setUser] = useState(authService.getUser());
-  const navigate = useNavigate();
+  const [listings, setListings] = useState([])
+  const [tenants, setTenants] = useState([])
+  const [user, setUser] = useState(authService.getUser())
+  const navigate = useNavigate()
+
 
   //Logout
   const handleLogout = () => {
@@ -57,19 +57,16 @@ const App = () => {
       workRequestData
     );
 
-    // setWorkRequest([newWorkRequest, ...workRequests])
-    const allOtherListing = listings.filter(listing => listing._id !== id)
-    const currentListing = listings.filter(listing => listing._id === id)
-    setListings([
-      ...allOtherListing,
-      {
-        ...currentListing[0],
-        workRequests: [
-          ...currentListing[0].workRequests,
-          newWorkRequest
-        ]
-      }
-    ])
+    setListings(listings.map((listing) => (newWorkRequest._id === listing._id ? newWorkRequest : listing)))
+
+    navigate(`/workRequests`)
+  }
+
+  const handleUpdateWorkRequest = async (listingId, workRequestId, workRequestData) => {
+    const updatedWorkRequest = await listingService.updateWorkRequest(listingId, workRequestId, workRequestData)
+
+    setListings(listings.map((listing) => (updatedWorkRequest._id === listing._id ? updatedWorkRequest : listing)))
+
     navigate('/workRequests')
   }
 
@@ -170,7 +167,7 @@ const App = () => {
     // const currentListing = listings.filter(listing => listing._id === id)
     // console.log(currentListing[0].tenants, "this is the tenants");
     setListings(listings.map((listing) => (updatedListing._id === listing._id ? updatedListing : listing)))
-    navigate(`/listing/${updatedListing._id}/edit`, {state: updatedListing})
+    navigate(`/listing/${updatedListing._id}/edit`, { state: updatedListing })
     // const tenantD = await listingService.addTenantToListing(id, tenantData)
     // const allOtherListing = listings.filter(listing => listing._id !== id)
     // const currentListing = listings.filter(listing => listing._id === id)
@@ -195,8 +192,8 @@ const App = () => {
     // const currentListing = listings.filter(listing => listing._id === id)
     // console.log(currentListing[0].tenants, "this is the tenants");
     setListings(listings.map((listing) => (updatedListing._id === listing._id ? updatedListing : listing)))
-    navigate(`/listing/${updatedListing._id}/edit`, {state: updatedListing})
-    }
+    navigate(`/listing/${updatedListing._id}/edit`, { state: updatedListing })
+  }
 
   //Add comment to Tenant
   const addTenantComment = async (id, commentData) => {
@@ -260,7 +257,8 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <EditWorkRequest
-                setWorkRequest={setWorkRequest}
+                // setWorkRequest={setWorkRequest}
+                handleUpdateWorkRequest={handleUpdateWorkRequest}
               />
             </ProtectedRoute>
           }
