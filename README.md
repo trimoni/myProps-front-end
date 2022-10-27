@@ -10,6 +10,12 @@ myProps also allows managers to keep track of work requests. It's important to k
 
 Lastly, myProps allows managers to keep a log of previous and current tenants that occupy/occupied their property, just to keep in contact.
 
+## Creators
+
+# Chris Mems
+![Chris Mems](public/Chris-Mems.jpg)
+[GitHub](https://github.com/cmthecoder)
+
 ## Track Your Property:
 
 ## WireFrame/Trello:
