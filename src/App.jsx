@@ -155,6 +155,12 @@ const App = () => {
     navigate("/listings")
   }
 
+  //Remove Tenant from Listing
+  const removeTenant = async (id, tenantData) => {
+    const tenantD = await listingService.removeTenant(id, tenantData)
+    console.log(tenantD, "this is tenant data");
+  }
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -254,6 +260,7 @@ const App = () => {
               <EditListing handleDeleteListing={handleDeleteListing}
                 handleUpdateListing={handleUpdateListing}
                 addTenantToListing={addTenantToListing}
+                removeTenant={removeTenant}
                 tenants={tenants}
 
               />

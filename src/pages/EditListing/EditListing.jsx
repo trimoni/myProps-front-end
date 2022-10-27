@@ -124,6 +124,12 @@ const EditListing = (props) => {
         </div>
         <button type="submit">UPDATE</button>
       </form>
+      {props.tenants.map(tenant => (
+        <>
+        <li>{tenant.name}</li>
+        <button onClick={() => props.removeTenant(state._id, tenant._id)}>X</button>
+        </>
+      ))}
         <select 
           name="tenants" 
           id="tenant-list"
