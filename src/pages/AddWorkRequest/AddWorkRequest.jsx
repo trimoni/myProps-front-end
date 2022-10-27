@@ -5,7 +5,6 @@ const AddWorkRequest = (props) => {
   const [form, setForm] = useState({
     category: '',
     details: '',
-    urgency: false,
     resolution: 'Currently Working'
   })
 
@@ -48,13 +47,6 @@ const AddWorkRequest = (props) => {
           <option value="Completed">Completed</option>
           <option value="Now Started">Now Started</option>
         </select>
-        <label htmlFor="urgency-input">Urgent
-          <input
-            type="checkbox"
-            name="urgency"
-            value={form.urgency}
-          />
-        </label>
         <button type='submit'>Submit</button>
       </form>
     </>

@@ -8,15 +8,10 @@ const AddTenant = (props) => {
     jobs: '',
     salary: '',
     contact: '',
-    current: false
   })
 
   const handleChange = ({ target }) => {
-    if(target.name === 'current') {
-      setForm({...form, [target.name] : !!target.value})
-    } else {
-      setForm({ ...form, [target.name]: target.value })
-    }
+    setForm({ ...form, [target.name]: target.value })
   }
 
   const handleSubmit = (e) => {
@@ -91,14 +86,14 @@ const AddTenant = (props) => {
           onChange={handleChange}
         />
         <label htmlFor="current-input">Current
-        <input
-          type="checkbox"
-          name="current"
-          id="current-input"
-          value={form.current}
-          onChange={handleChange}
+          <input
+            type="checkbox"
+            name="current"
+            id="current-input"
+            value={form.current}
+            onChange={handleChange}
           />
-          </label>
+        </label>
         <button type="submit">SUBMIT</button>
       </form>
     </main>

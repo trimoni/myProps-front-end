@@ -1,8 +1,6 @@
 import { useState, useEffect, } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import './EditListing.css'
-import * as listingService from "../../services/listingService"
-
 
 const EditListing = (props) => {
   const { state } = useLocation()
@@ -135,10 +133,10 @@ const EditListing = (props) => {
       </form>
       {state.tenants.length ?
         state.tenants.map(tenant => (
-          <>
+          <div key={tenant._id}>
             <li>{tenant?.name}</li>
             <button onClick={() => props.removeTenant(listingId, tenant._id)}>X</button>
-          </>
+          </div>
         ))
         :
         <>
@@ -152,8 +150,7 @@ const EditListing = (props) => {
       >
         <option>Select a Tenant</option>
         {props.tenants.map(tenant => (
-
-          <option value={tenant._id}>{tenant.name}</option>
+          <option key={tenant._id} value={tenant._id}>{tenant.name}</option>
         ))}
       </select>
       <button onClick={handleAddTenantToListing}>Add Tenant</button>
