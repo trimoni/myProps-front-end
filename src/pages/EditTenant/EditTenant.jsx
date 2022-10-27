@@ -6,6 +6,8 @@ const EditTenant = (props) => {
   const { state } = useLocation()
   const [form, setForm] = useState(state)
 
+  const [commentForm, setCommentForm] = useState(state)
+
   console.log(state)
   const handleChange = ({ target }) => {
     setForm({ ...form, [target.name]: target.value })
@@ -14,6 +16,15 @@ const EditTenant = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     props.handleUpdateTenant(form)
+  }
+
+  const handleCommentChange = ({ target }) => {
+    setCommentForm({ ...commentForm, [target.name]: target.value })
+  }
+
+  const handleSubmitComment = e => {
+    e.preventDefault()
+    props.addTenantComment(state._id, commentForm)
   }
 
 
@@ -85,15 +96,23 @@ const EditTenant = (props) => {
           onChange={handleChange}
         />
         <label htmlFor="current-input">Current
-        <input
-          type="checkbox"
-          name="current"
-          id="current-input"
-          value={form.current}
-          onChange={handleChange}
+          <input
+            type="checkbox"
+            name="current"
+            id="current-input"
+            value={form.current}
+            onChange={handleChange}
           />
-          </label>
+        </label>
+
         <button type="submit">SUBMIT</button>
+      </form>
+      <form onSubmit={handleSubmitComment}>
+        <h3>Add a Comment for the {state.name}!</h3>
+        <textarea
+          name="content"
+          onChange={handleCommentChange}></textarea>
+        <button type="submit">Add Comment</button>
       </form>
     </main>
   )

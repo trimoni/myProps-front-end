@@ -53,7 +53,7 @@ const App = () => {
   const handleAddWorkRequest = async (id, workRequestData) => {
     const newWorkRequest = await listingService.createWorkRequest(id, workRequestData)
 
-    setWorkRequest([newWorkRequest, ...workRequests])
+    // setWorkRequest([newWorkRequest, ...workRequests])
     const allOtherListing = listings.filter(listing => listing._id !== id)
     const currentListing = listings.filter(listing => listing._id === id)
     setListings([
@@ -153,6 +153,23 @@ const App = () => {
     const tenantD = await listingService.addTenantToListing(id, tenantData)
     console.log(tenantD, "this is the tenant");
     navigate("/listings")
+  }
+
+  const addTenantComment = async (id, commentData) => {
+    const newTenantComment = await tenantsService.createComment(id, commentData)
+    const allOtherTenants = tenants.filter(tenant => tenant._id !== id)
+    const currentTenants = tenants.filter(tenant => tenant._id === id)
+    setTenants([
+      ...allOtherTenants,
+      {
+        ...currentTenants[0],
+        comments: [
+          ...currentTenants[0].comments,
+          newTenantComment
+        ]
+      }
+    ])
+    navigate('/tenants')
   }
 
   return (
@@ -272,7 +289,11 @@ const App = () => {
           path="/tenants/:id/edit"
           element={
             <ProtectedRoute user={user}>
-              <EditTenant handleUpdateTenant={handleUpdateTenant} handleDeleteListing={handleDeleteListing} />
+              <EditTenant
+                handleUpdateTenant={handleUpdateTenant} handleDeleteListing={handleDeleteListing}
+                addTenantComment={addTenantComment}
+
+              />
             </ProtectedRoute>
           }
         />
