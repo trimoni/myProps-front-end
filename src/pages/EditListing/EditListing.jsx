@@ -7,7 +7,7 @@ const EditListing = (props) => {
   const [form, setForm] = useState(state);
   const [photoData, setPhotoData] = useState({})
   const [selectedTenant, setSelectedTenant] = useState(null)
-  console.log("THIS IS THE TENANT", props.tenants);
+  console.log(form, "this is the listing");
   const handleChange = ({ target }) => {
     setForm({ ...form, [target.name]: target.value })
   }
@@ -124,12 +124,18 @@ const EditListing = (props) => {
         </div>
         <button type="submit">UPDATE</button>
       </form>
-      {props.tenants.map(tenant => (
-        <>
-        <li>{tenant.name}</li>
-        <button onClick={() => props.removeTenant(state._id, tenant._id)}>X</button>
-        </>
-      ))}
+      {state.tenants.length ?
+        state.tenants.map(tenant => (
+          <>
+          <li>{tenant.name}</li>
+          <button onClick={() => props.removeTenant(state._id, tenant._id)}>X</button>
+          </>
+          ))
+      :
+      <>
+        <h3>No tenants in the property</h3>
+      </>
+      }
         <select 
           name="tenants" 
           id="tenant-list"

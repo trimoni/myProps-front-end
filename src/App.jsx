@@ -151,16 +151,19 @@ const App = () => {
     console.log(id, "id");
     console.log(tenantData, "THIS TENANT DATA");
     const tenantD = await listingService.addTenantToListing(id, tenantData)
-    console.log(tenantD, "this is the tenant");
-    navigate("/listings")
+    setListings([...tenants, tenantD])
+    
   }
 
   //Remove Tenant from Listing
   const removeTenant = async (id, tenantData) => {
+    
     const tenantD = await listingService.removeTenant(id, tenantData)
-    console.log(tenantD, "this is tenant data");
-  }
-
+    setListings(
+      listings.filter((listing) => (console.log(tenantD, "id"))
+        // tenantD !== listing.tenants))
+    ))
+    }
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
