@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom";
-
 import styles from './TenantCard.module.css'
 import { Card } from "react-bootstrap"
-
 
 
 const TenantCard = ({ tenant, handleDeleteTenant }) => {
   return (
     <article>
-      <Card style={{ width: '18rem' }}>
+      <Card className={styles.container} style={{ width: '18rem' }}>
         <header>
           <span onClick={() => handleDeleteTenant(tenant._id)}>X</span>
         </header>
@@ -28,11 +26,10 @@ const TenantCard = ({ tenant, handleDeleteTenant }) => {
             )}
           </Card.Text>
         </Card.Body>
-
         </Link>
       </Card>
     </article>
   );
-};
+}
 
 export default TenantCard;
