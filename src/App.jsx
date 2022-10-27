@@ -53,7 +53,7 @@ const App = () => {
   const handleAddWorkRequest = async (id, workRequestData) => {
     const newWorkRequest = await listingService.createWorkRequest(id, workRequestData)
 
-    setWorkRequest([newWorkRequest, ...workRequests])
+    // setWorkRequest([newWorkRequest, ...workRequests])
     const allOtherListing = listings.filter(listing => listing._id !== id)
     const currentListing = listings.filter(listing => listing._id === id)
     setListings([
@@ -151,19 +151,55 @@ const App = () => {
     console.log(id, "id");
     console.log(tenantData, "THIS TENANT DATA");
     const tenantD = await listingService.addTenantToListing(id, tenantData)
-    setListings([...tenants, tenantD])
-    
+    const allOtherListing = listings.filter(listing => listing._id !== id)
+    const currentListing = listings.filter(listing => listing._id === id)
+    setListings([
+      ...allOtherListing,
+      {
+        ...currentListing[0],
+        tenants: [
+          ...currentListing[0].tenants,
+          tenantD
+        ]
+      }
+    ])
   }
 
   //Remove Tenant from Listing
-  const removeTenant = async (id, tenantData) => {
-    
-    const tenantD = await listingService.removeTenant(id, tenantData)
-    setListings(
-      listings.filter((listing) => (console.log(tenantD, "id"))
-        // tenantD !== listing.tenants))
-    ))
+  const removeTenant = async (id) => {
+    const tenantD = await listingService.removeTenant(id)
+    const allOtherListing = listings.filter(listing => listing._id !== id)
+    const currentListing = listings.filter(listing => listing._id === id)
+    console.log(currentListing[0].tenants, "this is the listing?");
+    // setListings(currentListing.tenants.map((tenant) => (tenant._id === tenantD ? tenantD : tenant)))
+    setListings(currentListing[0].tenants.map(
+      (tenant) => tenant._id === tenantD ? tenantD : tenant))
     }
+
+    // listings.map((listing) => (listingData._id === listing._id ? updatedListing : listing))
+
+
+  
+  
+
+  const addTenantComment = async (id, commentData) => {
+    const newTenantComment = await tenantsService.createComment(id, commentData)
+    const allOtherTenants = tenants.filter(tenant => tenant._id !== id)
+    const currentTenants = tenants.filter(tenant => tenant._id === id)
+    setTenants([
+      ...allOtherTenants,
+      {
+        ...currentTenants[0],
+        comments: [
+          ...currentTenants[0].comments,
+          newTenantComment
+        ]
+      }
+    ])
+    navigate('/tenants')
+  }
+
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -282,7 +318,11 @@ const App = () => {
           path="/tenants/:id/edit"
           element={
             <ProtectedRoute user={user}>
-              <EditTenant handleUpdateTenant={handleUpdateTenant} handleDeleteListing={handleDeleteListing} />
+              <EditTenant
+                handleUpdateTenant={handleUpdateTenant} handleDeleteListing={handleDeleteListing}
+                addTenantComment={addTenantComment}
+
+              />
             </ProtectedRoute>
           }
         />
