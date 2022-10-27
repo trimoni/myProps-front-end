@@ -1,4 +1,4 @@
-.container {
+/* .container {
   width: 100%;
   height: 220px;
   padding: 14px 21px;
@@ -35,4 +35,22 @@
 header {
   display: flex;
   justify-content: end;
+} */
+
+article {
+  margin-bottom: 10px;
+}
+
+span {
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
+header {
+  display: flex;
+  justify-content: end;
+}
+
+p {
+  color: black;
 }
