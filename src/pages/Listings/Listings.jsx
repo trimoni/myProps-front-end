@@ -7,15 +7,22 @@ const Listings = ({ listings }) => {
   return (
     <main className="listing-container">
       <div>
-        <h1 className="header">Listings</h1>
-
-        <div className="class-div">{listings.map((l) => (
-          <div key={l._id}>
-            <ListingCard listing={l} key={l._id} />
-            <Link to="/tenants" state={l}></Link>
-          </div>
-        ))}
-        </div>
+        {listings.length ?
+          <>
+            <h1>Listings</h1>
+            <div className="class-div">{listings.map((l) => (
+              <div key={l._id}>
+                <ListingCard listing={l} key={l._id} />
+                <Link to="/tenants" state={l}></Link>
+              </div>
+            ))}
+            </div>
+          </>
+          :
+          <>
+            <h3>There are no Listings!</h3>
+          </>
+        }
       </div>
     </main>
   );

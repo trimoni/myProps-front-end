@@ -17,15 +17,26 @@ const ListingCard = ({ listing }) => {
             <ListGroup.Item>Rent: ${listing.rent}</ListGroup.Item>
           </ListGroup>
           <Card.Text>
-            {}
+            Tenants:
+            {listing.tenants.length ? 
+            <>
+              {listing.tenants.map(tenant => (
+                <li>{tenant.name}</li>
+              ))}
+            </>
+            :
+            <>
+              <li>No tenants currently</li>
+            </>
+            }
           </Card.Text>
-          <Card.Body>
+          <ListGroup>
             <Link 
               to="/listings/:id/workRequests" 
               state={listing}>
               Add Work request
           </Link>
-        </Card.Body>
+        </ListGroup>
       </Card>
     </Link>
   );
