@@ -1,24 +1,31 @@
-import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useState, useEffect,  } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import './EditListing.css'
+import * as listingService from "../../services/listingService"
+
 
 const EditListing = (props) => {
   const { state } = useLocation()
+  const { listingId } = useParams()
   const [form, setForm] = useState(state);
   const [photoData, setPhotoData] = useState({})
   const [selectedTenant, setSelectedTenant] = useState(null)
-  console.log(form, "this is the listing");
   const handleChange = ({ target }) => {
     setForm({ ...form, [target.name]: target.value })
   }
+
+
 
   const selectTenant = ( {target} ) => {
     setSelectedTenant(target.value)
   }
 
+
+
   const handleAddTenantToListing = (e) => {
     e.preventDefault()
-    props.addTenantToListing(state._id, selectedTenant)
+    console.log(listingId);
+    props.addTenantToListing(listingId, selectedTenant)
   }
 
   const handleSubmit = (e) => {
@@ -131,10 +138,10 @@ const EditListing = (props) => {
       {state.tenants.length ?
         state.tenants.map(tenant => (
           <>
-          <li>{tenant.name}</li>
-          <button onClick={() => props.removeTenant(state._id, tenant._id)}>X</button>
+            <li>{tenant?.name}</li>
+            <button onClick={() => props.removeTenant(listingId, tenant._id)}>X</button>
           </>
-          ))
+        ))
       :
       <>
         <h3>No tenants in the property</h3>

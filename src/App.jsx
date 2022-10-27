@@ -146,41 +146,42 @@ const App = () => {
     return await listingService.addPhoto(photoData, id)
   }
 
-  //Add Tenant to Listing
   const addTenantToListing = async (id, tenantData) => {
     console.log(id, "id");
     console.log(tenantData, "THIS TENANT DATA");
-    const tenantD = await listingService.addTenantToListing(id, tenantData)
-    const allOtherListing = listings.filter(listing => listing._id !== id)
-    const currentListing = listings.filter(listing => listing._id === id)
-    setListings([
-      ...allOtherListing,
-      {
-        ...currentListing[0],
-        tenants: [
-          ...currentListing[0].tenants,
-          tenantD
-        ]
-      }
-    ])
+    const updatedListing = await listingService.addTenantToListing(id, tenantData)
+    console.log(updatedListing, "HERE");
+    // const currentListing = listings.filter(listing => listing._id === id)
+    // console.log(currentListing[0].tenants, "this is the tenants");
+    setListings(listings.map((listing) => (updatedListing._id === listing._id ? updatedListing : listing)))
+    navigate(`/listing/${updatedListing._id}/edit`, {state: updatedListing})
+    // const tenantD = await listingService.addTenantToListing(id, tenantData)
+    // const allOtherListing = listings.filter(listing => listing._id !== id)
+    // const currentListing = listings.filter(listing => listing._id === id)
+    // setListings([
+    //   ...allOtherListing,
+    //   {
+    //     ...currentListing[0],
+    //     tenants: [
+    //       ...currentListing[0].tenants,
+    //       tenantD
+    //     ]
+    //   }
+    // ])
   }
 
   //Remove Tenant from Listing
-  const removeTenant = async (id) => {
-    const tenantD = await listingService.removeTenant(id)
-    const currentListing = listings.filter(listing => listing._id === id)
-    console.log(currentListing[0].tenants, "this is the tenants");
-    // setListings(currentListing.tenants.map((tenant) => (tenant._id === tenantD ? tenantD : tenant)))
-    setListings(currentListing[0].tenants.filter(
-      (tenant) => tenantD !== tenant._id ))
+  const removeTenant = async (id, tenantData) => {
+    console.log(id);
+    const updatedListing = await listingService.removeTenant(id, tenantData)
+    console.log(updatedListing, "HERE");
+    // const currentListing = listings.filter(listing => listing._id === id)
+    // console.log(currentListing[0].tenants, "this is the tenants");
+    setListings(listings.map((listing) => (updatedListing._id === listing._id ? updatedListing : listing)))
+    navigate(`/listing/${updatedListing._id}/edit`, {state: updatedListing})
     }
 
-    // listings.map((listing) => (listingData._id === listing._id ? updatedListing : listing))
-
-
-  
-  
-//Add comment to Tenant
+  //Add comment to Tenant
   const addTenantComment = async (id, commentData) => {
     const newTenantComment = await tenantsService.createComment(id, commentData)
     const allOtherTenants = tenants.filter(tenant => tenant._id !== id)
@@ -292,13 +293,15 @@ const App = () => {
           }
         />
         <Route
-          path="/listing/:id/edit"
+          path="/listing/:listingId/edit"
           element={
             <ProtectedRoute user={user}>
               <EditListing handleDeleteListing={handleDeleteListing}
                 handleUpdateListing={handleUpdateListing}
                 addTenantToListing={addTenantToListing}
                 removeTenant={removeTenant}
+                listings={listings}
+                setListings={setListings}
                 tenants={tenants}
 
               />
