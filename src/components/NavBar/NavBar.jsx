@@ -5,6 +5,9 @@ import { slide as Menu } from "react-burger-menu";
 const NavBar = ({ user, handleLogout }) => {
   return (
     <>
+        {user ? 
+        <>
+
       <ul className="nav-bar">
         <li>
           <Link to="/listings">My Listings</Link>
@@ -14,12 +17,13 @@ const NavBar = ({ user, handleLogout }) => {
         </li>
         <li id="logout">
           <Link to="" onClick={handleLogout}>
-            LOG OUT
+              LOG OUT
           </Link>
         </li>
+      
       </ul>
+      
       <Menu>
-        {user ? (
           <ul className="ham-bar">
             <li>
               <Link to="/listings">My Listings</Link>
@@ -46,10 +50,24 @@ const NavBar = ({ user, handleLogout }) => {
             </li>
             <br />
           </ul>
-        ) : (
-          <></>
-        )}
       </Menu>
+          </>
+        : 
+          <>
+            <ul className="nav-bar">
+              <li>
+                <Link to="/listings">My Listings</Link>
+              </li>
+              <li>
+                <Link to="/tenants">Tenants</Link>
+              </li>
+              <div className="btn-account">
+              <Link to="/login"><button>Log In</button></Link>
+              <Link to="/signup"><button>Sign Up</button></Link>
+              </div>
+            </ul>
+          </>
+        }
     </>
   );
 };
