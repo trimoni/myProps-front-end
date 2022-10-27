@@ -1,5 +1,5 @@
-import { useState } from "react"
-import styles from './AddTenant.module.css'
+import { useState } from "react";
+import styles from "./AddTenant.module.css";
 
 const AddTenant = (props) => {
   const [form, setForm] = useState({
@@ -15,26 +15,13 @@ const AddTenant = (props) => {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    props.handleAddTenant(form)
-  }
+    e.preventDefault();
+    props.handleAddTenant(form);
+  };
 
   return (
     <main>
       <form className={styles.container} onSubmit={handleSubmit}>
-        {/* <label htmlFor="listing-input">Listing</label>
-        <select
-          required
-          name="listing"
-          id="listing-input"
-          value={form.listing.address}
-          onChange={handleChange}
-        >
-          <option value="">322 Fox Drive</option>
-          <option value=""></option>
-          <option value=""></option>
-          <option value=""></option>
-        </select> */}
         <label htmlFor="lease-input">Lease</label>
         <input
           required
@@ -97,7 +84,7 @@ const AddTenant = (props) => {
         <button type="submit">SUBMIT</button>
       </form>
     </main>
-  )
-}
+  );
+};
 
-export default AddTenant
+export default AddTenant;

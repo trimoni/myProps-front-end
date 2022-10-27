@@ -45,7 +45,7 @@ const update = async (listingData) => {
     const res = await fetch(`${BASE_URL}/${listingData._id}`, {
       method: "PUT",
       headers: {
-        'Authorization': `Bearer ${tokenService.getToken()}`,
+        Authorization: `Bearer ${tokenService.getToken()}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(listingData),
@@ -59,9 +59,9 @@ const update = async (listingData) => {
 const deleteListing = async (id) => {
   try {
     const res = await fetch(`${BASE_URL}/${id}`, {
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
-        'Authorization': `Bearer ${tokenService.getToken()}`,
+        Authorization: `Bearer ${tokenService.getToken()}`,
       },
     });
     return res.json();
@@ -73,81 +73,84 @@ const deleteListing = async (id) => {
 async function addPhoto(photoData, listingId) {
   try {
     const res = await fetch(`${BASE_URL}/${listingId}/add-photo`, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Authorization': `Bearer ${tokenService.getToken()}`
+        Authorization: `Bearer ${tokenService.getToken()}`,
       },
-      body: photoData
-    })
-    return await res.json()
+      body: photoData,
+    });
+    return await res.json();
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 
 const createWorkRequest = async (id, workRequestData) => {
   try {
     const res = await fetch(`${BASE_URL}/${id}/workRequests`, {
-      method: 'POST',
+      method: "POST",
       headers: {
         Authorization: `Bearer ${tokenService.getToken()}`,
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(workRequestData)
-    })
-    return res.json()
+      body: JSON.stringify(workRequestData),
+    });
+    return res.json();
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 const updateWorkRequest = async (listingId, workRequestId, workRequestData) => {
   try {
-    const res = await fetch(`${BASE_URL}/${listingId}/workRequests/${workRequestId}`, {
-      method: 'put',
-      headers: {
-        'Authorization': `Bearer ${tokenService.getToken()}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(workRequestData),
-    })
-    return res.json()
+    const res = await fetch(
+      `${BASE_URL}/${listingId}/workRequests/${workRequestId}`,
+      {
+        method: "put",
+        headers: {
+          Authorization: `Bearer ${tokenService.getToken()}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(workRequestData),
+      }
+    );
+    return res.json();
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 const addTenantToListing = async (id, tenantId) => {
   try {
     const res = await fetch(`${BASE_URL}/${id}/tenants`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Authorization': `Bearer ${tokenService.getToken()}`,
-        'Content-Type': 'application/json'
+        Authorization: `Bearer ${tokenService.getToken()}`,
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ tenantId: tenantId }),
-    })
-    return res.json()
+    });
+    return res.json();
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 const removeTenant = async (id, tenantId) => {
   try {
     const res = await fetch(`${BASE_URL}/${id}/tenants`, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Authorization': `Bearer ${tokenService.getToken()}`,
-        'Content-Type': 'application/json'
+        Authorization: `Bearer ${tokenService.getToken()}`,
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ tenantId: tenantId }),
-    })
-    return res.json()
+    });
+    return res.json();
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export {
   index,
@@ -159,6 +162,5 @@ export {
   createWorkRequest,
   addTenantToListing,
   updateWorkRequest,
-  removeTenant
+  removeTenant,
 };
-

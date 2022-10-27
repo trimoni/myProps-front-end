@@ -1,32 +1,30 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
-
 const EditTenant = (props) => {
-  const { state } = useLocation()
-  const [form, setForm] = useState(state)
+  const { state } = useLocation();
+  const [form, setForm] = useState(state);
 
-  const [commentForm, setCommentForm] = useState(state)
+  const [commentForm, setCommentForm] = useState(state);
 
-  console.log(state)
+  console.log(state);
   const handleChange = ({ target }) => {
-    setForm({ ...form, [target.name]: target.value })
-  }
+    setForm({ ...form, [target.name]: target.value });
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    props.handleUpdateTenant(form)
-  }
+    e.preventDefault();
+    props.handleUpdateTenant(form);
+  };
 
   const handleCommentChange = ({ target }) => {
-    setCommentForm({ ...commentForm, [target.name]: target.value })
-  }
+    setCommentForm({ ...commentForm, [target.name]: target.value });
+  };
 
-  const handleSubmitComment = e => {
-    e.preventDefault()
-    props.addTenantComment(state._id, commentForm)
-  }
-
+  const handleSubmitComment = (e) => {
+    e.preventDefault();
+    props.addTenantComment(state._id, commentForm);
+  };
 
   return (
     <main>
@@ -95,7 +93,8 @@ const EditTenant = (props) => {
           placeholder="Add contact..."
           onChange={handleChange}
         />
-        <label htmlFor="current-input">Current
+        <label htmlFor="current-input">
+          Current
           <input
             type="checkbox"
             name="current"
@@ -109,13 +108,11 @@ const EditTenant = (props) => {
       </form>
       <form onSubmit={handleSubmitComment}>
         <h3>Add a Comment for the {state.name}!</h3>
-        <textarea
-          name="content"
-          onChange={handleCommentChange}></textarea>
+        <textarea name="content" onChange={handleCommentChange}></textarea>
         <button type="submit">Add Comment</button>
       </form>
     </main>
-  )
-}
+  );
+};
 
 export default EditTenant;

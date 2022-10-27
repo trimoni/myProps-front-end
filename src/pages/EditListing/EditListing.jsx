@@ -1,4 +1,4 @@
-import { useState, useEffect, } from "react";
+import { useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import './EditListing.css'
 
@@ -74,7 +74,7 @@ const EditListing = (props) => {
             required
             name="bedroom"
             id="bedroom"
-            value={'form.bedroom'}
+            value={form.bedroom}
             placeholder="Num"
             onChange={handleChange}
           >

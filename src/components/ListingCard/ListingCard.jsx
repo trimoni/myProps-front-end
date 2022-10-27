@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import "./ListingCard.css";
-import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup'
+import Card from "react-bootstrap/Card";
+import ListGroup from "react-bootstrap/ListGroup";
 
 const ListingCard = ({ listing }) => {
-
   return (
     <>
       <Link to={`/listing/${listing._id}/edit`} state={listing}>

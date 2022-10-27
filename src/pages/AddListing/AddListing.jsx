@@ -12,7 +12,7 @@ const AddListing = (props) => {
     details: "",
   });
 
-  const [photoData, setPhotoData] = useState({})
+  const [photoData, setPhotoData] = useState({});
 
   const handleChange = ({ target }) => {
     setForm({ ...form, [target.name]: target.value });
@@ -23,10 +23,10 @@ const AddListing = (props) => {
     props.handleAddListing(form, photoData.photo);
   };
 
-  const handleChangePhoto = evt => {
-    console.log(evt.target.files, "HERE I AM")
-    setPhotoData({ photo: evt.target.files[0] })
-  }
+  const handleChangePhoto = (evt) => {
+    console.log(evt.target.files, "HERE I AM");
+    setPhotoData({ photo: evt.target.files[0] });
+  };
 
   return (
     <main className="container">
@@ -45,12 +45,12 @@ const AddListing = (props) => {
         </div>
         <div>
           <label htmlFor="photo">Upload Picture</label>
-          <input 
-          multiple
-          type="file"
-          id="photo"
-          name="photo"
-          onChange={handleChangePhoto}
+          <input
+            multiple
+            type="file"
+            id="photo"
+            name="photo"
+            onChange={handleChangePhoto}
           />
         </div>
         <div>
