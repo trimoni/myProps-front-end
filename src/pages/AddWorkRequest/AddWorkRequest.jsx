@@ -10,6 +10,7 @@ const AddWorkRequest = (props) => {
   })
 
   const handleChange = ({ target }) => {
+
     setForm({ ...form, [target.name]: target.value })
   }
 
