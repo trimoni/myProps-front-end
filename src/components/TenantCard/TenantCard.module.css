@@ -31,3 +31,8 @@
 .container div h5 {
   font-size: 11px;
 }
+
+header {
+  display: flex;
+  justify-content: end;
+}

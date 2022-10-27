@@ -14,8 +14,6 @@ const EditListing = (props) => {
     setForm({ ...form, [target.name]: target.value })
   }
 
-
-
   const selectTenant = ( {target} ) => {
     setSelectedTenant(target.value)
   }
@@ -151,7 +149,8 @@ const EditListing = (props) => {
           name="tenants" 
           id="tenant-list"
           onChange={selectTenant}
-        > <option>Select a Tenant</option>
+        > 
+        <option>Select a Tenant</option>
           {props.tenants.map(tenant => (
             
             <option value={tenant._id}>{tenant.name}</option>
