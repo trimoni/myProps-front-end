@@ -1,150 +1,154 @@
 // npm modules
-import { useState, useEffect } from 'react'
-import { Routes, Route, useNavigate } from 'react-router-dom'
+import { useState, useEffect } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 // page components
-import Signup from './pages/Signup/Signup'
-import Login from './pages/Login/Login'
-import Landing from './pages/Landing/Landing'
-import Profiles from './pages/Profiles/Profiles'
-import ChangePassword from './pages/ChangePassword/ChangePassword'
-import Listings from './pages/Listings/Listings'
-import TenantList from './pages/TenantList/TenantList'
-import EditListing from './pages/EditListing/EditListing'
-import WorkRequestList from './pages/WorkRequestList/WorkRequestList'
-import AddListing from './pages/AddListing/AddListing'
-import AddWorkRequest from './pages/AddWorkRequest/AddWorkRequest'
-import AddTenant from './pages/AddTenant/AddTenant'
-import EditTenant from './pages/EditTenant/EditTenant'
+import Signup from "./pages/Signup/Signup";
+import Login from "./pages/Login/Login";
+import Landing from "./pages/Landing/Landing";
+import Profiles from "./pages/Profiles/Profiles";
+import ChangePassword from "./pages/ChangePassword/ChangePassword";
+import Listings from "./pages/Listings/Listings";
+import TenantList from "./pages/TenantList/TenantList";
+import EditListing from "./pages/EditListing/EditListing";
+import WorkRequestList from "./pages/WorkRequestList/WorkRequestList";
+import AddListing from "./pages/AddListing/AddListing";
+import AddWorkRequest from "./pages/AddWorkRequest/AddWorkRequest";
+import AddTenant from "./pages/AddTenant/AddTenant";
+import EditTenant from "./pages/EditTenant/EditTenant";
 
 // components
-import NavBar from './components/NavBar/NavBar'
-import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
+import NavBar from "./components/NavBar/NavBar";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 // services
-import * as authService from './services/authService'
-import * as listingService from "./services/listingService"
-import * as tenantsService from "./services/tenantsService"
-import * as profileService from "./services/profileService"
-
-
-
+import * as authService from "./services/authService";
+import * as listingService from "./services/listingService";
+import * as tenantsService from "./services/tenantsService";
+import * as profileService from "./services/profileService";
 
 const App = () => {
-  const [listings, setListings] = useState([])
-  const [tenants, setTenants] = useState([])
-  const [workRequests, setWorkRequest] = useState([])
-  const [user, setUser] = useState(authService.getUser())
-  const navigate = useNavigate()
+  const [listings, setListings] = useState([]);
+  const [tenants, setTenants] = useState([]);
+  const [workRequests, setWorkRequest] = useState([]);
+  const [user, setUser] = useState(authService.getUser());
+  const navigate = useNavigate();
 
   //Logout
   const handleLogout = () => {
-    authService.logout()
-    setUser(null)
-    navigate('/')
-  }
+    authService.logout();
+    setUser(null);
+    navigate("/");
+  };
 
   //Signup
   const handleSignupOrLogin = () => {
-    setUser(authService.getUser())
-  }
+    setUser(authService.getUser());
+  };
   //Add a Work Request
   const handleAddWorkRequest = async (id, workRequestData) => {
-    const newWorkRequest = await listingService.createWorkRequest(id, workRequestData)
+    const newWorkRequest = await listingService.createWorkRequest(
+      id,
+      workRequestData
+    );
 
-    setWorkRequest([newWorkRequest, ...workRequests])
-    navigate('/listings')
-  }
+    setWorkRequest([newWorkRequest, ...workRequests]);
+    navigate("/listings");
+  };
 
   //Add a Tenant
   const handleAddTenant = async (tenantData) => {
-    const newTenant = await tenantsService.create(tenantData)
-    setTenants([newTenant, ...tenants])
-    navigate('/tenants')
-  }
+    const newTenant = await tenantsService.create(tenantData);
+    setTenants([newTenant, ...tenants]);
+    navigate("/tenants");
+  };
 
   const handleUpdateTenant = async (tenantData) => {
-    const updatedTenant = await tenantsService.update(tenantData)
-    setTenants(tenants.map((b) => tenantData._id === b._id ? updatedTenant : b))
-    navigate('/tenants')
-  }
+    const updatedTenant = await tenantsService.update(tenantData);
+    setTenants(
+      tenants.map((b) => (tenantData._id === b._id ? updatedTenant : b))
+    );
+    navigate("/tenants");
+  };
 
   //Get all of my listings and tenants
   useEffect(() => {
     const fetchAllListing = async () => {
-      const listingData = await profileService.showMyListing(user.profile)
-      setListings(listingData)
-    }
+      const listingData = await profileService.showMyListing(user.profile);
+      setListings(listingData);
+    };
     const fetchAllTenants = async () => {
-      const tenantData = await profileService.showMyTenants(user.profile)
-      setTenants(tenantData)
-    }
-    if (user)
-      fetchAllListing()
-    fetchAllTenants()
-
-  }, [user])
+      const tenantData = await profileService.showMyTenants(user.profile);
+      setTenants(tenantData);
+    };
+    if (user) fetchAllListing();
+    fetchAllTenants();
+  }, [user]);
 
   //Add a Listing
-  const handleAddListing = async (listingData, photos) => {
-    const newListing = await listingService.create(listingData)
-    if (photos) {
-      newListing.photos = await listingPhotoHelper(photos, newListing._id)
+  const handleAddListing = async (listingData, photo) => {
+    const newListing = await listingService.create(listingData);
+    if (photo) {
+      console.log(photo, 'PHOTO BRO')
+      newListing.photo = await listingPhotoHelper(photo, newListing._id);
     }
-    setListings([...listings, newListing])
-    navigate('/listings')
-  }
+    setListings([...listings, newListing]);
+    navigate("/listings");
+  };
 
   //Update a Listing
-<<<<<<<<< Temporary merge branch 1
   const handleUpdateListing = async (listingData, photo) => {
-    const updatedListing = await listingService.update(listingData)
+    const updatedListing = await listingService.update(listingData);
     if (photo) {
-=========
-  const handleUpdateListing = async (listingData, photos) => {
-    const updatedListing = await listingService.update (listingData)
-    if (photos) {
->>>>>>>>> Temporary merge branch 2
       console.log("THIS IS UPDATED LISTING", updatedListing._id);
-      updatedListing.photos = await listingPhotoHelper(photos, updatedListing._id)
+      updatedListing.photo = await listingPhotoHelper(
+        photo,
+        updatedListing._id
+      );
     }
     setListings(
-      listings.map((listing) => (listingData._id === listing._id ? updatedListing : listing))
-    )
-    navigate('/listings')
-  }
+      listings.map((listing) =>
+        listingData._id === listing._id ? updatedListing : listing
+      )
+    );
+    navigate("/listings");
+  };
 
   //Delete a Listing
   const handleDeleteListing = async (id) => {
-    const deletedListing = await listingService.deleteListing(id)
-    console.log('DELETED', deletedListing)
-    setListings(listings.filter(listing => listing._id !== deletedListing._id))
-    navigate('/listings')
-  }
+    const deletedListing = await listingService.deleteListing(id);
+    console.log("DELETED", deletedListing);
+    setListings(
+      listings.filter((listing) => listing._id !== deletedListing._id)
+    );
+    navigate("/listings");
+  };
 
   //Delete Tenant
   const handleDeleteTenant = async (id) => {
-    const deletedTenant = await tenantsService.deleteTenant(id)
-    setTenants(tenants.filter(tenant => tenant._id !== deletedTenant._id))
-  }
+    const deletedTenant = await tenantsService.deleteTenant(id);
+    setTenants(tenants.filter((tenant) => tenant._id !== deletedTenant._id));
+  };
 
   //Add a Photo
-  const listingPhotoHelper = async (photos, id) => {
-    const photoData = new FormData()
-    Array.from(photos).forEach(photo => {
-      photoData.append('photos', photo)
-    })
-    return await listingService.addPhoto(photoData, id)
-  }
+  const listingPhotoHelper = async (photo, id) => {
+    console.log(photo, 'HELPER PHOTO')
+    const photoData = new FormData();
+    console.log(photoData, 'HELLO PHOTODATA')
+    photoData.append("photo", photo);
+    console.log(photoData, 'IN APP')
+    return await listingService.addPhoto(photoData, id);
+  };
 
   //Add Tenant to Listing
   const addTenantToListing = async (id, tenantData) => {
     console.log(id, "id");
     console.log(tenantData, "THIS TENANT DATA");
-    const tenantD = await listingService.addTenantToListing(id, tenantData)
+    const tenantD = await listingService.addTenantToListing(id, tenantData);
     console.log(tenantD, "this is the tenant");
-    navigate("/listings")
-  }
+    navigate("/listings");
+  };
 
   return (
     <>
@@ -164,7 +168,7 @@ const App = () => {
           }
         />
         <Route
-          path='/workRequests'
+          path="/workRequests"
           element={
             <ProtectedRoute user={user}>
               <WorkRequestList />
@@ -172,7 +176,7 @@ const App = () => {
           }
         />
         <Route
-          path='/listings/:id/workRequests'
+          path="/listings/:id/workRequests"
           element={
             <ProtectedRoute user={user}>
               <AddWorkRequest
@@ -186,9 +190,9 @@ const App = () => {
           path="/tenants"
           element={
             <ProtectedRoute user={user}>
-              <TenantList 
-                tenants={tenants} 
-                handleDeleteTenant={handleDeleteTenant} 
+              <TenantList
+                tenants={tenants}
+                handleDeleteTenant={handleDeleteTenant}
               />
             </ProtectedRoute>
           }
@@ -230,10 +234,11 @@ const App = () => {
           path="/listing/:id/edit"
           element={
             <ProtectedRoute user={user}>
-              <EditListing handleDeleteListing={handleDeleteListing} 
-              handleUpdateListing={handleUpdateListing}
-              addTenantToListing={addTenantToListing}
-              tenants={tenants}
+              <EditListing
+                handleDeleteListing={handleDeleteListing}
+                handleUpdateListing={handleUpdateListing}
+                addTenantToListing={addTenantToListing}
+                tenants={tenants}
               />
             </ProtectedRoute>
           }
@@ -250,12 +255,15 @@ const App = () => {
           path="/tenants/:id/edit"
           element={
             <ProtectedRoute user={user}>
-              <EditTenant handleUpdateTenant={handleUpdateTenant} handleDeleteListing={handleDeleteListing} />
+              <EditTenant
+                handleUpdateTenant={handleUpdateTenant}
+                handleDeleteListing={handleDeleteListing}
+              />
             </ProtectedRoute>
           }
         />
       </Routes>
     </>
-  )
-}
-export default App
+  );
+};
+export default App;

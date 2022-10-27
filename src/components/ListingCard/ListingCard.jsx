@@ -18,7 +18,7 @@ const ListingCard = ({ listing }) => {
               </div>
               <div>
                 <h1>{listing.address}</h1>
-                <h1>{listing.price}</h1>
+                <h1>{listing.rent}</h1>
               </div>
             </span>
           </header>
