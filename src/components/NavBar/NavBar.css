@@ -4,17 +4,44 @@ body {
   box-sizing: border-box;
 }
 
-li {
+li  {
+  width: 150px;
   list-style: none;
+}
+
+li > a {
+  
+}
+
+a {
+  text-decoration: none;
+  width: 100px;
 }
 
 .nav-bar {
   margin: 0;
   height: 60px;
-  background: #4CC9F0;
+  background: var(--primary);
   display: flex;
   align-items: center;
+  text-align: center;
   padding-left: 80px;
+}
+
+.btn-account {
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  
+}
+
+.btn-account > button {
+  padding: 10px;
+  
+  
 }
 
 

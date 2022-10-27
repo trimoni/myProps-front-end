@@ -16,8 +16,6 @@ const EditListing = (props) => {
     setSelectedTenant(target.value)
   }
 
-
-
   const handleAddTenantToListing = (e) => {
     e.preventDefault()
     console.log(listingId);
@@ -133,10 +131,10 @@ const EditListing = (props) => {
       </form>
       {state.tenants.length ?
         state.tenants.map(tenant => (
-          <>
+          <div key={tenant._id}>
             <li>{tenant?.name}</li>
             <button onClick={() => props.removeTenant(listingId, tenant._id)}>X</button>
-          </>
+          </div>
         ))
         :
         <>
@@ -150,8 +148,7 @@ const EditListing = (props) => {
       >
         <option>Select a Tenant</option>
         {props.tenants.map(tenant => (
-
-          <option value={tenant._id}>{tenant.name}</option>
+          <option key={tenant._id} value={tenant._id}>{tenant.name}</option>
         ))}
       </select>
       <button onClick={handleAddTenantToListing}>Add Tenant</button>
@@ -159,5 +156,6 @@ const EditListing = (props) => {
     </main>
   );
 }
+
 
 export default EditListing;
