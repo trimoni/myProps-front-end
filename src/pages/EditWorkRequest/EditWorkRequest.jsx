@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import * as listingService from '../../services/listingService'
+
 const EditWorkRequest = (props) => {
   const { state } = useLocation()
   const navigate = useNavigate()
@@ -10,15 +10,15 @@ const EditWorkRequest = (props) => {
     urgency: false,
     resolution: 'Currently Working'
   })
+
   const handleChange = ({ target }) => {
     setForm({ ...form, [target.name]: target.value })
   }
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-    await listingService.updateWorkRequest(state.listing._id, state.workRequest._id, form)
+    props.handleUpdateWorkRequest(state.listing._id, state.workRequest._id, form)
     navigate('/workRequests')
-
   }
 
   return (
