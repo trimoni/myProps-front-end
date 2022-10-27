@@ -22,7 +22,7 @@ Lastly, myProps allows managers to keep a log of previous and current tenants th
 ![Mike Trinh](public/Mike-Trinh.jpg)
 
 ### Tal Rimoni - [[GitHub]](https://github.com/trimoni)
-![Tal Rimoni](public/Tal-Rimoni.jpeg)
+![Tal Rimoni](public/Tal.jpg)
 
 ## Track Your Property:
 
