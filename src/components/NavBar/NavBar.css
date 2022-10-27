@@ -9,10 +9,6 @@ li  {
   list-style: none;
 }
 
-li > a {
-  
-}
-
 a {
   text-decoration: none;
   width: 100px;
