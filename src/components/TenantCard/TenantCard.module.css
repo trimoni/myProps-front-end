@@ -44,6 +44,7 @@ article {
 span {
   padding-top: 10px;
   padding-right: 10px;
+  font-weight: bold;
 }
 
 header {
@@ -54,3 +55,4 @@ header {
 p {
   color: black;
 }
+
