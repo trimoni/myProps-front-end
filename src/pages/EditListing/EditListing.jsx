@@ -74,7 +74,7 @@ const EditListing = (props) => {
             required
             name="bedroom"
             id="bedroom"
-            value={'form.bedroom'}
+            value={form.bedroom}
             placeholder="Num"
             onChange={handleChange}
           >

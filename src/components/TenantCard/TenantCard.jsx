@@ -1,24 +1,37 @@
 import { Link } from "react-router-dom";
-import styles from "./TenantCard.module.css";
+
+import styles from './TenantCard.module.css'
+import { Card } from "react-bootstrap"
+
+
 
 const TenantCard = ({ tenant, handleDeleteTenant }) => {
   return (
-    <div>
-      <article className={styles.container}>
+    <article>
+      <Card style={{ width: '18rem' }}>
         <header>
           <span onClick={() => handleDeleteTenant(tenant._id)}>X</span>
         </header>
         <Link to={`/tenants/${tenant._id}/edit`} state={tenant}>
-          <p>Name: {tenant.name}</p>
-          <p>Lease: {tenant.lease}</p>
-          <p>Job/Jobs: {tenant.jobs}</p>
-          <p>Salary: ${tenant.salary} per year</p>
-          {tenant.comments.map((comment) => (
-            <p key={comment.content}>{comment.content}</p>
-          ))}
+        <Card.Body>
+          <Card.Title>{tenant.name}</Card.Title><br />
+          <Card.Subtitle className="mb-2 text-muted">
+            <div>Lease: {tenant.lease}</div><br />
+            <div>Job/Jobs: {tenant.jobs}</div><br />
+            <div>Salary: ${tenant.salary} per year</div><br />
+          </Card.Subtitle>
+          <Card.Text>
+            {tenant.comments.map(comment =>
+              <li key={comment.content}>
+                {comment.content}
+              </li>
+            )}
+          </Card.Text>
+        </Card.Body>
+
         </Link>
-      </article>
-    </div>
+      </Card>
+    </article>
   );
 };
 
