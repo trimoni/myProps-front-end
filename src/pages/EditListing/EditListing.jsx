@@ -16,6 +16,11 @@ const EditListing = (props) => {
     setSelectedTenant(target.value)
   }
 
+  const handleAddTenantToListing = (e) => {
+    e.preventDefault()
+    props.addTenantToListing(state._id, selectedTenant)
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     props.handleUpdateListing(form, photoData.photo)
@@ -145,7 +150,7 @@ const EditListing = (props) => {
             <option value={tenant._id}>{tenant.name}</option>
             ))}
         </select>
-        <button onClick={() => props.addTenantToListing(state._id, selectedTenant)}>Add to my Lisitng</button>
+        <button onClick={handleAddTenantToListing}>Add to my Lisitng</button>
         <button onClick={() => props.handleDeleteListing(state._id)}>DELETE</button>
     </main>
   );

@@ -168,12 +168,11 @@ const App = () => {
   //Remove Tenant from Listing
   const removeTenant = async (id) => {
     const tenantD = await listingService.removeTenant(id)
-    const allOtherListing = listings.filter(listing => listing._id !== id)
     const currentListing = listings.filter(listing => listing._id === id)
-    console.log(currentListing[0].tenants, "this is the listing?");
+    console.log(currentListing[0].tenants, "this is the tenants");
     // setListings(currentListing.tenants.map((tenant) => (tenant._id === tenantD ? tenantD : tenant)))
-    setListings(currentListing[0].tenants.map(
-      (tenant) => tenant._id === tenantD ? tenantD : tenant))
+    setListings(currentListing[0].tenants.filter(
+      (tenant) => tenantD !== tenant._id ))
     }
 
     // listings.map((listing) => (listingData._id === listing._id ? updatedListing : listing))
@@ -181,7 +180,7 @@ const App = () => {
 
   
   
-
+//Add comment to Tenant
   const addTenantComment = async (id, commentData) => {
     const newTenantComment = await tenantsService.createComment(id, commentData)
     const allOtherTenants = tenants.filter(tenant => tenant._id !== id)
