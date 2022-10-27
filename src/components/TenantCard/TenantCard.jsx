@@ -20,9 +20,9 @@ const TenantCard = ({ tenant, handleDeleteTenant }) => {
           </Card.Subtitle>
           <Card.Text>
             {tenant.comments.map(comment =>
-              <p key={comment.content}>
+              <li key={comment.content}>
                 {comment.content}
-              </p>
+              </li>
             )}
           </Card.Text>
         </Card.Body>
