@@ -105,18 +105,18 @@ const updateWorkRequest = async (listingId, workRequestId, workRequestData) => {
   try {
     const res = await fetch(`${BASE_URL}/${listingId}/workRequests/${workRequestId}`, {
       method: 'put',
-            headers: {
+      headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
         'Content-Type': 'application/json'
       },
-       body: JSON.stringify(workRequestData),
-       })
+      body: JSON.stringify(workRequestData),
+    })
     return res.json()
   } catch (error) {
     console.log(error)
   }
 }
-      
+
 const addTenantToListing = async (id, tenantId) => {
   try {
     const res = await fetch(`${BASE_URL}/${id}/tenants`, {
@@ -125,25 +125,22 @@ const addTenantToListing = async (id, tenantId) => {
         'Authorization': `Bearer ${tokenService.getToken()}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({tenantId: tenantId}),
+      body: JSON.stringify({ tenantId: tenantId }),
     })
     return res.json()
   } catch (error) {
     console.log(error)
   }
 }
-
-
-
-export { 
-  index, 
-  show, 
-  create, 
-  update, 
-  deleteListing, 
-  addPhoto, 
+export {
+  index,
+  show,
+  create,
+  update,
+  deleteListing,
+  addPhoto,
   createWorkRequest,
   addTenantToListing,
-   updateWorkRequest
+  updateWorkRequest
 };
 

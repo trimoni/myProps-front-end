@@ -111,7 +111,7 @@ const App = () => {
 
   //Update a Listing
   const handleUpdateListing = async (listingData, photos) => {
-    const updatedListing = await listingService.update (listingData)
+    const updatedListing = await listingService.update(listingData)
     if (photos) {
 
       console.log("THIS IS UPDATED LISTING", updatedListing._id);
@@ -207,9 +207,9 @@ const App = () => {
           path="/tenants"
           element={
             <ProtectedRoute user={user}>
-              <TenantList 
-                tenants={tenants} 
-                handleDeleteTenant={handleDeleteTenant} 
+              <TenantList
+                tenants={tenants}
+                handleDeleteTenant={handleDeleteTenant}
               />
             </ProtectedRoute>
           }
@@ -251,10 +251,10 @@ const App = () => {
           path="/listing/:id/edit"
           element={
             <ProtectedRoute user={user}>
-              <EditListing handleDeleteListing={handleDeleteListing} 
-              handleUpdateListing={handleUpdateListing}
-              addTenantToListing={addTenantToListing}
-              tenants={tenants}
+              <EditListing handleDeleteListing={handleDeleteListing}
+                handleUpdateListing={handleUpdateListing}
+                addTenantToListing={addTenantToListing}
+                tenants={tenants}
 
               />
             </ProtectedRoute>
