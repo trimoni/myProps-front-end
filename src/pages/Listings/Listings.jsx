@@ -7,7 +7,7 @@ const Listings = ({ listings }) => {
   return (
     <main className="listing-container">
       <div>
-        <h1>Listings</h1>
+        <h1 className="header">Listings</h1>
 
         <div className="class-div">{listings.map((l) => (
           <div key={l._id}>
