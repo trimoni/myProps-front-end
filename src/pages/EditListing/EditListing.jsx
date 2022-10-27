@@ -1,4 +1,4 @@
-import { useState, useEffect,  } from "react";
+import { useState, useEffect, } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import './EditListing.css'
 import * as listingService from "../../services/listingService"
@@ -14,7 +14,7 @@ const EditListing = (props) => {
     setForm({ ...form, [target.name]: target.value })
   }
 
-  const selectTenant = ( {target} ) => {
+  const selectTenant = ({ target }) => {
     setSelectedTenant(target.value)
   }
 
@@ -140,24 +140,24 @@ const EditListing = (props) => {
             <button onClick={() => props.removeTenant(listingId, tenant._id)}>X</button>
           </>
         ))
-      :
-      <>
-        <h3>No tenants in the property</h3>
-      </>
+        :
+        <>
+          <h3>No tenants in the property</h3>
+        </>
       }
-        <select 
-          name="tenants" 
-          id="tenant-list"
-          onChange={selectTenant}
-        > 
+      <select
+        name="tenants"
+        id="tenant-list"
+        onChange={selectTenant}
+      >
         <option>Select a Tenant</option>
-          {props.tenants.map(tenant => (
-            
-            <option value={tenant._id}>{tenant.name}</option>
-            ))}
-        </select>
-        <button onClick={handleAddTenantToListing}>Add to my Lisitng</button>
-        <button onClick={() => props.handleDeleteListing(state._id)}>DELETE</button>
+        {props.tenants.map(tenant => (
+
+          <option value={tenant._id}>{tenant.name}</option>
+        ))}
+      </select>
+      <button onClick={handleAddTenantToListing}>Add Tenant</button>
+      <button onClick={() => props.handleDeleteListing(state._id)}>DELETE</button>
     </main>
   );
 }

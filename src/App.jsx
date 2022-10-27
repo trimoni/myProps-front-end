@@ -38,7 +38,6 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
 
-
   //Logout
   const handleLogout = () => {
     authService.logout();
