@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./ListingCard.css";
 
 const ListingCard = ({ listing }) => {
-  console.log(listing);
+
   return (
     <>
       <Link to={`/listing/${listing._id}/edit`} state={listing}>

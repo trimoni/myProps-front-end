@@ -65,8 +65,8 @@ const AddTenant = (props) => {
           required
           type="text"
           name="jobs"
-          id="job-input"
-          value={form.job}
+          id="jobs-input"
+          value={form.jobs}
           placeholder="Add job..."
           onChange={handleChange}
         />
