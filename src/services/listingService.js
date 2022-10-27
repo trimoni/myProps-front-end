@@ -71,6 +71,7 @@ const deleteListing = async (id) => {
 };
 
 async function addPhoto(photoData, listingId) {
+  console.log(photoData, 'HELLO')
   try {
     const res = await fetch(`${BASE_URL}/${listingId}/add-photo`, {
       method: 'PUT',
