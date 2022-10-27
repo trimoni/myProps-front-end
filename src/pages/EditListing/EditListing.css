@@ -1,14 +1,27 @@
 .container {
   height: 100%;
   display: flex;
-  overflow-x: hidden;
-  overflow-y: scroll;
   padding: 28px 21px;
   align-items: center;
   flex-direction: column;
 }
 
-.container input, textarea, select, button { 
+
+main.container {
+  width: 100%;
+  margin: 0;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+.container {
+  margin: 0;
+}
+
+.container input,
+textarea,
+select,
+button {
   width: 100%;
   padding: 14px;
   font-size: 14px;
@@ -32,4 +45,8 @@
   font-weight: 600;
   margin: 21px 0px 0px 0px;
   background: lightblue;
+}
+
+form {
+  margin-top: 150px;
 }
