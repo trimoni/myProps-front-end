@@ -1,16 +1,37 @@
 .container {
   display: flex;
-  flex-flow: column nowrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 300px;
 }
+
+.container > .inputContainer {
+  display: flex;
+}
+
+
 
 .label, .button {
   margin-right: 0.5rem;
 }
 
+#password {
+  display: flex;
+  margin-right: 10px;
+}
+
+.signup {
+  width: 100px;
+}
+
 
 .inputContainer {
   margin-bottom: 1rem;
+}
+
+form {
+  padding: 0;
+  display: flex;
+  height: 500px;
 }

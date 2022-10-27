@@ -60,7 +60,7 @@ const LoginForm = props => {
           <button>Cancel</button>
         </Link>
       </div>
-      <Link to="/signup">Don't have an account?</Link>
+      <Link className='signup' to="/signup">Don't have an account?</Link>
     </form>
   )
 }
