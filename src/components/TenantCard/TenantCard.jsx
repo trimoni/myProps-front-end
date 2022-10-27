@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from './TenantCard.module.css'
+import { Card } from "react-bootstrap"
 
 
 const TenantCard = ({ tenant, handleDeleteTenant }) => {
@@ -29,6 +30,27 @@ const TenantCard = ({ tenant, handleDeleteTenant }) => {
           )}
         </Link>
       </article>
+
+      <Card style={{ width: '18rem' }}>
+      <Card.Body>
+        <Card.Title>{tenant.name}</Card.Title><br />
+        <Card.Subtitle className="mb-2 text-muted">
+          <div>
+            Lease: {tenant.lease}
+          </div><br />
+          <div>
+            Job/Jobs: {tenant.jobs}
+          </div><br />
+          <div>
+            Salary: ${tenant.salary} per year
+          </div><br />
+        </Card.Subtitle>
+        <Card.Text>
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </Card.Text>
+      </Card.Body>
+    </Card>
     </div>
   );
 }
