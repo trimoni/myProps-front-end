@@ -1,28 +1,28 @@
-import { useState } from "react"
-import styles from './AddTenant.module.css'
+import { useState } from "react";
+import styles from "./AddTenant.module.css";
 
 const AddTenant = (props) => {
   const [form, setForm] = useState({
-    lease: '',
-    name: '',
-    jobs: '',
-    salary: '',
-    contact: '',
-    current: false
-  })
+    lease: "",
+    name: "",
+    jobs: "",
+    salary: "",
+    contact: "",
+    current: false,
+  });
 
   const handleChange = ({ target }) => {
-    if(target.name === 'current') {
-      setForm({...form, [target.name] : !!target.value})
+    if (target.name === "current") {
+      setForm({ ...form, [target.name]: !!target.value });
     } else {
-      setForm({ ...form, [target.name]: target.value })
+      setForm({ ...form, [target.name]: target.value });
     }
-  }
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    props.handleAddTenant(form)
-  }
+    e.preventDefault();
+    props.handleAddTenant(form);
+  };
 
   return (
     <main>
@@ -77,19 +77,20 @@ const AddTenant = (props) => {
           placeholder="Add contact..."
           onChange={handleChange}
         />
-        <label htmlFor="current-input">Current
-        <input
-          type="checkbox"
-          name="current"
-          id="current-input"
-          value={form.current}
-          onChange={handleChange}
+        <label htmlFor="current-input">
+          Current
+          <input
+            type="checkbox"
+            name="current"
+            id="current-input"
+            value={form.current}
+            onChange={handleChange}
           />
-          </label>
+        </label>
         <button type="submit">SUBMIT</button>
       </form>
     </main>
-  )
-}
+  );
+};
 
-export default AddTenant
+export default AddTenant;

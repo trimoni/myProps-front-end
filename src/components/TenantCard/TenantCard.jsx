@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+
 import styles from './TenantCard.module.css'
 import { Card } from "react-bootstrap"
+
 
 
 const TenantCard = ({ tenant, handleDeleteTenant }) => {
@@ -26,10 +28,11 @@ const TenantCard = ({ tenant, handleDeleteTenant }) => {
             )}
           </Card.Text>
         </Card.Body>
+
         </Link>
       </Card>
     </article>
   );
-}
+};
 
 export default TenantCard;
