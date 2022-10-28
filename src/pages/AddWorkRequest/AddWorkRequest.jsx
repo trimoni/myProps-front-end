@@ -36,7 +36,6 @@ const AddWorkRequest = (props) => {
             />
           </div>
           <div>
-
             <label htmlFor="details-input">Details</label>
             <textarea
               type="text"
@@ -46,7 +45,6 @@ const AddWorkRequest = (props) => {
             ></textarea>
           </div>
           <div>
-
             <label htmlFor="resolution-input">Resolution</label>
             <select
               name="resolution"
