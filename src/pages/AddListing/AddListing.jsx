@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./AddListing.css";
+import styles from "./AddListing.module.css"
 
 const AddListing = (props) => {
   const [form, setForm] = useState({
@@ -30,11 +30,12 @@ const AddListing = (props) => {
 
   return (
     <main className="container">
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="address">Address</label>
+      <form className={styles.container} onSubmit={handleSubmit}>
+        <div className={styles.inputContainer}>
+          <label className={styles.label} htmlFor="address">Address</label>
           <input
             required
+            autoComplete="off"
             type="text"
             name="address"
             id="address"
@@ -43,8 +44,8 @@ const AddListing = (props) => {
             onChange={handleChange}
           />
         </div>
-        <div>
-          <label htmlFor="photo">Upload Picture</label>
+        <div className={styles.inputContainer}>
+          <label className={styles.label} htmlFor="photo">Upload Picture</label>
           <input
             multiple
             type="file"
@@ -53,10 +54,11 @@ const AddListing = (props) => {
             onChange={handleChangePhoto}
           />
         </div>
-        <div>
+        <div className={styles.inputContainer}>
           <label htmlFor="rent">Monthly Rent:</label>
           <input
             required
+            autoComplete="off"
             type="text"
             name="rent"
             id="rent"
@@ -102,10 +104,11 @@ const AddListing = (props) => {
             <option value="3+">3+</option>
           </select>
         </div>
-        <div>
-          <label htmlFor="pets">Pets:</label>
+        <div className={styles.inputContainer}>
+          <label className={styles.label} htmlFor="pets">Pets:</label>
           <input
             required
+            autoComplete="off"
             type="text"
             name="pets"
             id="pets"
@@ -114,8 +117,8 @@ const AddListing = (props) => {
             onChange={handleChange}
           />
         </div>
-        <label htmlFor="details">Details:</label>
-        <div>
+        <label className={styles.label} htmlFor="details">Details:</label>
+        <div className={styles.inputContainer}>
           <textarea
             required
             type="text"

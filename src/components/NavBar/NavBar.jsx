@@ -6,7 +6,7 @@ const NavBar = ({ user, handleLogout }) => {
   return (
     <>
       {user ? 
-        <>
+        <div className="userNav">
         <ul className="nav-bar">
           <li>
             <Link to="/listings" className="non-login">MY LISTING</Link>
@@ -39,7 +39,7 @@ const NavBar = ({ user, handleLogout }) => {
               </li>
             </ul>
           </Menu>
-        </>
+        </div>
       : 
         <>
           <ul className="nav-bar">
