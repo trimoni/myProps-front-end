@@ -6,8 +6,6 @@
   align-items: center;
 }
 
-
-
 .container section {
   width: 50%;
   height: 100%;
@@ -26,7 +24,8 @@
   margin: 7px 0px 14px 0px;
 }
 
-.container input, button { 
+.container input,
+button {
   width: 100%;
   padding: 14px;
   font-size: 14px;
@@ -39,7 +38,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
+
 }
 
 .container label {
@@ -73,7 +72,6 @@
 }
 
 .container a:hover {
-
   width: 160px;
   color: black;
   font-weight: bold;
@@ -84,18 +82,18 @@ input:focus {
   border: 1px solid black;
 }
 
-
-.container > .inputContainer {
+.container>.inputContainer {
   display: flex;
 }
 
-.container > .goBackContainer {
+.container>.goBackContainer {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.label, .button {
+.label,
+.button {
   margin-right: 0.5rem;
 }
 
@@ -103,8 +101,6 @@ input:focus {
   display: flex;
   margin-right: 10px;
 }
-
-
 
 form {
   padding: 0;

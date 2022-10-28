@@ -25,7 +25,8 @@
   margin: 7px 0px 14px 0px;
 }
 
-.container input, button { 
+.container input,
+button {
   width: 100%;
   padding: 14px;
   font-size: 14px;
@@ -38,10 +39,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
+
 }
-
-
 
 .container label {
   font-weight: 600;
@@ -83,25 +82,24 @@ input:focus {
   border: 1px solid black;
 }
 
-.container > .buttonSection {
+.container>.buttonSection {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
 
-.container > .buttonSection a {
+.container>.buttonSection a {
   width: 150px;
 }
 
 
-.container > .inputContainer {
+.container>.inputContainer {
   display: flex;
 }
 
-
-
-.label, .button {
+.label,
+.button {
   margin-right: 0.5rem;
 }
 
@@ -119,5 +117,3 @@ form {
   display: flex;
   height: 500px;
 }
-
-

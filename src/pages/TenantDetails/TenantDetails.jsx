@@ -16,9 +16,6 @@ const TenantDetails = (props) => {
     fetchTenant();
   }, [id]);
 
-  // Verify state with a console.log or React Dev Tools:
-  console.log("Tenant State:", tenant);
-
   return <main>Details</main>;
 };
 
