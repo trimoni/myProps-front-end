@@ -22,7 +22,7 @@ const ListingCard = ({ listing }) => {
           {listing.tenants.length ? (
             <>
               {listing.tenants.map((tenant) => (
-                <li>{tenant.name}</li>
+                <li key={tenant._id}>{tenant.name}</li>
               ))}
             </>
           ) : (
