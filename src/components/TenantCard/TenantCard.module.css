@@ -16,7 +16,6 @@ header {
   border-radius: 10% 0% 10% 0%;
 }
 
-
 span {
   color: black;
   padding-top: 5px;
@@ -34,8 +33,6 @@ span:hover {
   font-size: 25px;
 
 }
-
-
 
 li {
   color: white;

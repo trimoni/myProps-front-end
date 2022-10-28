@@ -1,4 +1,3 @@
-
 .container {
   margin-top: 50px;
   width: 440px;
@@ -8,12 +7,13 @@
   align-items: center;
   scroll-behavior: auto;
   border: 2px solid black;
-  box-shadow: 5px 5px 19px -5px rgba(0,0,0,0.25);
+  box-shadow: 5px 5px 19px -5px rgba(0, 0, 0, 0.25);
   padding: 10px;
   background-image: url('../../../public/noteCard.jpg');
 }
 
-.container input, button { 
+.container input,
+button {
   width: 100%;
   padding: 14px;
   font-size: 14px;
@@ -26,7 +26,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
+
 }
 
 .container label {
@@ -34,7 +34,7 @@
   margin: 7px 0px 14px 0px;
 }
 
-.container > button {
+.container>button {
   width: 40%;
   display: flex;
   flex-direction: column;
@@ -58,6 +58,7 @@ button:hover {
   font-size: 17px;
   font-weight: bold;
 }
+
 @media only screen and (max-width: 800px) {
   .container {
     height: 100%;
