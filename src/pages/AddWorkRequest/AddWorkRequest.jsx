@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-import './AddWorkRequest.css'
+import styles from './AddWorkRequest.module.css'
 const AddWorkRequest = (props) => {
   const location = useLocation();
   const [form, setForm] = useState({
@@ -22,7 +22,7 @@ const AddWorkRequest = (props) => {
   return (
     <>
       <h2>Add a work request</h2>
-      <div className="workRequest-container">
+      <div className={styles.container}>
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="category-input">Category</label>
@@ -37,6 +37,8 @@ const AddWorkRequest = (props) => {
           </div>
           <div>
             <label htmlFor="details-input">Details</label>
+          </div>
+          <div id="text-area">
             <textarea
               type="text"
               name="details"
@@ -46,6 +48,8 @@ const AddWorkRequest = (props) => {
           </div>
           <div>
             <label htmlFor="resolution-input">Resolution</label>
+          </div>
+          <div>
             <select
               name="resolution"
               value={form.resolution}
@@ -57,7 +61,9 @@ const AddWorkRequest = (props) => {
               <option value="Now Started">Now Started</option>
             </select>
           </div>
-          <button type='submit'>Submit</button>
+          <div>
+            <button type='submit'>Submit</button>
+          </div>
         </form>
       </div>
     </>
