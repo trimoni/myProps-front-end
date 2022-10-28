@@ -21,9 +21,9 @@ const ListingCard = ({ listing }) => {
               <ListGroup.Item style={{fontWeight:"bold", fontSize: "17px"}}>
                 Bedrooms: {listing.bedroom} / Bathrooms: {listing.bathroom}
               </ListGroup.Item>
-              <ListGroup.Item>Rent: ${listing.rent}</ListGroup.Item>
+              <ListGroup.Item style={{fontWeight:"bold"}}>Rent: ${listing.rent}</ListGroup.Item>
             </ListGroup>
-            <Card.Text>
+            <Card.Text stylr={{color: "black", fontWeight: "bold"}}>
               Tenants:
               {listing.tenants.length ?
                 <>
