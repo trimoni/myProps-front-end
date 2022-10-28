@@ -11,6 +11,14 @@ form>div {
   width: 50%;
 }
 
+form>textarea:focus {
+  border: 1px lightgrey;
+}
+
+#text-area:focus {
+  border: 1px solid lightgrey;
+}
+
 div>input {
   width: 100%;
 }
