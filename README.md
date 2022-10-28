@@ -1,6 +1,6 @@
 # myProps
 
-## Website - [myProps](https://myprops.netlify.app)
+## Check Out Our APP- [myProps](https://myprops.netlify.app)
 
 ## Description
 
