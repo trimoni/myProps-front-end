@@ -1,16 +1,11 @@
 .listing-container {
   margin: 0;
-  width: 100%;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  margin-top: 50px;
 
 }
-
-
-
 
 .class-div {
   display: flex;
@@ -29,4 +24,28 @@ h1 {
 
 .header {
   font-size: 230%;
+}
+
+@media only screen and (max-width: 1200px) {
+  .listing-container {
+    box-sizing: inherit;
+  }
+  .class-div {
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+}
+
+@media only screen and (max-width: 800px) {
+  .listing-container {
+    box-sizing: inherit;
+  }
+  .class-div {
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
 }

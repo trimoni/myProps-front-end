@@ -23,31 +23,37 @@ a {
 
 .non-login:hover {
   color: white;
-  font-weight: bolder;
+  font-weight: bold;
 }
 
 .non-login {
+  font-family: 'Alata', sans-serif;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  font-family: 'Lexend', sans-serif;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   font-size: 20px;
   width: 150px;
   color: #E8EEE7;
 }
 
 .nav-bar {
-  width: 200vh;
+  width: 100%;
   position: relative;
   margin: 0;
   height: 60px;
   background: var(--primary);
   display: flex;
   align-items: center;
-  padding-left: 60px;
+  padding-left: 80px;
   border-bottom: 1px solid black;
 }
 
 .nav-bar > li {
   width: 150px;
+  font-family: 'Alata', sans-serif;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  font-family: 'Lexend', sans-serif;
 }
 
 .btn-account {
@@ -61,6 +67,10 @@ a {
 }
 
 button {
+  margin: 3px;
+  font-family: 'Alata', sans-serif;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  font-family: 'Lexend', sans-serif;
   color: var(--primary);
   font-weight: bold;
   display: flex;
@@ -72,6 +82,7 @@ button {
 }
 
 button:hover {
+  width: 110px;
   height: 43px;
   border: 2px solid black;
   
@@ -166,6 +177,9 @@ nav.bm-item-list{
 }
 
 .ham-bar-item {
+  font-family: 'Alata', sans-serif;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  font-family: 'Lexend', sans-serif;
   font-size: 20px;
   width: 100%;
   color: white;
@@ -174,4 +188,26 @@ nav.bm-item-list{
 .ham-bar-item:hover {
   font-weight: bold;
   color:white
+}
+
+@media only screen and (max-width: 800px) {
+  .nav-bar{
+    width: 100%;
+  }
+  .non-login {
+    display: none 
+  }
+
+  .bm-menu {
+    width: 55vh;
+  }
+
+  .ham-bar-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
 }

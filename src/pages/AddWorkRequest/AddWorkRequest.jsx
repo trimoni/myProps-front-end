@@ -21,13 +21,11 @@ const AddWorkRequest = (props) => {
 
   return (
     <>
-      <h2>Add a work request</h2>
-      <div className={styles.container}>
-        <form onSubmit={handleSubmit}>
+      <div className="container">
+        <form className={styles.container} onSubmit={handleSubmit}>
+          <h2>Add a work request</h2>
           <div>
             <label htmlFor="category-input">Category</label>
-          </div>
-          <div>
             <input
               type="text"
               name="category"
@@ -37,8 +35,6 @@ const AddWorkRequest = (props) => {
           </div>
           <div>
             <label htmlFor="details-input">Details</label>
-          </div>
-          <div id="text-area">
             <textarea
               type="text"
               name="details"
@@ -48,8 +44,6 @@ const AddWorkRequest = (props) => {
           </div>
           <div>
             <label htmlFor="resolution-input">Resolution</label>
-          </div>
-          <div>
             <select
               name="resolution"
               value={form.resolution}
@@ -61,9 +55,7 @@ const AddWorkRequest = (props) => {
               <option value="Now Started">Now Started</option>
             </select>
           </div>
-          <div>
             <button type='submit'>Submit</button>
-          </div>
         </form>
       </div>
     </>

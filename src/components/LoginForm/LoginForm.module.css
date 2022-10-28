@@ -41,12 +41,15 @@
   
 }
 
+
+
 .container label {
   font-weight: 600;
   margin: 7px 0px 14px 0px;
 }
 
 .container button {
+  width: 150px;
   display: flex;
   flex-direction: column;
   color: white;
@@ -55,6 +58,7 @@
 }
 
 .container button:hover {
+  width: 150px;
   font-weight: bold;
   height: 43px;
 }
@@ -79,16 +83,23 @@ input:focus {
   border: 1px solid black;
 }
 
-.buttonSection > div {
+.container > .buttonSection {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+}
+
+.container > .buttonSection a {
+  width: 150px;
 }
 
 
 .container > .inputContainer {
   display: flex;
 }
+
+
 
 .label, .button {
   margin-right: 0.5rem;

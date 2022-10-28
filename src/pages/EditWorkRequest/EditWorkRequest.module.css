@@ -1,24 +1,68 @@
-.container>form {
+.container {
+  margin-top: 50px;
+  width: 440px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  width: 100%;
+  scroll-behavior: auto;
+  border: 2px solid black;
+  box-shadow: 5px 5px 19px -5px rgba(0,0,0,0.25);
+  padding: 10px;
+  background-image: url('../../../public/noteCard.jpg');
 }
 
-form>div {
+.container input, button { 
+  width: 100%;
+  padding: 14px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid rgb(220, 220, 220);
+}
+
+.container div {
+  width: 100%;
   display: flex;
-  width: 50%;
+  flex-direction: column;
+  justify-content: center;
+  
 }
 
-form>textarea:focus {
-  border: 1px lightgrey;
+.container label {
+  font-weight: 600;
+  margin: 7px 0px 14px 0px;
 }
 
-#text-area:focus {
-  border: 1px solid lightgrey;
+.container > button {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-weight: 600;
+  background: var(--primary);
 }
 
-div>input {
-  width: 100%;
+input:focus {
+  outline: none;
+  border: 1px solid black;
 }
+
+h2 {
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  font-family: 'Lexend', sans-serif;
+  font-size: 35px;
+}
+
+button:hover {
+  font-size: 17px;
+  font-weight: bold;
+}
+@media only screen and (max-width: 800px) {
+  .container {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+
+
