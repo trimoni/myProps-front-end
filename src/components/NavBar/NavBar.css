@@ -107,6 +107,7 @@ button:hover {
 }
 
 .bm-burger-bars {
+  background-image: "";
   background-color: white;
   border: 1px solid black;
   cursor: pointer;
@@ -139,6 +140,7 @@ button:hover {
 }
 
 .bm-item-list {
+  width: 100%;
   background-color: var(--primary);
   
 }
@@ -156,4 +158,16 @@ button:hover {
 nav.bm-item-list{
   background-color: var(--primary);
   border-right: 1px solid black;
+}
+
+.ham-bar-item {
+  font-size: 20px;
+  width: 100%;
+  color: white;
+}
+
+.ham-bar-item:hover {
+  
+  font-weight: bold;
+  color:white
 }
