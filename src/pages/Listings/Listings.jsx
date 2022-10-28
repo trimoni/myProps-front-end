@@ -7,8 +7,6 @@ const Listings = ({ listings }) => {
     <main className="listing-container">
       <div>
         {listings.length ? (
-          <>
-            <h1>Listings</h1>
             <div className="class-div">
               {listings.map((l) => (
                 <div key={l._id}>
@@ -17,7 +15,6 @@ const Listings = ({ listings }) => {
                 </div>
               ))}
             </div>
-          </>
         ) : (
           <>
             <h3>There are no Listings!</h3>

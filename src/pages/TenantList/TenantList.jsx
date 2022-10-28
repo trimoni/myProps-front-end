@@ -3,8 +3,6 @@ import "./TenantList.css";
 
 const TenantList = ({ tenants, handleDeleteTenant }) => {
   return (
-    <>
-      <h2>List of all Tenants</h2>
       <main className="tenant-container">
         {tenants.map((tenant) => (
           <div id="tenant-card" key={tenant._id}>
@@ -16,7 +14,6 @@ const TenantList = ({ tenants, handleDeleteTenant }) => {
           </div>
         ))}
       </main>
-    </>
   );
 };
 

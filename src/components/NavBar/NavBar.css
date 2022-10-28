@@ -35,6 +35,7 @@ a {
 }
 
 .nav-bar {
+  width: 200vh;
   position: relative;
   margin: 0;
   height: 60px;
@@ -107,8 +108,8 @@ button:hover {
   position: absolute;
   width: 36px;
   height: 30px;
-  left: 20px;
-  top: 5px;
+  left: 30px;
+  top: 12px;
 }
 
 .bm-burger-bars {
