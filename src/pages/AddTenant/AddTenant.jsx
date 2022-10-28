@@ -73,7 +73,7 @@ const AddTenant = (props) => {
           value={form.contact}
           placeholder="Add contact..."
           onChange={handleChange}
-          />
+        />
         <label htmlFor="current-input">Current
           <input
             type="checkbox"
@@ -81,7 +81,7 @@ const AddTenant = (props) => {
             id="current-input"
             value={form.current}
             onChange={handleChange}
-            />
+          />
         </label>
         <button type="submit">SUBMIT</button>
       </form>

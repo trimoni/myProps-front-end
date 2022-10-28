@@ -1,0 +1,16 @@
+.container>form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+form>div {
+  display: flex;
+  width: 50%;
+}
+
+div>input {
+  width: 100%;
+}

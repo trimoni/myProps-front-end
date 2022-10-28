@@ -105,15 +105,15 @@ const SignupForm = props => {
           onChange={handleChangePhoto}
         />
       </div>
-      <div className={styles.inputContainer}>
+      <div className={styles.goBackContainer}>
         <button disabled={isFormInvalid()} className={styles.button}>
           Sign Up
         </button>
         <Link to="/">
           <button>Cancel</button>
         </Link>
+      <Link className="login" to="/login">Have an account?</Link>
       </div>
-      <Link to="/login">Have an account?</Link>
     </form>
   )
 }

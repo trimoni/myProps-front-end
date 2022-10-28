@@ -1,22 +1,14 @@
 .container {
+  margin-top: 200px;
   width: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  scroll-behavior: auto;
 }
 
 
-
-.container section {
-  width: 50%;
-  height: 100%;
-  display: flex;
-  padding: 28px 21px;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-}
 
 .container section:first-child {
   background-color: #fdfeff;
@@ -100,16 +92,7 @@ input:focus {
   margin-right: 0.5rem;
 }
 
-#password {
-  display: flex;
-  margin-right: 10px;
-}
 
 
 
-form {
-  padding: 0;
-  display: flex;
-  height: 500px;
-  margin-bottom: 150px;
-}
+

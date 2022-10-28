@@ -1,26 +1,25 @@
 import { Link } from "react-router-dom";
-
 import styles from './TenantCard.module.css'
 import { Card } from "react-bootstrap"
 
 
-
 const TenantCard = ({ tenant, handleDeleteTenant }) => {
   return (
-    <article>
-      <Card style={{ width: '18rem' }}>
+    <div className={styles.bodyContainer}>
+      <Card className={styles.container} style={{ width: '18rem' }}>
+        <div>
         <header>
           <span onClick={() => handleDeleteTenant(tenant._id)}>X</span>
         </header>
         <Link to={`/tenants/${tenant._id}/edit`} state={tenant}>
         <Card.Body>
-          <Card.Title>{tenant.name}</Card.Title><br />
+          <Card.Title style={{width: '15rem', color: "white"}}>{tenant.name}</Card.Title><br />
           <Card.Subtitle className="mb-2 text-muted">
-            <div>Lease: {tenant.lease}</div><br />
-            <div>Job/Jobs: {tenant.jobs}</div><br />
-            <div>Salary: ${tenant.salary} per year</div><br />
+            <div style={{width: '15rem', color: "white"}}>Lease: {tenant.lease}</div><br />
+            <div style={{width: '15rem', color: "white"}}>Job/Jobs: {tenant.jobs}</div><br />
+            <div style={{width: '15rem', color: "white"}}>Salary: ${tenant.salary} per year</div><br />
           </Card.Subtitle>
-          <Card.Text>
+          <Card.Text style={{width: '15rem', color: "white"}}>
             {tenant.comments.map(comment =>
               <li key={comment.content}>
                 {comment.content}
@@ -28,11 +27,11 @@ const TenantCard = ({ tenant, handleDeleteTenant }) => {
             )}
           </Card.Text>
         </Card.Body>
-
         </Link>
+        </div>
       </Card>
-    </article>
+    </div>
   );
-};
+}
 
 export default TenantCard;

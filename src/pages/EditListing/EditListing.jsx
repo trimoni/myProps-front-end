@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import '../EditListing/EditListing.css'
+import './EditListing.css'
 
 const EditListing = (props) => {
   const { state } = useLocation()
@@ -33,7 +33,7 @@ const EditListing = (props) => {
 
   return (
     <main className="container">
-      <form onSubmit={handleSubmit} className='edit'>
+      <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="address">Address</label>
           <input
@@ -128,6 +128,7 @@ const EditListing = (props) => {
           />
         </div>
         <button type="submit">UPDATE</button>
+      </form>
       {state.tenants.length ?
         state.tenants.map(tenant => (
           <div key={tenant._id}>
@@ -152,7 +153,6 @@ const EditListing = (props) => {
       </select>
       <button onClick={handleAddTenantToListing}>Add Tenant</button>
       <button onClick={() => props.handleDeleteListing(state._id)}>DELETE</button>
-      </form>
     </main>
   );
 }
