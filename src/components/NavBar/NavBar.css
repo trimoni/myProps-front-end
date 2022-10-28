@@ -76,6 +76,11 @@ button:hover {
   
 }
 
+.userNav {
+  position: sticky;
+  width: 100%;
+}
+
 
 .nav-bar > li {
   padding: 0 20px;
@@ -99,11 +104,11 @@ button:hover {
 }
 
 .bm-burger-button {
-  position: fixed;
+  position: absolute;
   width: 36px;
   height: 30px;
   left: 20px;
-  top: 10px;
+  top: 5px;
 }
 
 .bm-burger-bars {
