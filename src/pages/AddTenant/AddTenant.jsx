@@ -90,7 +90,6 @@ const AddTenant = (props) => {
         <button type="submit">Add Tenant</button>
       </form>
     </main>
-    </>
   );
 };
 
