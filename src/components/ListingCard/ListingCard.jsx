@@ -33,7 +33,7 @@ const ListingCard = ({ listing }) => {
                 </>
                 :
                 <>
-                  <p>No tenants currently</p>
+                  <p style={{color:"white"}}>No tenants currently</p>
                 </>
               }
             </Card.Body>
