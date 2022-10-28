@@ -115,7 +115,6 @@ button:hover {
   background-color: white;
   border: 1px solid black;
   cursor: pointer;
-  
   }
 
 
@@ -153,6 +152,7 @@ button:hover {
   background: rgba(0, 0, 0, 0.3);
 }
 
+
 #logout {
   display: flex;
   text-align: end;
@@ -171,7 +171,6 @@ nav.bm-item-list{
 }
 
 .ham-bar-item:hover {
-  
   font-weight: bold;
   color:white
 }

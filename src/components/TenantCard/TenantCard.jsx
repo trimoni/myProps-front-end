@@ -12,13 +12,13 @@ const TenantCard = ({ tenant, handleDeleteTenant }) => {
         </header>
         <Link to={`/tenants/${tenant._id}/edit`} state={tenant}>
         <Card.Body>
-          <Card.Title style={{width: '15rem'}}>{tenant.name}</Card.Title><br />
+          <Card.Title style={{width: '15rem', color: "white"}}>{tenant.name}</Card.Title><br />
           <Card.Subtitle className="mb-2 text-muted">
-            <div style={{width: '15rem'}}>Lease: {tenant.lease}</div><br />
-            <div style={{width: '15rem'}}>Job/Jobs: {tenant.jobs}</div><br />
-            <div style={{width: '15rem'}}>Salary: ${tenant.salary} per year</div><br />
+            <div style={{width: '15rem', color: "white"}}>Lease: {tenant.lease}</div><br />
+            <div style={{width: '15rem', color: "white"}}>Job/Jobs: {tenant.jobs}</div><br />
+            <div style={{width: '15rem', color: "white"}}>Salary: ${tenant.salary} per year</div><br />
           </Card.Subtitle>
-          <Card.Text style={{width: '15rem'}}>
+          <Card.Text style={{width: '15rem', color: "white"}}>
             {tenant.comments.map(comment =>
               <li key={comment.content}>
                 {comment.content}
