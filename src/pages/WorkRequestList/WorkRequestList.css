@@ -1,0 +1,9 @@
+.a-container {
+  border: 1px solid black;
+  height: 200px;
+}
+
+.work-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
