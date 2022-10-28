@@ -1,16 +1,94 @@
 .container {
+  width: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 300px;
+  margin-bottom: 210px;
 }
+
+.container section {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  padding: 28px 21px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container section:first-child {
+  background-color: #fdfeff;
+}
+
+.container input {
+  margin: 7px 0px 14px 0px;
+}
+
+.container input, button { 
+  width: 100%;
+  padding: 14px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid rgb(220, 220, 220);
+}
+
+.container div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}
+
+.container label {
+  font-weight: 600;
+  margin: 7px 0px 14px 0px;
+}
+
+.container button {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-weight: 600;
+  background: var(--primary);
+}
+
+.container button:hover {
+  font-weight: bold;
+  height: 43px;
+}
+
+.container a {
+  border: none;
+  font-size: 14px;
+  background: none;
+  font-weight: 500;
+  margin-top: 14px;
+  text-align: center;
+  color: rgb(59, 59, 59);
+}
+
+.container a:hover {
+  color: black;
+  font-weight: bold;
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid black;
+}
+
+.buttonSection > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 .container > .inputContainer {
   display: flex;
 }
-
-
 
 .label, .button {
   margin-right: 0.5rem;
@@ -20,11 +98,6 @@
   display: flex;
   margin-right: 10px;
 }
-
-.signup {
-  width: 100px;
-}
-
 
 .inputContainer {
   margin-bottom: 1rem;

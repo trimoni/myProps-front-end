@@ -5,3 +5,7 @@
   flex-direction: column;
   
 }
+
+.container h1 {
+  font-weight: bold;
+}

@@ -5,7 +5,9 @@ body {
 }
 
 li  {
-  width: 150px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
   list-style: none;
 }
 
@@ -26,9 +28,14 @@ a:hover {
 
 .non-login {
   display: flex;
-  font-size: 22px;
-  width: 120px;
+  justify-content: space-evenly;
+  font-size: 20px;
+  width: 150px;
   color: #E8EEE7;
+}
+
+.non-login > a {
+  
 }
 
 .nav-bar {
@@ -50,7 +57,7 @@ a:hover {
 .btn-account {
   padding: 15px;
   height: 50px;
-  width: 100%;
+  width: 80%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
