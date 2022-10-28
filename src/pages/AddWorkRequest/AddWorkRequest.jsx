@@ -38,7 +38,7 @@ const AddWorkRequest = (props) => {
           <div>
             <label htmlFor="details-input">Details</label>
           </div>
-          <div>
+          <div id="text-area">
             <textarea
               type="text"
               name="details"
@@ -50,7 +50,6 @@ const AddWorkRequest = (props) => {
             <label htmlFor="resolution-input">Resolution</label>
           </div>
           <div>
-
             <select
               name="resolution"
               value={form.resolution}
@@ -62,7 +61,9 @@ const AddWorkRequest = (props) => {
               <option value="Now Started">Now Started</option>
             </select>
           </div>
-          <button type='submit'>Submit</button>
+          <div>
+            <button type='submit'>Submit</button>
+          </div>
         </form>
       </div>
     </>

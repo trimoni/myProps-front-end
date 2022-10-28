@@ -7,7 +7,7 @@ const TenantList = ({ tenants, handleDeleteTenant }) => {
       <h2>List of all Tenants</h2>
       <main className="tenant-container">
         {tenants.map((tenant) => (
-          <div id="tenant-card">
+          <div id="tenant-card" key={tenant.name}>
             <TenantCard
               key={tenant._id}
               tenant={tenant}
