@@ -1,6 +1,6 @@
 .a-container {
   border: 1px solid black;
-  height: 150px;
+  height: fit-content;
   padding: 7.5px 10px;
   margin: 10px;
   background-image: url('../../../public/noteCard.jpg');
