@@ -2,10 +2,10 @@
   height: 100%;
   display: flex;
   padding: 28px 21px;
+  justify-content: start;
   align-items: center;
   flex-direction: column;
 }
-
 
 main.container {
   width: 100%;
@@ -47,6 +47,6 @@ button {
   background: lightblue;
 }
 
-form {
-  margin-top: 150px;
+h4 {
+  text-align: center;
 }
