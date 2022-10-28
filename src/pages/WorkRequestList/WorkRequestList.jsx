@@ -3,7 +3,7 @@ import './WorkRequestList.css'
 const WorkRequestList = (props) => {
   return (
     <>
-      <h2>List of all work requests</h2>
+      <h2>Work Requests</h2>
       {props.listings.map((listing) => (
         <div key={listing._id}>
           <h4>{listing.address}</h4>
@@ -17,9 +17,9 @@ const WorkRequestList = (props) => {
                     workRequest: workRequest,
                   }}
                 >
-                  <p>Category: {workRequest.category}</p>
-                  <p>Details: {workRequest.details}</p>
-                  <p>Resolution: {workRequest.resolution}</p>
+                  <h5>{workRequest.category}</h5>
+                  <li>{workRequest.details}</li>
+                  <li>{workRequest.resolution}</li>
                 </Link>
               </div>
             ))}

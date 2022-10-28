@@ -57,12 +57,10 @@ const LoginForm = props => {
       </div>
       <div className={styles.buttonSection}>
         <button className={styles.button}>Log In</button>
-        <div>
         <Link to="/">
           <button>Cancel</button>
         </Link>
         <Link className='signup' to="/signup">Don't have an account?</Link>
-      </div>
       </div>
     </form>
     </div>

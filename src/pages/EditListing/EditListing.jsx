@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams, Link } from "react-router-dom";
+
 import styles from './EditListing.module.css'
 
 const EditListing = (props) => {
@@ -33,9 +34,9 @@ const EditListing = (props) => {
 
   return (
     <>
-      <h1>{form.address}</h1>
       <main className={styles.container}>
           <form className={styles.formContainer} onSubmit={handleSubmit}>
+            <h1>{form.address}</h1>
             <div className={styles.inputContainer}>
               <label className={styles.labelContainer} htmlFor="address">Address</label>
               <input
@@ -120,8 +121,8 @@ const EditListing = (props) => {
                 onChange={handleChange}
               />
             </div>
-            <label className={styles.labelContainer} htmlFor="details">Details:</label>
             <div className={styles.inputContainer}>
+            <label className={styles.labelContainer} htmlFor="details">Details:</label>
               <textarea
                 required
                 type="text"

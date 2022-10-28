@@ -14,11 +14,6 @@ const NavBar = ({ user, handleLogout }) => {
           <li>
             <Link to="/tenants" className="non-login">TENANTS</Link>
           </li>
-          <li>
-            <Link to="" className="non-login" onClick={handleLogout}>
-                LOG OUT
-            </Link>
-          </li>
         </ul>
           <Menu>
             <ul className="ham-bar">
@@ -36,6 +31,12 @@ const NavBar = ({ user, handleLogout }) => {
               </li>
               <li>
                 <Link className="ham-bar-item" to="/change-password">Change Password</Link>
+              </li>
+            
+              <li>
+                <Link to="" className="non-login" onClick={handleLogout}>
+                  LOG OUT
+                </Link>
               </li>
             </ul>
           </Menu>
