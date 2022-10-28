@@ -9,13 +9,13 @@ const NavBar = ({ user, handleLogout }) => {
         <>
         <ul className="nav-bar">
           <li>
-            <Link to="/listings" className="non-login">My Listings</Link>
+            <Link to="/listings" className="non-login">MY LISTING</Link>
           </li>
           <li>
-            <Link to="/tenants" className="non-login">Tenants</Link>
+            <Link to="/tenants" className="non-login">TENANTS</Link>
           </li>
-          <li id="logout">
-            <Link to="" onClick={handleLogout}>
+          <li>
+            <Link to="" className="non-login" onClick={handleLogout}>
                 LOG OUT
             </Link>
           </li>

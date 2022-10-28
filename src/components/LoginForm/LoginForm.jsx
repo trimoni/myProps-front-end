@@ -27,6 +27,7 @@ const LoginForm = props => {
   }
 
   return (
+    <div>
     <form
       autoComplete="off"
       onSubmit={handleSubmit}
@@ -64,6 +65,8 @@ const LoginForm = props => {
       </div>
       </div>
     </form>
+    </div>
+  
   )
 }
 
