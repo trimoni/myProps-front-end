@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import './EditWorkRequest.css'
+import './EditWorkRequest.css';
+
 const EditWorkRequest = (props) => {
   const { state } = useLocation();
   const navigate = useNavigate();
   const [form, setForm] = useState({
     category: "",
     details: "",
-    urgency: false,
     resolution: "Currently Working",
   });
 
