@@ -20,7 +20,6 @@ body {
   --border: rgb(220, 220, 220);
 }
 
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -33,7 +32,6 @@ code {
 
 body {
   overflow: auto;
-
 }
 
 h1,
@@ -80,16 +78,13 @@ a {
 
 .form-container {
   width: 100%;
-  /* height: fit-content; */
   display: flex;
   max-width: 500px;
   border-radius: 5px;
-  /* flex-direction: column; */
   background-color: white;
   padding: 21px 21px 28px 21px;
   border: 1px solid rgb(220, 220, 220);
   box-shadow: -1px 5px 19px -5px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: -1px 5px 19px -5px rgba(0, 0, 0, 0.25);
   -webkit-box-shadow: -1px 5px 19px -5px rgba(0, 0, 0, 0.25);
-
 }

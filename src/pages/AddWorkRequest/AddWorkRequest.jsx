@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-import styles from './AddWorkRequest.module.css'
+import styles from './AddWorkRequest.module.css';
+
 const AddWorkRequest = (props) => {
   const location = useLocation();
   const [form, setForm] = useState({
@@ -55,7 +56,7 @@ const AddWorkRequest = (props) => {
               <option value="Now Started">Now Started</option>
             </select>
           </div>
-            <button type='submit'>Submit</button>
+          <button type='submit'>Submit</button>
         </form>
       </div>
     </>

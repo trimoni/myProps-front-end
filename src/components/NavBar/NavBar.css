@@ -4,7 +4,7 @@ body {
   box-sizing: border-box;
 }
 
-li  {
+li {
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -49,7 +49,7 @@ a {
   border-bottom: 1px solid black;
 }
 
-.nav-bar > li {
+.nav-bar>li {
   width: 150px;
   font-family: 'Alata', sans-serif;
   font-family: 'Fira Sans Extra Condensed', sans-serif;
@@ -85,7 +85,7 @@ button:hover {
   width: 110px;
   height: 43px;
   border: 2px solid black;
-  
+
 }
 
 .userNav {
@@ -94,7 +94,7 @@ button:hover {
 }
 
 
-.nav-bar > li {
+.nav-bar>li {
   padding: 0 20px;
 }
 
@@ -127,8 +127,7 @@ button:hover {
   background-color: white;
   border: 1px solid black;
   cursor: pointer;
-  }
-
+}
 
 .bm-cross-button {
   margin-right: 55px;
@@ -138,7 +137,7 @@ button:hover {
 
 .bm-cross {
   background: var(--primary);
-} 
+}
 
 .bm-menu {
   width: 80%;
@@ -149,7 +148,6 @@ button:hover {
   font-size: 1.15em;
 }
 
-
 .bm-morph-shape {
   fill: white;
 }
@@ -157,13 +155,12 @@ button:hover {
 .bm-item-list {
   width: 100%;
   background-color: var(--primary);
-  
+
 }
 
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
 }
-
 
 #logout {
   display: flex;
@@ -171,7 +168,7 @@ button:hover {
   justify-content: right;
 }
 
-nav.bm-item-list{
+nav.bm-item-list {
   background-color: var(--primary);
   border-right: 1px solid black;
 }
@@ -187,15 +184,16 @@ nav.bm-item-list{
 
 .ham-bar-item:hover {
   font-weight: bold;
-  color:white
+  color: white
 }
 
 @media only screen and (max-width: 800px) {
-  .nav-bar{
+  .nav-bar {
     width: 100%;
   }
+
   .non-login {
-    display: none 
+    display: none
   }
 
   .bm-menu {
@@ -209,5 +207,4 @@ nav.bm-item-list{
     align-items: center;
     text-align: center;
   }
-  
 }

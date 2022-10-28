@@ -5,16 +5,16 @@ import { slide as Menu } from "react-burger-menu";
 const NavBar = ({ user, handleLogout }) => {
   return (
     <>
-      {user ? 
+      {user ?
         <div className="userNav">
-        <ul className="nav-bar">
-          <li>
-            <Link to="/listings" className="non-login">MY LISTING</Link>
-          </li>
-          <li>
-            <Link to="/tenants" className="non-login">TENANTS</Link>
-          </li>
-        </ul>
+          <ul className="nav-bar">
+            <li>
+              <Link to="/listings" className="non-login">MY LISTING</Link>
+            </li>
+            <li>
+              <Link to="/tenants" className="non-login">TENANTS</Link>
+            </li>
+          </ul>
           <Menu>
             <ul className="ham-bar">
               <li>
@@ -25,14 +25,13 @@ const NavBar = ({ user, handleLogout }) => {
               </li>
               <li>
                 <Link className="ham-bar-item" to="/add-tenant">Add Tenant</Link>
-              </li>          
+              </li>
               <li>
                 <Link className="ham-bar-item" to="/workRequests">Work Requests</Link>
               </li>
               <li>
                 <Link className="ham-bar-item" to="/change-password">Change Password</Link>
               </li>
-            
               <li>
                 <Link to="" className="non-login" onClick={handleLogout}>
                   LOG OUT
@@ -41,7 +40,7 @@ const NavBar = ({ user, handleLogout }) => {
             </ul>
           </Menu>
         </div>
-      : 
+        :
         <>
           <ul className="nav-bar">
             <li>
@@ -51,8 +50,8 @@ const NavBar = ({ user, handleLogout }) => {
               <Link to="/tenants" className="non-login">Tenants</Link>
             </li>
             <div className="btn-account">
-            <Link to="/login"><button>Log In</button></Link>
-            <Link to="/signup"><button>Sign Up</button></Link>
+              <Link to="/login"><button>Log In</button></Link>
+              <Link to="/signup"><button>Sign Up</button></Link>
             </div>
           </ul>
         </>

@@ -86,4 +86,11 @@ const deleteTenant = async (id) => {
   }
 };
 
-export { index, show, create, createComment, update, deleteTenant };
+export {
+  index,
+  show,
+  create,
+  createComment,
+  update,
+  deleteTenant
+};

@@ -8,8 +8,6 @@
   width: 300px;
 }
 
-
-
 .a-container:hover {
   border: 3px solid black;
   width: 305px;
@@ -18,15 +16,13 @@
 .work-container {
   background-color: rgb(230, 225, 205);
   border: 1px solid black;
-  box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
+  box-shadow: -1px 5px 19px -5px rgba(0, 0, 0, 0.25);
   border-radius: 1%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin: 10px;
 }
-
-
 
 li {
   text-align: center;
@@ -60,6 +56,3 @@ h2 {
   font-family: 'Lexend', sans-serif;
   font-size: 45px;
 }
-
-
-
