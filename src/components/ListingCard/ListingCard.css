@@ -1,7 +1,17 @@
-props {
-  border: solid 2px black;
+.card-container {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+
 }
 
-.card-container {
-  border: 1px solid black;
+img {
+  max-height: 400px;
+  max-width: 300px;
+  border-bottom: 2px solid black;
 }
+
+
+
