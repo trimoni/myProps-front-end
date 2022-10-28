@@ -5,8 +5,9 @@ import { Card } from "react-bootstrap"
 
 const TenantCard = ({ tenant, handleDeleteTenant }) => {
   return (
-    <article>
+    <div className={styles.bodyContainer}>
       <Card className={styles.container} style={{ width: '18rem' }}>
+        <div>
         <header>
           <span onClick={() => handleDeleteTenant(tenant._id)}>X</span>
         </header>
@@ -27,8 +28,9 @@ const TenantCard = ({ tenant, handleDeleteTenant }) => {
           </Card.Text>
         </Card.Body>
         </Link>
+        </div>
       </Card>
-    </article>
+    </div>
   );
 }
 
