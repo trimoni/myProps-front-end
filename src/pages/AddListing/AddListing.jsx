@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./AddListing.module.css"
+import { Link } from "react-router-dom";
 
 const AddListing = (props) => {
   const [form, setForm] = useState({
@@ -31,6 +32,7 @@ const AddListing = (props) => {
   return (
     <main className="container">
       <form className={styles.container} onSubmit={handleSubmit}>
+        <h1>Add your Listing <Link to="/listings">Return</Link></h1>
         <div className={styles.inputContainer}>
           <label className={styles.label} htmlFor="address">Address</label>
           <input
@@ -67,8 +69,8 @@ const AddListing = (props) => {
             onChange={handleChange}
           />
         </div>
-        <div>
-          <label htmlFor="bedroom">Bedroom</label>
+        <div className={styles.inputContainer}>
+          <label  htmlFor="bedroom">Bedroom</label>
           <select
             required
             name="bedroom"
@@ -86,7 +88,7 @@ const AddListing = (props) => {
             <option value="6+">6+</option>
           </select>
         </div>
-        <div>
+        <div className={styles.inputContainer}>
           <label htmlFor="bathroom">Bedroom</label>
           <select
             required
@@ -117,8 +119,8 @@ const AddListing = (props) => {
             onChange={handleChange}
           />
         </div>
-        <label className={styles.label} htmlFor="details">Details:</label>
         <div className={styles.inputContainer}>
+        <label className={styles.label} htmlFor="details">Details:</label>
           <textarea
             required
             type="text"

@@ -48,6 +48,7 @@
 }
 
 .container button {
+  width: 150px;
   display: flex;
   flex-direction: column;
   color: white;
@@ -56,11 +57,13 @@
 }
 
 .container button:hover {
+  width: 150px;
   font-weight: bold;
   height: 43px;
 }
 
 .container a {
+  width: 160px;
   border: none;
   font-size: 14px;
   background: none;
@@ -70,6 +73,8 @@
 }
 
 .container a:hover {
+
+  width: 160px;
   color: black;
   font-weight: bold;
 }
@@ -77,12 +82,6 @@
 input:focus {
   outline: none;
   border: 1px solid black;
-}
-
-.buttonSection > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 

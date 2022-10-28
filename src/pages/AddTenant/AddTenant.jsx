@@ -20,70 +20,74 @@ const AddTenant = (props) => {
   };
 
   return (
-    <>
-    <h1>Add Tenant</h1>
-    <main>
+    <main className="container">
       <form className={styles.container} onSubmit={handleSubmit}>
-        <label htmlFor="lease-input">Lease</label>
-        <input
-          required
-          type="text"
-          name="lease"
-          id="lease-input"
-          value={form.lease}
-          placeholder="Duration..."
-          onChange={handleChange}
-          />
-        <label htmlFor="name-input">Name</label>
-        <input
-          required
-          type="text"
-          name="name"
-          id="lease-input"
-          value={form.name}
-          placeholder="add name..."
-          onChange={handleChange}
-          />
-        <label htmlFor="job-input">Job</label>
-        <input
-          required
-          type="text"
-          name="jobs"
-          id="jobs-input"
-          value={form.jobs}
-          placeholder="Add job..."
-          onChange={handleChange}
-          />
-        <label htmlFor="salary-input">Salary</label>
-        <input
-          required
-          type="text"
-          name="salary"
-          id="salary-input"
-          value={form.salary}
-          placeholder="Add salary..."
-          onChange={handleChange}
-          />
-        <label htmlFor="number-input">Contact</label>
-        <input
-          required
-          type="number"
-          name="contact"
-          id="contact-input"
-          value={form.contact}
-          placeholder="Add contact..."
-          onChange={handleChange}
-        />
-        <label htmlFor="current-input">Current
+      <h1>Add your Tenant</h1>
+        <div>
+          <label htmlFor="name-input">Name</label>
           <input
-            type="checkbox"
-            name="current"
-            id="current-input"
-            value={form.current}
+            required
+            autoComplete="off"
+            type="text"
+            name="name"
+            id="lease-input"
+            value={form.name}
+            placeholder="add name..."
             onChange={handleChange}
           />
-        </label>
-        <button type="submit">SUBMIT</button>
+        </div>
+        <div>
+          <label htmlFor="lease-input">Lease</label>
+          <input
+            required
+            autoComplete="off"
+            type="text"
+            name="lease"
+            id="lease-input"
+            value={form.lease}
+            placeholder="Duration..."
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="job-input">Job</label>
+          <input
+            required
+            autoComplete="off"
+            type="text"
+            name="jobs"
+            id="jobs-input"
+            value={form.jobs}
+            placeholder="Add job..."
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="salary-input">Salary</label>
+          <input
+            required
+            autoComplete="off"
+            type="text"
+            name="salary"
+            id="salary-input"
+            value={form.salary}
+            placeholder="Add salary..."
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="number-input">Contact</label>
+          <input
+            required
+            type="number"
+            name="contact"
+            id="contact-input"
+            value={form.contact}
+            placeholder="Add contact..."
+            onChange={handleChange}
+          />
+        </div>
+        <button type="submit">Add Tenant</button>
       </form>
     </main>
     </>
