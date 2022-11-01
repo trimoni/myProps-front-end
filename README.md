@@ -1,6 +1,6 @@
 # myProps
 
-## Check Out Our APP- [myProps](https://myprops.netlify.app)
+## Check Out Our APP- [myProps](https://mypropsmanagement.netlify.app/)
 
 ![myProps](public/landingpage.jpg)
 

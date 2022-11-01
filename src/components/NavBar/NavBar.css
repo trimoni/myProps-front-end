@@ -81,12 +81,12 @@ button {
   align-items: center;
 }
 
-button:hover {
+/* button:hover {
   width: 110px;
   height: 43px;
   border: 2px solid black;
 
-}
+} */
 
 .userNav {
   position: sticky;

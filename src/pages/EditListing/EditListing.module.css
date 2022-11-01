@@ -91,11 +91,11 @@ button {
   background: var(--primary);
 }
 
-.container button:hover {
+/* .container button:hover {
   width: 160px;
   font-weight: bold;
   height: 43px;
-}
+} */
 
 input:focus {
   outline: none;

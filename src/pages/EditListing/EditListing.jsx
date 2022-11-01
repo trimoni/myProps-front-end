@@ -1,36 +1,36 @@
 import { useState } from "react";
 import { useLocation, useParams, Link } from "react-router-dom";
 
-import styles from './EditListing.module.css'
+import styles from "./EditListing.module.css";
 
 const EditListing = (props) => {
-  const { state } = useLocation()
-  const { listingId } = useParams()
+  const { state } = useLocation();
+  const { listingId } = useParams();
   const [form, setForm] = useState(state);
-  const [photoData, setPhotoData] = useState({})
-  const [selectedTenant, setSelectedTenant] = useState(null)
+  const [photoData, setPhotoData] = useState({});
+  const [selectedTenant, setSelectedTenant] = useState(null);
   const handleChange = ({ target }) => {
-    setForm({ ...form, [target.name]: target.value })
-  }
+    setForm({ ...form, [target.name]: target.value });
+  };
 
   const selectTenant = ({ target }) => {
-    setSelectedTenant(target.value)
-  }
+    setSelectedTenant(target.value);
+  };
 
   const handleAddTenantToListing = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     console.log(listingId);
-    props.addTenantToListing(listingId, selectedTenant)
-  }
+    props.addTenantToListing(listingId, selectedTenant);
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    props.handleUpdateListing(form, photoData.photo)
-  }
+    e.preventDefault();
+    props.handleUpdateListing(form, photoData.photo);
+  };
 
-  const handleChangePhoto = evt => {
-    setPhotoData({ photo: evt.target.files[0] })
-  }
+  const handleChangePhoto = (evt) => {
+    setPhotoData({ photo: evt.target.files[0] });
+  };
 
   return (
     <>
@@ -38,7 +38,9 @@ const EditListing = (props) => {
         <form className={styles.formContainer} onSubmit={handleSubmit}>
           <h1>{form.address}</h1>
           <div className={styles.inputContainer}>
-            <label className={styles.labelContainer} htmlFor="address">Address</label>
+            <label className={styles.labelContainer} htmlFor="address">
+              Address
+            </label>
             <input
               required
               type="text"
@@ -49,9 +51,10 @@ const EditListing = (props) => {
             />
           </div>
           <div className={styles.inputContainer}>
-            <label className={styles.labelContainer} htmlFor="photo">Upload Pictures</label>
+            <label className={styles.labelContainer} htmlFor="photo">
+              Upload Pictures
+            </label>
             <input
-
               type="file"
               id="photo"
               name="photo"
@@ -59,9 +62,10 @@ const EditListing = (props) => {
             />
           </div>
           <div className={styles.inputContainer}>
-            <label className={styles.labelContainer} htmlFor="rent">Monthly Rent:</label>
+            <label className={styles.labelContainer} htmlFor="rent">
+              Monthly Rent:
+            </label>
             <input
-
               required
               type="text"
               name="rent"
@@ -72,7 +76,9 @@ const EditListing = (props) => {
             />
           </div>
           <div className={styles.inputContainer}>
-            <label className={styles.labelContainer} htmlFor="bedroom">Bedroom</label>
+            <label className={styles.labelContainer} htmlFor="bedroom">
+              Bedroom
+            </label>
             <select
               required
               name="bedroom"
@@ -91,7 +97,9 @@ const EditListing = (props) => {
             </select>
           </div>
           <div className={styles.inputContainer}>
-            <label className={styles.labelContainer} htmlFor="bathroom">Bedroom</label>
+            <label className={styles.labelContainer} htmlFor="bathroom">
+              Bedroom
+            </label>
             <select
               required
               name="bathroom"
@@ -109,7 +117,9 @@ const EditListing = (props) => {
             </select>
           </div>
           <div className={styles.inputContainer}>
-            <label className={styles.labelContainer} htmlFor="pets">Pets:</label>
+            <label className={styles.labelContainer} htmlFor="pets">
+              Pets:
+            </label>
             <input
               required
               type="text"
@@ -121,7 +131,9 @@ const EditListing = (props) => {
             />
           </div>
           <div className={styles.inputContainer}>
-            <label className={styles.labelContainer} htmlFor="details">Details:</label>
+            <label className={styles.labelContainer} htmlFor="details">
+              Details:
+            </label>
             <textarea
               required
               type="text"
@@ -133,40 +145,46 @@ const EditListing = (props) => {
             />
           </div>
           <button type="submit">UPDATE</button>
-          <button onClick={() => props.handleDeleteListing(state._id)}>Delete Listing</button>
         </form>
         <div className={styles.tenantContainer}>
           <div className={styles.tenantListContainer}>
-            {state.tenants.length ?
-              <h4>Tenants in Listing</h4> : <h4>Currently no tenants</h4>
-            }
+            {state.tenants.length ? (
+              <h4>Tenants in Listing</h4>
+            ) : (
+              <h4>Currently no tenants</h4>
+            )}
           </div>
-          {state.tenants.length ?
-            state.tenants.map(tenant => (
+          {state.tenants.length ? (
+            state.tenants.map((tenant) => (
               <div className={styles.tenant} key={tenant._id}>
                 <h4>{tenant?.name}</h4>
-                <button className={styles.removeTenantBtn} onClick={() => props.removeTenant(listingId, tenant._id)}>X</button>
+                <button
+                  className={styles.removeTenantBtn}
+                  onClick={() => props.removeTenant(listingId, tenant._id)}
+                >
+                  X
+                </button>
               </div>
             ))
-            :
+          ) : (
             <p>Add a tenant!</p>
-          }
-          <select
-            name="tenants"
-            id="tenant-list"
-            onChange={selectTenant}
-          >
+          )}
+          <select name="tenants" id="tenant-list" onChange={selectTenant}>
             <option>Select a Tenant</option>
-            {props.tenants.map(tenant => (
-              <option key={tenant._id} value={tenant._id}>{tenant.name}</option>
+            {props.tenants.map((tenant) => (
+              <option key={tenant._id} value={tenant._id}>
+                {tenant.name}
+              </option>
             ))}
           </select>
           <button onClick={handleAddTenantToListing}>Add Tenant</button>
         </div>
+        <button onClick={() => props.handleDeleteListing(state._id)}>
+          Delete Listing
+        </button>
       </main>
     </>
   );
-}
-
+};
 
 export default EditListing;
